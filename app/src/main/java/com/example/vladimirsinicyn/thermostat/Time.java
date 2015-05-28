@@ -1,15 +1,12 @@
-package com.example.vladimirsinicyn.thermostat;
+package sinitsynPackage;
 
 import java.io.Serializable;
 
-public class Time implements Serializable, TimeInterface {
+public class Time implements Serializable,  TimeInterface{
 
+    private final int minutesInDay = 60 * 24;
     private int minutes;
     private int hours;
-
-    public Time() {
-
-    }
 
     public Time(int minutes) {
 
@@ -38,6 +35,7 @@ public class Time implements Serializable, TimeInterface {
 
     private void parseTime(int minutes) {
 
+        minutes = minutes % minutesInDay;
         this.hours = minutes / 60;
         this.minutes = minutes % 60;
     }
