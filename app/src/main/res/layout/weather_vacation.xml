@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".VacationWeatherActivity">
+
+    <TextView
+        android:id="@+id/day_degree_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Vacation"
+        android:textColor="@color/black"
+        android:textSize="60dp" />
+
+    <LinearLayout
+        android:id="@+id/day_layout"
+        android:layout_width="300px"
+        android:layout_below="@+id/day_degree_title"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/day_degree_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="16dp"
+            android:text="22.8°C"
+            android:textColor="@color/black"
+            android:textSize="40dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/days"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/day_layout"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/relativeLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/textViewProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="↓ 20.5° C"
+                android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
+
+            <TextView
+                android:id="@+id/textViewAction"
+                android:layout_width="100px"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textViewProgress"
+                android:text="5°C"
+                android:layout_marginTop="80px"
+                android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
+
+            <TextView
+                android:id="@+id/textViewAction2"
+                android:layout_width="100px"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textViewProgress"
+                android:layout_marginTop="80px"
+                android:text="40°C"
+                android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
+
+
+            <SeekBar
+                android:id="@+id/seekBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:layout_marginTop="26dp"
+                android:max="100"></SeekBar>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tue_layout"
+            android:layout_below="@+id/monday_layout"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tue_day_textView"
+                android:paddingLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enabled"
+                android:layout_alignTop="@+id/reverse2_imageView"
+                android:layout_marginTop="20px"
+                android:layout_toEndOf="@+id/reverse2_imageView" />
+
+            <CheckBox
+                android:id="@+id/chkIos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="" />
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>
