@@ -1,6 +1,8 @@
-package sinitsynPackage;
+package com.example.vladimirsinicyn.thermostat;
 
-public class TemperatureChange {
+import java.io.Serializable;
+
+public class TemperatureChange implements Serializable {
 
     private ChangeType type;
     private Time time;

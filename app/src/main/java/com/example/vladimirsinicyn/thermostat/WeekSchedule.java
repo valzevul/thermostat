@@ -1,8 +1,9 @@
-package sinitsynPackage;
+package com.example.vladimirsinicyn.thermostat;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WeekSchedule {
+public class WeekSchedule implements Serializable {
 
     private Temperature nightTemperature;
     private Temperature dayTemperature;
@@ -41,4 +42,6 @@ public class WeekSchedule {
 
         return schedule.get(index);
     }
+
+    public
  }

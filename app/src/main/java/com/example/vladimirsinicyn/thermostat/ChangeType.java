@@ -1,6 +1,8 @@
-package sinitsynPackage;
+package com.example.vladimirsinicyn.thermostat;
 
-public enum ChangeType {
+import java.io.Serializable;
+
+public enum ChangeType implements Serializable {
 
     DAY, NIGHT
 }
