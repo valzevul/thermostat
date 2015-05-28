@@ -64,9 +64,4 @@ public class TCConroller {
 //    }
 //}
 
-class DayProgram {
-    TemperatureChange getChange(int h, int m) {
-        return new TemperatureChange();
-    }
-}
 
