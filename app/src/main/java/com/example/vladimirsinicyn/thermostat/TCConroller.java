@@ -63,25 +63,10 @@ public class TCConroller {
 //        return new TemperatureChange();
 //    }
 //}
-class ThermostateState{
 
-    private Temperature temperature;
-    private boolean night;
-
-    public Temperature getTemperature() {
-        return temperature;
-    }
-
-    public void changeTemperature(Temperature targetTemperature) {
-
-    }
-
-    public boolean getDayPart() {
-        return night;
-    }
-
-    public void changeDayPart(boolean night) {
-        this.night = night;
+class DayProgram {
+    TemperatureChange getChange(int h, int m) {
+        return new TemperatureChange();
     }
 }
 
