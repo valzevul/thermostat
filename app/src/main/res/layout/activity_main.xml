@@ -1,4 +1,361 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context=".MainActivity" tools:ignore="MergeRootFrame" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin"
+tools:context=".MainActivity">
+<LinearLayout
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+
+    android:id="@+id/day_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/sun"/>
+
+    <ImageButton
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/up"/>
+
+    <TextView
+        android:id="@+id/day_degree_textView"
+        android:paddingLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22.8&#x2103;"
+        android:textSize="40dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+    <ImageButton
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/down"/>
+
+
+</LinearLayout>
+
+<LinearLayout
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:id="@+id/night_layout"
+    android:layout_below="@+id/day_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/moon"/>
+
+
+    <ImageButton
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/up"
+        android:onClick="incNightTemp"/>
+
+    <TextView
+        android:id="@+id/night_degree_textView"
+        android:paddingLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19.2&#x2103;"
+        android:textSize="40dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"/>
+
+
+    <ImageButton
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/down"/>
+
+
+
+</LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_below="@+id/night_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/sunday_layout"
+                android:layout_below="@+id/days"
+                android:layout_marginTop="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse_imageView" />
+
+                <TextView
+                    android:id="@+id/sunday_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sunday"
+                    android:layout_alignTop="@+id/reverse_imageView"
+                    android:layout_toEndOf="@+id/reverse_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/sunday_day_textView"
+                    android:layout_toEndOf="@+id/reverse_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/monday_layout"
+                android:layout_below="@+id/sunday_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:id="@+id/monday_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monday"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/monday_day_textView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tue_layout"
+                android:layout_below="@+id/monday_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:id="@+id/tue_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tuesday"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/tue_day_textView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/wen_layout"
+                android:layout_below="@+id/tue_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:id="@+id/wen_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wendsday"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/wen_day_textView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/thur_layout"
+                android:layout_below="@+id/wen_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:id="@+id/thur_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thursday"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/thur_day_textView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/friday_layout"
+                android:layout_below="@+id/thur_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:id="@+id/friday_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Friday"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/friday_day_textView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/saturday_layout"
+                android:layout_below="@+id/friday_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:id="@+id/saturday_day_textView"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saturday"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView" />
+
+                <TextView
+                    android:layout_below="@+id/saturday_day_textView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set timetable →" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
