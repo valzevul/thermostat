@@ -37,48 +37,51 @@ public class TCConroller {
         @Override
         public void run() {
 
-            DayProgram dayProgram = new DayProgram();
-            int hours = time.getHours();
-            int mins = time.getMinutes();
-            TemperatureChange change = dayProgram.getChange(hours, mins);
-
-            ThermostateState state = new ThermostateState();
-            if (change != null) {
-                //state.setDayPart();
-                //state.changeTemperature();
-            }
+//            DaySchedule daySchedule = new DaySchedule();
+//            int hours = time.getHours();
+//            int mins = time.getMinutes();
+//            TemperatureChange change = daySchedule.getChange(hours, mins);
+//
+//            ThermostateState state = new ThermostateState();
+//            if (change != null) {
+//                state.changeDayPart(change.targetNight);
+//                state.changeTemperature(change.targetTemperature);
+//            }
 
             time.incrementTime();
         }
     }
 }
 
-class TemperatureChange {} // delete
-class DayProgram {
-    TemperatureChange getChange(int h, int m) {
-        return new TemperatureChange();
-    }
-}
+//class TemperatureChange {
+//    public boolean targetNight;
+//    public Temperature targetTemperature;
+//
+//} // delete
+//class DayProgram {
+//    TemperatureChange getChange(int h, int m) {
+//        return new TemperatureChange();
+//    }
+//}
 class ThermostateState{
 
     private Temperature temperature;
-    private DayPart dayPart;
+    private boolean night;
 
     public Temperature getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Temperature temperature) {
-        this.temperature = temperature;
+    public void changeTemperature(Temperature targetTemperature) {
+
     }
 
-    public DayPart getDayPart() {
-        return dayPart;
+    public boolean getDayPart() {
+        return night;
     }
 
-    public void setDayPart(DayPart dayPart) {
-        this.dayPart = dayPart;
+    public void changeDayPart(boolean night) {
+        this.night = night;
     }
 }
 
-class DayPart{}
