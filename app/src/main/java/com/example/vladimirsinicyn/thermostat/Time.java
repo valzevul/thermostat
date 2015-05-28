@@ -45,4 +45,23 @@ public class Time implements Serializable,  TimeInterface{
 
         return hours + ":" + minutes;
     }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public int getMinutes() {
+
+        return minutes;
+    }
+
+    public boolean equals(Time time) {
+
+        return minutes == time.getMinutes() && hours == time.getHours();
+    }
+
+    public boolean isGreater(Time time) {
+
+        return hours > time.hours || (hours == time.hours && minutes > time.minutes);
+    }
 }
