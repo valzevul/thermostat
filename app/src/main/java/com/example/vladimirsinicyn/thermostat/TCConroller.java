@@ -9,6 +9,8 @@ public class TCConroller {
 
     private Time time;
     private final int timeFactor = 300;
+    //private ThermostateState state;
+    private int dayOfWeek; // 0 = Monday, 6 = Sunday
 
     public TCConroller() {
 
@@ -37,15 +39,26 @@ public class TCConroller {
         @Override
         public void run() {
 
-//            DaySchedule daySchedule = new DaySchedule();
+//            // get current time
 //            int hours = time.getHours();
 //            int mins = time.getMinutes();
-//            TemperatureChange change = daySchedule.getChange(hours, mins);
+//            int realMinsTotal = hours * 60 + mins; // time.toMinutes();
+//            Time currentTime = new Time(realMinsTotal);
 //
-//            ThermostateState state = new ThermostateState();
+//            // check whether it is time to change
+//            DaySchedule daySchedule = state.getDayShedule();
+//            TemperatureChange change = daySchedule.find(currentTime);
+//
 //            if (change != null) {
-//                state.changeDayPart(change.targetNight);
-//                state.changeTemperature(change.targetTemperature);
+//                state.change(change.getType());
+//            }
+//
+//            if (time.checkMidnight()) {
+//                dayOfWeek++;
+//
+//                if (dayOfWeek >= 7) {
+//                    dayOfWeek = 0;
+//                }
 //            }
 
             time.incrementTime();
@@ -53,15 +66,26 @@ public class TCConroller {
     }
 }
 
-//class TemperatureChange {
-//    public boolean targetNight;
-//    public Temperature targetTemperature;
+//class ThermostateState{
 //
-//} // delete
-//class DayProgram {
-//    TemperatureChange getChange(int h, int m) {
-//        return new TemperatureChange();
+//    private Temperature targetTemperature;
+//    private boolean night;
+//
+//    public Temperature getTemperature() {
+//        return targetTemperature;
+//    }
+//
+//    public void change(ChangeType type) {
+//
+//    }
+//
+//    public boolean getDayPart() {
+//        return night;
+//    }
+//
+//    public DaySchedule getDayShedule() {return new DaySchedule();}
+//
+//    public void incrementDay() {
+//
 //    }
 //}
-
-
