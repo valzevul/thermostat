@@ -1,4 +1,4 @@
-package sinitsynPackage;
+package com.example.vladimirsinicyn.thermostat;
 
 import java.util.ArrayList;
 

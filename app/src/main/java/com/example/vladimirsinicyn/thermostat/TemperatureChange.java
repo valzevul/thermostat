@@ -1,4 +1,4 @@
-package sinitsynPackage;
+package com.example.vladimirsinicyn.thermostat;
 
 public class TemperatureChange {
 
