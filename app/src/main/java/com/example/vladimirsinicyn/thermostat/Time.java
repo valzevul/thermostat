@@ -1,8 +1,8 @@
-package sinitsynPackage;
+package com.example.vladimirsinicyn.thermostat;
 
 import java.io.Serializable;
 
-public class Time implements Serializable,  TimeInterface{
+public class Time implements Serializable, TimeInterface {
 
     private final int minutesInDay = 60 * 24;
     private int minutes;
