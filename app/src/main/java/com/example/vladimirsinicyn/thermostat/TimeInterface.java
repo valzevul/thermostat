@@ -1,6 +1,6 @@
 package com.example.vladimirsinicyn.thermostat;
 
-//interface for class sinitsynPackage.Time
+//interface for class com.example.vladimirsinicyn.thermostat.Time
 
 public interface TimeInterface {
 

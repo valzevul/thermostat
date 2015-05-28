@@ -42,6 +42,4 @@ public class WeekSchedule implements Serializable {
 
         return schedule.get(index);
     }
-
-    public
  }
