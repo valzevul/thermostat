@@ -9,11 +9,12 @@ import android.view.View;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
+import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 
 
 public class CurrentWeatherActivity extends Activity {
 
-    public static TCConroller conroller;
+    private static TCConroller conroller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,9 @@ public class CurrentWeatherActivity extends Activity {
 
         setTitle("Thermostat");
 
-        conroller = new TCConroller();
+        ThermostatApp state = ((ThermostatApp)getApplication());
+        state.initContorller();
+        conroller = state.getConroller();
     }
 
 

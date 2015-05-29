@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.R;
+import com.example.vladimirsinicyn.thermostat.TCConroller;
+import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 import com.example.vladimirsinicyn.thermostat.model.ChangeType;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
 import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
@@ -18,6 +20,7 @@ import com.example.vladimirsinicyn.thermostat.model.Time;
 public class WeekModeDetailedActivity extends Activity {
 
     private int index;
+    private static TCConroller conroller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,11 @@ public class WeekModeDetailedActivity extends Activity {
 
         setTitle("Thermostat");
 
-        String dayOfWeek = getIntent().getExtras().getString("dayOfweek");
+        ThermostatApp state = ((ThermostatApp)getApplication());
+        state.initContorller();
+        conroller = state.getConroller();
 
+        String dayOfWeek = getIntent().getExtras().getString("dayOfweek");
         switch (dayOfWeek) {
             case "Sunday":
                 index = 0;
@@ -108,7 +114,7 @@ public class WeekModeDetailedActivity extends Activity {
     }
 
     void addChange(View view) {
-        DaySchedule schedule = CurrentWeatherActivity.conroller.getSchedule(index);
+        DaySchedule schedule = conroller.getSchedule(index);
 
 //        ChangeType type = ChangeType.DAY;
 //        Time time = new Time(0);

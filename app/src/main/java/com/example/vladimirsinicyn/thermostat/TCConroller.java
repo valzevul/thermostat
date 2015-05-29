@@ -1,7 +1,9 @@
 package com.example.vladimirsinicyn.thermostat;
 
+import com.example.vladimirsinicyn.thermostat.model.ChangeType;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
+import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
 import com.example.vladimirsinicyn.thermostat.model.ThermostatState;
 import com.example.vladimirsinicyn.thermostat.model.Time;
 import com.example.vladimirsinicyn.thermostat.model.WeekSchedule;
@@ -71,8 +73,7 @@ public class TCConroller {
     }
     // ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
-    // ====== WEEK SCHEDULE SAVE/LOAD ======
-
+    // ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
     public void loadSchedule(String name) throws Exception {
         state = ThermostatState.load(name);
     }
@@ -81,10 +82,14 @@ public class TCConroller {
         ThermostatState.save(state, name);
     }
 
-    // ====== END WEEK SCHEDULE SAVE/LOAD ======
-
     public DaySchedule getSchedule(int index) {
         return ws.getDaySchedule(index);
+    }
+    // ====== END WEEK SCHEDULE SAVE/LOAD ======
+
+    TemperatureChange getNextChange() {
+
+        return new TemperatureChange(ChangeType.DAY, time); // TODO: do it right
     }
 
 

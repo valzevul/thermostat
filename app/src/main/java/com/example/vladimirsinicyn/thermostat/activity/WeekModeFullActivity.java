@@ -10,9 +10,15 @@ import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
+import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 
 
 public class WeekModeFullActivity extends Activity {
+
+    private static TCConroller conroller;
+
+    private TextView nightTemp;
+    private TextView dayTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,16 @@ public class WeekModeFullActivity extends Activity {
         setContentView(R.layout.week_mode_full);
 
         setTitle("Thermostat");
+
+        ThermostatApp state = ((ThermostatApp)getApplication());
+        state.initContorller();
+        conroller = state.getConroller();
+
+        nightTemp = (TextView) findViewById(R.id.night_degree_textView);
+        dayTemp = (TextView) findViewById(R.id.day_degree_textView);
+
+        nightTemp.setText(conroller.getNightTemperature().toString() + "°C");
+        dayTemp.setText(conroller.getDayTemperature().toString() + "°C");
     }
 
 
@@ -72,12 +88,29 @@ public class WeekModeFullActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    // ================ inc/decrement of day/night temp of WEEK SCHEDULE ================
     public void incNightTemp(View view) {
-        final TextView nightTemp = (TextView) findViewById(R.id.night_degree_textView);
-        TCConroller conroller = CurrentWeatherActivity.conroller;
         conroller.incrementNightTemperature();
-        nightTemp.setText(conroller.getNightTemperature().toString() + "&#x2103;");
+        nightTemp.setText(conroller.getNightTemperature().toString() + "°C");
     }
+
+    public void decNightTemp(View view) {
+        conroller.decrementNightTemperature();
+        nightTemp.setText(conroller.getNightTemperature().toString() + "°C");
+    }
+
+    public void incDayTemp(View view) {
+        conroller.incrementDayTemperature();
+        dayTemp.setText(conroller.getDayTemperature().toString() + "°C");
+    }
+
+    public void decDayTemp(View view) {
+        conroller.decrementDayTemperature();
+        dayTemp.setText(conroller.getDayTemperature().toString() + "°C");
+    }
+    // ================ END inc/decrement of day/night temp of WEEK SCHEDULE ================
+
+    // ================ go to day schedules ================
 
     public void setSundaySchedule(View view) {
         Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
@@ -120,4 +153,6 @@ public class WeekModeFullActivity extends Activity {
         intent.putExtra("dayOfweek", "Saturday");
         startActivity(intent);
     }
+
+    // ================ END go to day schedules ================
 }

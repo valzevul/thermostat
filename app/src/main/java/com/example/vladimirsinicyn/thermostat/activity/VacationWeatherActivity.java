@@ -8,9 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.vladimirsinicyn.thermostat.R;
+import com.example.vladimirsinicyn.thermostat.TCConroller;
+import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 
 
 public class VacationWeatherActivity extends Activity {
+
+    private static TCConroller conroller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +22,10 @@ public class VacationWeatherActivity extends Activity {
         setContentView(R.layout.weather_vacation);
 
         setTitle("Thermostat");
+
+        ThermostatApp state = ((ThermostatApp)getApplication());
+        state.initContorller();
+        conroller = state.getConroller();
     }
 
 

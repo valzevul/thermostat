@@ -12,6 +12,9 @@ public class WeekSchedule implements Serializable {
 
     public WeekSchedule() {
 
+        nightTemperature = new Temperature(19, 2);
+        dayTemperature = new Temperature(22, 8);
+
         schedule = new ArrayList<DaySchedule>();
         
         for (int i = 0; i < 7; i++) {
