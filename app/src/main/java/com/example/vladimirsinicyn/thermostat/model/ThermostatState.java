@@ -1,4 +1,4 @@
-package com.example.vladimirsinicyn.thermostat.model;
+package com.example.vladimirsinicyn.thermostat;
 
 import java.io.*;
 
@@ -10,6 +10,7 @@ public class ThermostatState implements Serializable {
     private ChangeType currentType;
 
     public ThermostatState() {
+
         weekSchedule = new WeekSchedule();
     }
 
