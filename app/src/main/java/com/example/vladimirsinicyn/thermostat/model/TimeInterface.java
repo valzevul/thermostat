@@ -1,6 +1,6 @@
-package com.example.vladimirsinicyn.thermostat;
+package com.example.vladimirsinicyn.thermostat.model;
 
-//interface for class com.example.vladimirsinicyn.thermostat.Time
+//interface for class com.example.vladimirsinicyn.thermostat.model.Time
 
 public interface TimeInterface {
 

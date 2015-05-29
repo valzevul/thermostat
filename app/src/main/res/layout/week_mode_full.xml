@@ -140,7 +140,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →"/>
+                    android:text="Set timetable →"
+                    android:onClick="setSundaySchedule"/>
 
 
             </RelativeLayout>
@@ -176,7 +177,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →"/>
+                    android:text="Set timetable →"
+                    android:onClick="setMondaySchedule"/>
 
 
             </RelativeLayout>
@@ -212,7 +214,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →"/>
+                    android:text="Set timetable →"
+                    android:onClick="setTuesdaySchedule"/>
 
 
             </RelativeLayout>
@@ -248,7 +251,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →"/>
+                    android:text="Set timetable →"
+                    android:onClick="setWednesdaySchedule"/>
 
 
             </RelativeLayout>
@@ -284,7 +288,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →"/>
+                    android:text="Set timetable →"
+                    android:onClick="setThursdaySchedule"/>
 
 
             </RelativeLayout>
@@ -320,7 +325,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →"/>
+                    android:text="Set timetable →"
+                    android:onClick="setFridaySchedule"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -354,7 +360,8 @@ tools:context=".WeekModeFullActivity">
                     android:paddingTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set timetable →" />
+                    android:text="Set timetable →"
+                    android:onClick="setSaturdaySchedule"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

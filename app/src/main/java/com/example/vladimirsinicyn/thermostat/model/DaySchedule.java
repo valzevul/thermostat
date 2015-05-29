@@ -1,4 +1,4 @@
-package com.example.vladimirsinicyn.thermostat;
+package com.example.vladimirsinicyn.thermostat.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

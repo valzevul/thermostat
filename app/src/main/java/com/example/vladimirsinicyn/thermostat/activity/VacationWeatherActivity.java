@@ -1,18 +1,21 @@
-package com.example.vladimirsinicyn.thermostat;
+package com.example.vladimirsinicyn.thermostat.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.vladimirsinicyn.thermostat.R;
 
-public class CurrentWeatherActivity extends Activity {
+
+public class VacationWeatherActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.weather_current);
+        setContentView(R.layout.weather_vacation);
 
         setTitle("Thermostat");
     }
@@ -42,14 +45,25 @@ public class CurrentWeatherActivity extends Activity {
         }
 
         if (id == R.id.day_night) {
+
+            Intent intent = new Intent(VacationWeatherActivity.this, CurrentWeatherActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
         if (id == R.id.calendar) {
+
+            Intent intent = new Intent(VacationWeatherActivity.this, WeekModeFullActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
         if (id == R.id.hot) {
+
+            // stay on this screen
+
             return true;
         }
 

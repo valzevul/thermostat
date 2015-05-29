@@ -1,4 +1,4 @@
-package com.example.vladimirsinicyn.thermostat;
+package com.example.vladimirsinicyn.thermostat.model;
 
 public class ChangeTester {
 
