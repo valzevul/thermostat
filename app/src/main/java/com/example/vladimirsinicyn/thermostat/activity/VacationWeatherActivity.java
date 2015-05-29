@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
@@ -23,9 +24,9 @@ public class VacationWeatherActivity extends Activity {
 
         setTitle("Thermostat");
 
-        ThermostatApp state = ((ThermostatApp)getApplication());
-        state.initContorller();
-        conroller = state.getConroller();
+        ThermostatApp app = ((ThermostatApp)getApplication());
+        app.initContorller();
+        conroller = app.getConroller();
     }
 
 
@@ -78,7 +79,14 @@ public class VacationWeatherActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void incNightTemp(View view) {
-        System.out.println("Increase night time!");
+    public void changeVacationMod(View view) {
+
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        if (view.getId() == R.id.chkVacation) {
+            conroller.setVacation(checked);
+        }
     }
 }

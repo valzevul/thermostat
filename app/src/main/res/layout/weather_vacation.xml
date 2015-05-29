@@ -117,11 +117,12 @@
                 android:layout_toEndOf="@+id/reverse2_imageView" />
 
             <CheckBox
-                android:id="@+id/chkIos"
+                android:id="@+id/chkVacation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="" />
+                android:text=""
+                android:onClick="changeVacationMod"/>
 
 
 

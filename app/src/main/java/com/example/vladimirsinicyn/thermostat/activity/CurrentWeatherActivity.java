@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,9 +28,9 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
 
         setTitle("Thermostat");
 
-        ThermostatApp state = ((ThermostatApp)getApplication());
-        state.initContorller();
-        conroller = state.getConroller();
+        ThermostatApp app = ((ThermostatApp)getApplication());
+        app.initContorller();
+        conroller = app.getConroller();
 
         bar = (SeekBar) findViewById(R.id.seekBar1);
         bar.setOnSeekBarChangeListener(this);
@@ -98,7 +99,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         return super.onOptionsItemSelected(item);
     }
 
-    // =============== SEEK BAR HANDLERS ===============
+// =============== SEEK BAR HANDLERS ===============
     /**
      * Notification that the progress level has changed. Clients can use the fromUser parameter
      * to distinguish user-initiated changes from those that occurred programmatically.
@@ -131,5 +132,17 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {}
 
-    // =============== END SEEK BAR HANDLERS ===============
+// =============== END SEEK BAR HANDLERS ===============
+
+    public void changeCustomMod(View view) {
+
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        if (view.getId() == R.id.chkCustom) {
+            conroller.setCustom(checked);
+        }
+    }
+
 }

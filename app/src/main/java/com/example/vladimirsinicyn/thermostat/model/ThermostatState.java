@@ -8,14 +8,17 @@ public class ThermostatState implements Serializable {
     private Temperature customTemperature;
     private WeekSchedule weekSchedule;
 
-    private Temperature temperatureRoom;
-    private ChangeType currentType;
-    private int dayIndex;
+    private Temperature temperatureRoom; // current temperature (showed on main screen)
+    private ChangeType currentType; // current day/night (showed on main screen)
+    private int dayIndex; // current day (monday - sunday) index
 
     // only one mod is on in one moment of time
     // if both are off, so usual mod is on
     private boolean customModOn;
     private boolean vacationModOn;
+
+    // flag: was state recently changed?
+    private boolean changed;
 
     public ThermostatState() {
 
@@ -84,7 +87,15 @@ public class ThermostatState implements Serializable {
         this.vacationModOn = vacationModOn;
     }
 
-    // ============ END GETTERS/SETTERS ============
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        this.changed = changed;
+    }
+
+// ============ END GETTERS/SETTERS ============
 
     public static void save(ThermostatState state, String name) throws Exception {
 

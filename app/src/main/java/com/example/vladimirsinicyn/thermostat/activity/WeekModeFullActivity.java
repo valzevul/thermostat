@@ -27,9 +27,9 @@ public class WeekModeFullActivity extends Activity {
 
         setTitle("Thermostat");
 
-        ThermostatApp state = ((ThermostatApp)getApplication());
-        state.initContorller();
-        conroller = state.getConroller();
+        ThermostatApp app = ((ThermostatApp)getApplication());
+        app.initContorller();
+        conroller = app.getConroller();
 
         nightTemp = (TextView) findViewById(R.id.night_degree_textView);
         dayTemp = (TextView) findViewById(R.id.day_degree_textView);

@@ -1,5 +1,6 @@
 package com.example.vladimirsinicyn.thermostat;
 
+import com.example.vladimirsinicyn.thermostat.activity.*;
 import com.example.vladimirsinicyn.thermostat.model.ChangeType;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
@@ -21,6 +22,11 @@ public class TCConroller {
     private WeekSchedule ws; // current working week schedule
 
     private final int timeFactor = 300; // times faster than real time
+
+//    private CurrentWeatherActivity currentWeatherActivity;
+//    private VacationWeatherActivity vacationWeatherActivity;
+//    private WeekModeDetailedActivity weekModeDetailedActivity;
+//    private WeekModeFullActivity weekModeFullActivity;
 
     public TCConroller() {
 
@@ -48,7 +54,7 @@ public class TCConroller {
         timer.scheduleAtFixedRate(new TCTimerTask(), 0, msInMin / timeFactor);
     }
 
-    // ====== WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
+// ====== WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
     public Temperature getNightTemperature() {
         return ws.getNightTemperature();
     }
@@ -72,15 +78,15 @@ public class TCConroller {
     public void decrementDayTemperature() {
         ws.getDayTemperature().decrementTemperature();
     }
-    // ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
+// ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
-    // ====== CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
+// ====== CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
+    // TODO: write code here
 
+// ====== END CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
-    // ====== END CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
-
-    // ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
+// ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
     public void loadSchedule(String name) throws Exception {
         state = ThermostatState.load(name);
     }
@@ -92,12 +98,30 @@ public class TCConroller {
     public DaySchedule getSchedule(int index) {
         return ws.getDaySchedule(index);
     }
-    // ====== END WEEK SCHEDULE SAVE/LOAD ======
+// ====== END WEEK SCHEDULE SAVE/LOAD ======
 
     TemperatureChange getNextChange() {
 
         return new TemperatureChange(ChangeType.DAY, time); // TODO: do it right
     }
+
+// ====== VACATION/CUSTOM MODS GETTERS/SETTERS  ======
+    public void setVacation(boolean on) {
+        state.setVacation(on);
+    }
+
+    public boolean getVacation() {
+        return state.isVacation();
+    }
+
+    public void setCustom(boolean on) {
+        state.setCustom(on);
+    }
+
+    public boolean getCustom() {
+        return state.isCustom();
+    }
+// ====== END VACATION/CUSTOM MODS GETTERS/SETTERS  ======
 
 
     private class TCTimerTask extends TimerTask {
@@ -107,7 +131,7 @@ public class TCConroller {
         public void run() {
 
             if (state.isCustom()) {
-
+                // show castom temperature
             }
 
             // get current thermostat time

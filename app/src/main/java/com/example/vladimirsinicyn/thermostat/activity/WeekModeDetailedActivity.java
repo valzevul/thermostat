@@ -29,9 +29,9 @@ public class WeekModeDetailedActivity extends Activity {
 
         setTitle("Thermostat");
 
-        ThermostatApp state = ((ThermostatApp)getApplication());
-        state.initContorller();
-        conroller = state.getConroller();
+        ThermostatApp app = ((ThermostatApp)getApplication());
+        app.initContorller();
+        conroller = app.getConroller();
 
         String dayOfWeek = getIntent().getExtras().getString("dayOfweek");
         switch (dayOfWeek) {
