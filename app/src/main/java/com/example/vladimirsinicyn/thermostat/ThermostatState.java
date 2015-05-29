@@ -11,7 +11,7 @@ public class ThermostatState implements Serializable {
 
     public ThermostatState() {
 
-
+        weekSchedule = new WeekSchedule();
     }
 
 
