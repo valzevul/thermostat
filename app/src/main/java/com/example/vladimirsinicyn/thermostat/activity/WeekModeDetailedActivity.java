@@ -11,10 +11,7 @@ import android.widget.TextView;
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
-import com.example.vladimirsinicyn.thermostat.model.ChangeType;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
-import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
-import com.example.vladimirsinicyn.thermostat.model.Time;
 
 
 public class WeekModeDetailedActivity extends Activity {
@@ -116,9 +113,9 @@ public class WeekModeDetailedActivity extends Activity {
     void addChange(View view) {
         DaySchedule schedule = conroller.getSchedule(index);
 
-//        ChangeType type = ChangeType.DAY;
+//        LightCondition targetLightCondition = LightCondition.DAY;
 //        Time time = new Time(0);
-//        TemperatureChange change = new TemperatureChange(type, time);
+//        TemperatureChange change = new TemperatureChange(targetLightCondition, time);
 //
 //        try {
 //            schedule.addChange(change);

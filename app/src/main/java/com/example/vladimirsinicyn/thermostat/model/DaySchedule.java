@@ -12,8 +12,8 @@ public class DaySchedule implements Serializable {
     public DaySchedule() {
 
         changes = new ArrayList<TemperatureChange>();
-        changes.add(new TemperatureChange(ChangeType.DAY, new Time(480)));
-        changes.add(new TemperatureChange(ChangeType.NIGHT, new Time(1380)));
+        changes.add(new TemperatureChange(LightCondition.DAY, new Time(480)));
+        changes.add(new TemperatureChange(LightCondition.NIGHT, new Time(1380)));
     }
 
     public void addChange(TemperatureChange change) throws Exception {
@@ -23,7 +23,7 @@ public class DaySchedule implements Serializable {
             throw new Exception("Similar times mustn't present.");
         }
 
-        if (change.getType() == ChangeType.DAY) {
+        if (change.getTargetCondition() == LightCondition.DAY) {
 
             dayChanges++;
         } else {
@@ -45,7 +45,7 @@ public class DaySchedule implements Serializable {
 
     public void deleteTimeChange(TemperatureChange change) throws Exception {
 
-        if (change.getType() == ChangeType.DAY) {
+        if (change.getTargetCondition() == LightCondition.DAY) {
             dayChanges--;
         } else {
             nightChanges--;
@@ -74,7 +74,7 @@ public class DaySchedule implements Serializable {
     public void print() {
 
         for (int i = 0; i < changes.size(); i++) {
-            System.out.println("type: " + changes.get(i).getType() + " time: " + changes.get(i).getTime().toString());
+            System.out.println("light condition: " + changes.get(i).getTargetCondition() + ", time: " + changes.get(i).getTime().toString());
         }
     }
 

@@ -4,18 +4,18 @@ import java.io.Serializable;
 
 public class TemperatureChange implements Serializable {
 
-    private ChangeType type;
+    private LightCondition targetCondition;
     private Time time;
 
-    public TemperatureChange(ChangeType type, Time time) {
+    public TemperatureChange(LightCondition targetCondition, Time time) {
 
-        this.type = type;
+        this.targetCondition = targetCondition;
         this.time = time;
     }
 
-    public ChangeType getType() {
+    public LightCondition getTargetCondition() {
 
-        return type;
+        return targetCondition;
     }
 
     public Time getTime() {
@@ -25,6 +25,6 @@ public class TemperatureChange implements Serializable {
 
     public boolean equals(TemperatureChange change) {
 
-        return time.equals(change.getTime()) && type == change.getType();
+        return time.equals(change.getTime()) && targetCondition == change.getTargetCondition();
     }
 }

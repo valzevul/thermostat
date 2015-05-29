@@ -9,20 +9,22 @@ public class ThermostatState implements Serializable {
     private WeekSchedule weekSchedule;
 
     private Temperature temperatureRoom; // current temperature (showed on main screen)
-    private ChangeType currentType; // current day/night (showed on main screen)
+    private LightCondition currentLightCondition; // current day/night (showed on main screen)
     private int dayIndex; // current day (monday - sunday) index
 
     // only one mod is on in one moment of time
     // if both are off, so usual mod is on
-    private boolean customModOn;
-    private boolean vacationModOn;
+    private boolean customModOn = false;
+    private boolean vacationModOn = false;
 
     // flag: was state recently changed?
     private boolean changed;
 
     public ThermostatState() {
-
         weekSchedule = new WeekSchedule();
+
+        customTemperature = new Temperature(20, 5);
+        vacationTemperature = new Temperature(15, 5);
     }
 
 // ============ GETTERS/SETTERS ============
@@ -84,6 +86,10 @@ public class ThermostatState implements Serializable {
     }
 
     public void setVacation(boolean vacationModOn) {
+
+//        if (customModOn) {
+//            setCustom(false);
+//        }
         this.vacationModOn = vacationModOn;
     }
 
@@ -95,7 +101,19 @@ public class ThermostatState implements Serializable {
         this.changed = changed;
     }
 
-// ============ END GETTERS/SETTERS ============
+    public LightCondition getCurrentLightCondition() {
+        return currentLightCondition;
+    }
+
+    public void changeCurrentLightCondition() {
+        if (currentLightCondition == LightCondition.DAY) {
+            currentLightCondition = LightCondition.NIGHT;
+        } else {
+            currentLightCondition = LightCondition.DAY;
+        }
+    }
+
+    // ============ END GETTERS/SETTERS ============
 
     public static void save(ThermostatState state, String name) throws Exception {
 
@@ -115,15 +133,5 @@ public class ThermostatState implements Serializable {
         return (ThermostatState) oin.readObject();
     }
 
-    public ChangeType getCurrentType() {
-        return currentType;
-    }
 
-    public void changeCurrentType() {
-        if (currentType == ChangeType.DAY) {
-            currentType = ChangeType.NIGHT;
-        } else {
-            currentType = ChangeType.DAY;
-        }
-    }
 }

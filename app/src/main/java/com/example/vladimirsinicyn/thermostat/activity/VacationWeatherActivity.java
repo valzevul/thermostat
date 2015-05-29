@@ -79,6 +79,11 @@ public class VacationWeatherActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Handles check of checkbox in VACATION MODE
+     *
+     * @param view
+     */
     public void changeVacationMod(View view) {
 
         // Is the view now checked?

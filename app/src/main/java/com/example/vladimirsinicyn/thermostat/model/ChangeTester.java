@@ -6,17 +6,17 @@ public class ChangeTester {
 
         /*
         DaySchedule dp = new DaySchedule();
-        TemperatureChange tc1 = new TemperatureChange(ChangeType.NIGHT, new Time(100));
+        TemperatureChange tc1 = new TemperatureChange(LightCondition.NIGHT, new Time(100));
         ArrayList<TemperatureChange> listA = new ArrayList<TemperatureChange>();
         int time = 100;
         for (int i = 0; i < 10; i++, time += 100) {
 
             TemperatureChange tc;
             if (i % 2 == 0) {
-                tc = new TemperatureChange(ChangeType.NIGHT, new Time(time));
+                tc = new TemperatureChange(LightCondition.NIGHT, new Time(time));
                 dp.addChange(tc);
             } else {
-                tc = new TemperatureChange(ChangeType.DAY, new Time(time));
+                tc = new TemperatureChange(LightCondition.DAY, new Time(time));
                 dp.addChange(tc);
             }
 

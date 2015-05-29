@@ -145,4 +145,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         }
     }
 
+//    public static void uncheckCustomMod() {
+//        CheckBox checkVacationBox = (CheckBox) findViewById(R.id.night_degree_textView);
+//    }
 }

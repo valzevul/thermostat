@@ -1,7 +1,6 @@
 package com.example.vladimirsinicyn.thermostat;
 
-import com.example.vladimirsinicyn.thermostat.activity.*;
-import com.example.vladimirsinicyn.thermostat.model.ChangeType;
+import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
 import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
@@ -27,6 +26,8 @@ public class TCConroller {
 //    private VacationWeatherActivity vacationWeatherActivity;
 //    private WeekModeDetailedActivity weekModeDetailedActivity;
 //    private WeekModeFullActivity weekModeFullActivity;
+
+    private boolean customModTurnedOn = false;
 
     public TCConroller() {
 
@@ -102,7 +103,7 @@ public class TCConroller {
 
     TemperatureChange getNextChange() {
 
-        return new TemperatureChange(ChangeType.DAY, time); // TODO: do it right
+        return new TemperatureChange(LightCondition.DAY, time); // TODO: do it right
     }
 
 // ====== VACATION/CUSTOM MODS GETTERS/SETTERS  ======
@@ -123,28 +124,60 @@ public class TCConroller {
     }
 // ====== END VACATION/CUSTOM MODS GETTERS/SETTERS  ======
 
+    private Temperature toTemp(LightCondition lightCondition) {
+        if (lightCondition == LightCondition.DAY) {
+            return ws.getDayTemperature();
+        } else {
+            return ws.getNightTemperature();
+        }
+    }
 
     private class TCTimerTask extends TimerTask {
 
-        // happens every minute
+        /** happens every minute
+         * handles changes of room temperature and light condition:
+         * 1) changes state of thermostat when
+         * 1.1) it is time (checks week and day schedules)
+         * 1.2) it is custom mode
+         * 1.3) it is vacation mode
+         * 2) shows changes on screens (when changes made)
+         * 2.1) room temperature on main screen
+         * 2.2) light condition on main screen
+         * 2.3) time of next change on main screen
+         */
         @Override
         public void run() {
-
+            // turn on custom mod
             if (state.isCustom()) {
-                // show castom temperature
+                if (!customModTurnedOn) {
+                    // turn on custom temperature
+                    // show castom temperature
+
+                    customModTurnedOn = true;
+                }
             }
 
             // get current thermostat time
             int realMinsTotal = time.toMinutes();
             Time currentTime = new Time(realMinsTotal); // time as time stamp
 
-            // check whether it is time to change
+            // check whether it is time to change (by schedule)
             DaySchedule daySchedule = ws.getDaySchedule(state.getDayIndex());
             TemperatureChange change = daySchedule.find(currentTime);
 
             if (change != null) {
+                if (state.isCustom()) {
+                    // off custom mode (+uncheck checkbox 'custom' on main screen)
+                    state.setCustom(false);
+                    customModTurnedOn = false;
+                }
+
                 // change temperature in room (on main screen and in state)
-                // change day type (on main screen and in state)
+                // change light condition (on main screen and in state)
+
+                LightCondition targetLightCondition = change.getTargetCondition();
+                state.setTemperatureRoom(toTemp(targetLightCondition));
+                state.changeCurrentLightCondition();
 
             }
 
@@ -156,27 +189,3 @@ public class TCConroller {
         }
     }
 }
-
-//class ThermostateState{
-//
-//    private Temperature targetTemperature;
-//    private boolean night;
-//
-//    public Temperature getTemperature() {
-//        return targetTemperature;
-//    }
-//
-//    public void change(ChangeType type) {
-//
-//    }
-//
-//    public boolean getDayPart() {
-//        return night;
-//    }
-//
-//    public DaySchedule getDayShedule() {return new DaySchedule();}
-//
-//    public void incrementDay() {
-//
-//    }
-//}
