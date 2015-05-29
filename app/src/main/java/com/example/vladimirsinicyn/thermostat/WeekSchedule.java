@@ -13,6 +13,11 @@ public class WeekSchedule implements Serializable {
     public WeekSchedule() {
 
         schedule = new ArrayList<DaySchedule>();
+        
+        for (int i = 0; i < 7; i++) {
+
+            schedule.add(new DaySchedule());
+        }
     }
 
     public void setNightTemperature(Temperature temp) {
