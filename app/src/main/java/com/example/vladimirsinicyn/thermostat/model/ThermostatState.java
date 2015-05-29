@@ -12,6 +12,10 @@ public class ThermostatState implements Serializable {
     private ChangeType currentType;
     private int dayIndex;
 
+    // only one mod is on in one moment of time
+    // if both are off, so usual mod is on
+    private boolean customModOn;
+    private boolean vacationModOn;
 
     public ThermostatState() {
 
@@ -62,6 +66,22 @@ public class ThermostatState implements Serializable {
         if (dayIndex >= 7) {
             dayIndex = 0;
         }
+    }
+
+    public boolean isCustom() {
+        return customModOn;
+    }
+
+    public void setCustom(boolean customModOn) {
+        this.customModOn = customModOn;
+    }
+
+    public boolean isVacation() {
+        return vacationModOn;
+    }
+
+    public void setVacation(boolean vacationModOn) {
+        this.vacationModOn = vacationModOn;
     }
 
     // ============ END GETTERS/SETTERS ============

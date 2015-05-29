@@ -101,8 +101,14 @@ public class TCConroller {
 
 
     private class TCTimerTask extends TimerTask {
+
+        // happens every minute
         @Override
         public void run() {
+
+            if (state.isCustom()) {
+
+            }
 
             // get current thermostat time
             int realMinsTotal = time.toMinutes();
