@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 
 
-public class CurrentWeatherActivity extends Activity {
+public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
 
     private static TCConroller conroller;
+    private SeekBar bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,11 @@ public class CurrentWeatherActivity extends Activity {
         ThermostatApp state = ((ThermostatApp)getApplication());
         state.initContorller();
         conroller = state.getConroller();
+
+        bar = (SeekBar) findViewById(R.id.seekBar1);
+        bar.setOnSeekBarChangeListener(this);
+
+        bar.setMax(ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP);
     }
 
 
@@ -88,4 +97,39 @@ public class CurrentWeatherActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // =============== SEEK BAR HANDLERS ===============
+    /**
+     * Notification that the progress level has changed. Clients can use the fromUser parameter
+     * to distinguish user-initiated changes from those that occurred programmatically.
+     *
+     * @param seekBar  The SeekBar whose progress has changed
+     * @param progress The current progress level. This will be in the range 0..max where max
+     *                 was set by {@link ProgressBar#setMax(int)}. (The default value for max is 100.)
+     * @param fromUser True if the progress change was initiated by the user.
+     */
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+    }
+
+    /**
+     * Notification that the user has started a touch gesture. Clients may want to use this
+     * to disable advancing the seekbar.
+     *
+     * @param seekBar The SeekBar in which the touch gesture began
+     */
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {}
+
+    /**
+     * Notification that the user has finished a touch gesture. Clients may want to use this
+     * to re-enable advancing the seekbar.
+     *
+     * @param seekBar The SeekBar in which the touch gesture began
+     */
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {}
+
+    // =============== END SEEK BAR HANDLERS ===============
 }

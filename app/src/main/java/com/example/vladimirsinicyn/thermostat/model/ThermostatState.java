@@ -5,16 +5,20 @@ import java.io.*;
 public class ThermostatState implements Serializable {
 
     private Temperature vacationTemperature;
-    private Temperature temperatureRoom;
+    private Temperature customTemperature;
     private WeekSchedule weekSchedule;
+
+    private Temperature temperatureRoom;
     private ChangeType currentType;
+    private int dayIndex;
+
 
     public ThermostatState() {
 
         weekSchedule = new WeekSchedule();
     }
 
-
+// ============ GETTERS/SETTERS ============
     public Temperature getVacationTemperature() {
         return vacationTemperature;
     }
@@ -31,6 +35,14 @@ public class ThermostatState implements Serializable {
         this.temperatureRoom = temperatureRoom;
     }
 
+    public Temperature getCustomTemperature() {
+        return customTemperature;
+    }
+
+    public void setCustomTemperature(Temperature customTemperature) {
+        this.customTemperature = customTemperature;
+    }
+
     public WeekSchedule getWeekSchedule() {
         return weekSchedule;
     }
@@ -38,6 +50,21 @@ public class ThermostatState implements Serializable {
     public void setWeekSchedule(WeekSchedule weekSchedule) {
         this.weekSchedule = weekSchedule;
     }
+
+    public int getDayIndex() {
+        return dayIndex;
+    }
+
+    public void incrementDayIndex() {
+
+        dayIndex++;
+
+        if (dayIndex >= 7) {
+            dayIndex = 0;
+        }
+    }
+
+    // ============ END GETTERS/SETTERS ============
 
     public static void save(ThermostatState state, String name) throws Exception {
 
@@ -61,7 +88,11 @@ public class ThermostatState implements Serializable {
         return currentType;
     }
 
-    public void setCurrentType(ChangeType currentType) {
-        this.currentType = currentType;
+    public void changeCurrentType() {
+        if (currentType == ChangeType.DAY) {
+            currentType = ChangeType.NIGHT;
+        } else {
+            currentType = ChangeType.DAY;
+        }
     }
 }

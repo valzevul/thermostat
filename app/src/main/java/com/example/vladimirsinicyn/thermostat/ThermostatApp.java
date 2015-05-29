@@ -4,6 +4,9 @@ import android.app.Application;
 
 public class ThermostatApp extends Application {
 
+    public final static int MIN_TEMP = 5;
+    public final static int MAX_TEMP = 40;
+
     private static TCConroller conroller;
     private boolean exists = false;
 

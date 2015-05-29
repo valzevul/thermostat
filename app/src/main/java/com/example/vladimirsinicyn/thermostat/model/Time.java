@@ -28,7 +28,7 @@ public class Time implements Serializable,  TimeInterface{
         parseTime(temp);
     }
 
-    private int toMinutes() {
+    public int toMinutes() {
 
         return minutes + hours * 60;
     }

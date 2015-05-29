@@ -15,23 +15,24 @@ import java.util.TimerTask;
 
 public class TCConroller {
 
-    private Time time;
-    private WeekSchedule ws;
-    private final int timeFactor = 300;
+    private Time time; // the time of all thermostat
+
     private ThermostatState state;
-    private int dayOfWeek; // 0 = Monday, 6 = Sunday
+    private WeekSchedule ws; // current working week schedule
+
+    private final int timeFactor = 300; // times faster than real time
 
     public TCConroller() {
 
         state = new ThermostatState();
         ws = state.getWeekSchedule();
 
+        // init time from system time
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
         String[] arr = timeStamp.split("_");
 
         int realHours = Integer.parseInt(arr[1].substring(0, 2));
         int realMins = Integer.parseInt(arr[1].substring(2, 4));
-
         int realMinsTotal = realHours * 60 + realMins;
 
         time = new Time(realMinsTotal);
@@ -73,6 +74,12 @@ public class TCConroller {
     }
     // ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
+    // ====== CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
+
+
+
+    // ====== END CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
+
     // ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
     public void loadSchedule(String name) throws Exception {
         state = ThermostatState.load(name);
@@ -97,33 +104,25 @@ public class TCConroller {
         @Override
         public void run() {
 
-            // get current time
-            int hours = time.getHours();
-            int mins = time.getMinutes();
-            int realMinsTotal = hours * 60 + mins; // time.toMinutes();
-            Time currentTime = new Time(realMinsTotal);
+            // get current thermostat time
+            int realMinsTotal = time.toMinutes();
+            Time currentTime = new Time(realMinsTotal); // time as time stamp
 
             // check whether it is time to change
-            //DaySchedule daySchedule = state.getDayShedule();
-            //TemperatureChange change = daySchedule.find(currentTime);
+            DaySchedule daySchedule = ws.getDaySchedule(state.getDayIndex());
+            TemperatureChange change = daySchedule.find(currentTime);
 
-//            if (change != null) {
-//                state.change(change.getType());
-//            }
+            if (change != null) {
+                // change temperature in room (on main screen and in state)
+                // change day type (on main screen and in state)
 
-
-
-            if (time.checkMidnight()) {
-                dayOfWeek++;
-
-                if (dayOfWeek >= 7) {
-                    dayOfWeek = 0;
-                }
             }
 
-
-
             time.incrementTime();
+
+            if (time.checkMidnight()) {
+                state.incrementDayIndex();
+            }
         }
     }
 }
