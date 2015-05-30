@@ -153,7 +153,7 @@ public class ThermostatState implements Serializable {
 
         ThermostatState state = (ThermostatState) oin.readObject();
         // TODO: INIT LAST CHANGE according to current TIME
-
+        // that is: find nearest previous TemperatureChange of current day
 
         return state;
     }

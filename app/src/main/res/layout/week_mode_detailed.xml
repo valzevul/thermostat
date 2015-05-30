@@ -80,7 +80,7 @@
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
                         android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButton2"
+                        android:layout_alignTop="@+id/imageButtonTimeDecr"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
@@ -104,7 +104,7 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/imageButtonTimeDecr"
                         android:layout_toLeftOf="@+id/day_degree_textView"
                         android:layout_toStartOf="@+id/day_degree_textView"/>
                 </RelativeLayout>
@@ -148,7 +148,7 @@
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
                         android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButton2"
+                        android:layout_alignTop="@+id/imageButtonTimeDecr"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
@@ -172,7 +172,7 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/imageButtonTimeDecr"
                         android:layout_toLeftOf="@+id/day_degree_textView"
                         android:layout_toStartOf="@+id/day_degree_textView"/>
                 </RelativeLayout>

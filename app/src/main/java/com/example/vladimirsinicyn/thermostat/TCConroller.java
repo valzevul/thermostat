@@ -214,7 +214,7 @@ public class TCConroller {
         @Override
         public void run() {
 
-            // turn on vacation mod if state says so
+            // turn ON vacation mod if state says so (the checkbox was checked by user)
             if (state.isVacation()) {
                 // check whether we turned it already
                 if (!vacationModTurnedOn) {
@@ -234,11 +234,34 @@ public class TCConroller {
 
                     // TODO: show vacation temperature on the main screen
                 }
-            } else {
-                // TODO: write code here
+            } else { // turn OFF vacation mod if state says so (the checkbox was unchecked by user)
+                // check whether we turned it OFF already
+                if (vacationModTurnedOn) {
+
+                    // turn the mod OFF
+                    vacationModTurnedOn = false;
+
+                    // turn on SCHEDULE temperature in state
+                    // set state like
+                    // the neareast previous change (by time) by schedule
+                    // happened
+                    LightCondition nearestPreviousLightConditionBySchedule =
+                            state.getLastChange().getTargetCondition();
+
+                    Temperature nearestPreviousTempBySchedule =
+                            toTemp(nearestPreviousLightConditionBySchedule);
+
+                    state.setTemperatureRoom(nearestPreviousTempBySchedule);
+
+                    // enable custom mod checkbox
+                    customCheckBox.setEnabled(true);
+
+                    // TODO: show SCHEDULE temperature on the main screen
+                    // show state.getTemperatureRoom
+                }
             }
 
-            // turn ON custom mod if state says so
+            // turn ON custom mod if state says so (the checkbox was checked by user)
             if (state.isCustom()) {
                 // check whether we turned it ON already
                 if (!customModTurnedOn) {
@@ -251,7 +274,7 @@ public class TCConroller {
 
                     // TODO: show custom temperature on the main screen
                 }
-            } else { // turn OFF custom mod if state says so
+            } else { // turn OFF custom mod if state says so (the checkbox was unchecked by user)
                 // check whether we turned it OFF already
                 if (customModTurnedOn) {
 
@@ -259,6 +282,9 @@ public class TCConroller {
                     customModTurnedOn = false;
 
                     // turn on SCHEDULE temperature in state
+                    // set state like
+                    // the last change before custom mod was turned on
+                    // happened
                     LightCondition lastConditionBeforeCustomModOn =
                             state.getLastChange().getTargetCondition();
                     Temperature lastTempBeforeCustomModOn = toTemp(lastConditionBeforeCustomModOn);
@@ -278,23 +304,28 @@ public class TCConroller {
             TemperatureChange change = daySchedule.find(currentTime);
 
             if (change != null) {
-                if (state.isCustom()) {
-                    // off custom mode
-                    state.setCustom(false);
-                    customModTurnedOn = false;
 
-                    // uncheck checkbox 'custom' on main screen
-                    customCheckBox.setChecked(false);
+                state.setLastChange(change);
+
+                if (!state.isVacation()) {
+                    if (state.isCustom()) {
+                        // off custom mode
+                        state.setCustom(false);
+                        customModTurnedOn = false;
+
+                        // uncheck checkbox 'custom' on main screen
+                        customCheckBox.setChecked(false);
+                    }
+
+                    // change temperature in room (in state)
+                    // change light condition (in state)
+                    LightCondition targetLightCondition = change.getTargetCondition();
+                    state.setTemperatureRoom(toTemp(targetLightCondition));
+                    state.changeCurrentLightCondition();
+
+                    // TODO: change temperature in room (on the main screen)
+                    // TODO: change light condition (on the main screen)
                 }
-
-                // change temperature in room (in state)
-                // change light condition (in state)
-                LightCondition targetLightCondition = change.getTargetCondition();
-                state.setTemperatureRoom(toTemp(targetLightCondition));
-                state.changeCurrentLightCondition();
-
-                // TODO: change temperature in room (on the main screen)
-                // TODO: change light condition (on the main screen)
             }
 
             time.incrementTime();
