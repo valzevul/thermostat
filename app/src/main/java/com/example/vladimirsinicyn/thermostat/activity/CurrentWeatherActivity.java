@@ -32,10 +32,16 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         app.initContorller();
         conroller = app.getConroller();
 
+        // seek bar handle
         bar = (SeekBar) findViewById(R.id.seekBar1);
         bar.setOnSeekBarChangeListener(this);
-
         bar.setMax(ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP);
+
+        // set checkbox of custom mod to the right state
+        CheckBox customCheckBox = (CheckBox) findViewById(R.id.chkCustom);
+        customCheckBox.setChecked(conroller.getCustom());
+        // save checkbox 'custom mod' in controller
+        conroller.setCustomCheckBox(customCheckBox);
     }
 
 

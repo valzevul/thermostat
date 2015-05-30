@@ -7,6 +7,7 @@ public class ThermostatState implements Serializable {
     private Temperature vacationTemperature;
     private Temperature customTemperature;
     private WeekSchedule weekSchedule;
+    private TemperatureChange lastChange; // TODO: init, handle
 
     private Temperature temperatureRoom; // current temperature (showed on main screen)
     private LightCondition currentLightCondition; // current day/night (showed on main screen)
@@ -23,8 +24,13 @@ public class ThermostatState implements Serializable {
     public ThermostatState() {
         weekSchedule = new WeekSchedule();
 
+        temperatureRoom = new Temperature(22, 8);
+
         customTemperature = new Temperature(20, 5);
         vacationTemperature = new Temperature(15, 5);
+
+
+//        lastChange = new TemperatureChange();
     }
 
 // ============ GETTERS/SETTERS ============
@@ -64,6 +70,10 @@ public class ThermostatState implements Serializable {
         return dayIndex;
     }
 
+    public void setDayIndex(int index) {
+        dayIndex = index;
+    }
+
     public void incrementDayIndex() {
 
         dayIndex++;
@@ -78,6 +88,9 @@ public class ThermostatState implements Serializable {
     }
 
     public void setCustom(boolean customModOn) {
+        if (vacationModOn) {
+            return;
+        }
         this.customModOn = customModOn;
     }
 
@@ -87,9 +100,9 @@ public class ThermostatState implements Serializable {
 
     public void setVacation(boolean vacationModOn) {
 
-//        if (customModOn) {
-//            setCustom(false);
-//        }
+        if (customModOn) {
+            setCustom(false);
+        }
         this.vacationModOn = vacationModOn;
     }
 
@@ -113,6 +126,14 @@ public class ThermostatState implements Serializable {
         }
     }
 
+    public TemperatureChange getLastChange() {
+        return lastChange;
+    }
+
+    public void setLastChange(TemperatureChange lastChange) {
+        this.lastChange = lastChange;
+    }
+
     // ============ END GETTERS/SETTERS ============
 
     public static void save(ThermostatState state, String name) throws Exception {
@@ -130,7 +151,11 @@ public class ThermostatState implements Serializable {
         FileInputStream fis = new FileInputStream(name);
         ObjectInputStream oin = new ObjectInputStream(fis);
 
-        return (ThermostatState) oin.readObject();
+        ThermostatState state = (ThermostatState) oin.readObject();
+        // TODO: INIT LAST CHANGE according to current TIME
+
+
+        return state;
     }
 
 
