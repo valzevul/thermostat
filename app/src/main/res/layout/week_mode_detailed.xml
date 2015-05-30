@@ -49,7 +49,7 @@
                 android:paddingTop="20px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save for the whole week"
+                android:text="Apply to the whole week"
                 />
         </RelativeLayout>
 
