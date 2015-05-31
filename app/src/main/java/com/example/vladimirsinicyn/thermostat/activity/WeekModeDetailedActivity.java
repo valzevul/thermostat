@@ -81,7 +81,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.first_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.first_layout);
             TextView time = (TextView) findViewById(R.id.time_1);
@@ -93,7 +93,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.second_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.second_layout);
             TextView time = (TextView) findViewById(R.id.time_2);
@@ -105,7 +105,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.third_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.third_layout);
             TextView time = (TextView) findViewById(R.id.time_3);
@@ -117,7 +117,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fourth_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fourth_layout);
             TextView time = (TextView) findViewById(R.id.time_4);
@@ -129,7 +129,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fifth_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fifth_layout);
             TextView time = (TextView) findViewById(R.id.time_5);
@@ -141,7 +141,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.sixth_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.sixth_layout);
             TextView time = (TextView) findViewById(R.id.time_6);
@@ -153,7 +153,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
             TextView time = (TextView) findViewById(R.id.time_7);
@@ -165,7 +165,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.eighth_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.eighth_layout);
             TextView time = (TextView) findViewById(R.id.time_8);
@@ -177,7 +177,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.nineth_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.nineth_layout);
             TextView time = (TextView) findViewById(R.id.time_9);
@@ -189,7 +189,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.tenth_layout);
-            layout.setVisibility(View.GONE);
+            layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.tenth_layout);
             TextView time = (TextView) findViewById(R.id.time_10);
@@ -303,7 +303,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         RelativeLayout newLayout = null;
         TextView time;
-        switch (schedule.getNumberOfChanges()) {
+        switch (schedule.getNumberOfChanges() - 1) {
             case 0:
                 newLayout = (RelativeLayout) findViewById(R.id.first_layout);
                 time = (TextView) findViewById(R.id.time_1);
@@ -374,7 +374,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 1 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -412,9 +412,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_1);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -429,7 +429,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 2 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -467,9 +467,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_2);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -484,7 +484,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 3 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -522,9 +522,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_3);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -539,7 +539,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
             int changeIndex = 4 - 1;
             TemperatureChange change = schedule.getChange(changeIndex);
             Time changeTime = change.getTime();
@@ -577,9 +577,9 @@ public class WeekModeDetailedActivity extends Activity {
             // show the new time of the change on the screen
             TextView time = (TextView) findViewById(R.id.time_4);
             time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -594,7 +594,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 5 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -632,9 +632,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_5);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -649,7 +649,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 6 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -687,9 +687,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_6);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -704,7 +704,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 7 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -742,9 +742,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_7);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -759,7 +759,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 8 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -797,9 +797,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_8);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -814,7 +814,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 9 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -852,9 +852,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_9);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -869,7 +869,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 10 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -907,9 +907,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_10);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 // ========= END Handlers of DOWN ARROWS =========
 
@@ -926,7 +926,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 1 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -964,9 +964,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_1);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -981,7 +981,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 2 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1019,9 +1019,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_2);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1036,7 +1036,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 3 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1074,9 +1074,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_3);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1091,7 +1091,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 4 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1129,9 +1129,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_4);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1146,7 +1146,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 5 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1184,9 +1184,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_5);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1201,7 +1201,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 6 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1239,9 +1239,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_6);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1256,7 +1256,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 7 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1294,9 +1294,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_7);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1311,7 +1311,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 8 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1349,9 +1349,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_8);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1366,7 +1366,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 9 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1404,9 +1404,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_9);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 
     /**
@@ -1421,7 +1421,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try{
+//        try{
         int changeIndex = 10 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -1459,9 +1459,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_10);
         time.setText(change.getTime().toString());
-        } catch (Exception ex) {
-
-        }
+//        } catch (Exception ex) {
+//
+//        }
     }
 // ========= END Handlers of UP ARROWS =========
 }

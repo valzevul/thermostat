@@ -298,7 +298,7 @@ public class TCConroller {
          */
         @Override
         public void run() {
-            try {
+//            try {
 //            int TIMEOUT = 100; // 100 ms
 //            try {
 //                mainLooper.getThread().join(TIMEOUT);
@@ -324,7 +324,7 @@ public class TCConroller {
                     Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException interex) {
                         // TODO: handle exception
                     }
@@ -576,9 +576,9 @@ public class TCConroller {
                     // note: think of situations when
                     // it is needed at all
                 }
-            } catch (Exception ex) {
-
-            }
+//            } catch (Exception ex) {
+//
+//            }
         }
     }
 // ====== END The TimerTack class  ======
