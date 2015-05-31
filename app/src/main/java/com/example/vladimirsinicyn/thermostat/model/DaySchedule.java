@@ -126,7 +126,14 @@ public class DaySchedule implements Serializable {
     }
 
     public ArrayList<TemperatureChange> getChanges() {
-
         return changes;
+    }
+
+    public TemperatureChange getLatestChange() {
+        return changes.get(changes.size() - 1);
+    }
+
+    public int getNumberOfChanges() {
+        return changes.size();
     }
 }
