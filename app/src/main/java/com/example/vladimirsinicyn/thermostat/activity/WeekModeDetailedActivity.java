@@ -361,26 +361,1047 @@ public class WeekModeDetailedActivity extends Activity {
         return newLayout;
     }
 
+// ========= Handlers of DOWN ARROWS =========
     /**
+     * Handle decrease of time of the first change
+     *
      * if this method was called it means that
      * the first change is initialised and is visible
      *
      * @param view
      */
     public void handleDownArrow1(View view) {
-        TextView time1view = (TextView) findViewById(R.id.time_1);
-        // TODO: check the allowed interval of time in which we can change it
-        // TODO: check lower bound - find previous change
-        // TODO: check higher bound - find next change
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
 
         int changeIndex = 1 - 1;
-        TemperatureChange firstChange = schedule.getChange(changeIndex);
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
 
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
 
-        // TODO: change state (time) of the chosen TempChange
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
 
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
 
-        // TODO: show the new time of the change on the screen
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
 
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_1);
+        time.setText(change.getTime().toString());
     }
+
+    /**
+     * Handle decrease of time of the second change
+     *
+     * if this method was called it means that
+     * the second change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow2(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 2 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_2);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the third change
+     *
+     * if this method was called it means that
+     * the third change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow3(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 3 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_3);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the forth change
+     *
+     * if this method was called it means that
+     * the forth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow4(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 4 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_4);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the fifth change
+     *
+     * if this method was called it means that
+     * the fifth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow5(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 5 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_5);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the sixth change
+     *
+     * if this method was called it means that
+     * the sixth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow6(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 6 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_6);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the seventh change
+     *
+     * if this method was called it means that
+     * the seventh change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow7(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 7 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_7);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the eighth change
+     *
+     * if this method was called it means that
+     * the eighth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow8(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 8 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_8);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the ninth change
+     *
+     * if this method was called it means that
+     * the ninth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow9(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 9 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_9);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle decrease of time of the tenth change
+     *
+     * if this method was called it means that
+     * the tenth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow10(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 10 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_10);
+        time.setText(change.getTime().toString());
+    }
+// ========= END Handlers of DOWN ARROWS =========
+
+// ========= Handlers of UP ARROWS =========
+    /**
+     * Handle increase of time of the first change
+     *
+     * if this method was called it means that
+     * the first change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow1(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 1 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_1);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the second change
+     *
+     * if this method was called it means that
+     * the second change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow2(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 2 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_2);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the third change
+     *
+     * if this method was called it means that
+     * the third change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow3(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 3 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_3);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the forth change
+     *
+     * if this method was called it means that
+     * the forth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow4(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 4 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_4);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the fifth change
+     *
+     * if this method was called it means that
+     * the fifth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow5(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 5 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_5);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the sixth change
+     *
+     * if this method was called it means that
+     * the sixth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow6(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 6 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_6);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the seventh change
+     *
+     * if this method was called it means that
+     * the seventh change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow7(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 7 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_7);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the eighth change
+     *
+     * if this method was called it means that
+     * the eighth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow8(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 8 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_8);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the ninth change
+     *
+     * if this method was called it means that
+     * the ninth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow9(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 9 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_9);
+        time.setText(change.getTime().toString());
+    }
+
+    /**
+     * Handle increase of time of the tenth change
+     *
+     * if this method was called it means that
+     * the tenth change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleUpArrow10(View view) {
+        // check the allowed interval of time in which we can change it
+        // check lower bound - find previous change
+        // check upper bound - find next change
+
+        int changeIndex = 10 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
+
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
+
+        TemperatureChange nextChange = schedule.findClosest(change.getTime());
+        Time upperBound;
+        if (nextChange == null) {
+            upperBound = new Time(1439); // 23:59
+        } else {
+            upperBound = nextChange.getTime();
+        }
+
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
+
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            // TODO: show some message for user like 'no more can't go higher than next change'
+            return;
+        }
+
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().incrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
+
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_10);
+        time.setText(change.getTime().toString());
+    }
+// ========= END Handlers of UP ARROWS =========
 }

@@ -61,7 +61,11 @@ public class DaySchedule implements Serializable {
             }
         }
 
-        return closest;
+        if (closest == null) {
+            return WeekSchedule.midnightTemperatureChange.clone();
+        } else {
+            return closest;
+        }
     }
 
     public void addChange(TemperatureChange change) throws Exception {
@@ -130,7 +134,12 @@ public class DaySchedule implements Serializable {
     }
 
     public TemperatureChange getLatestChange() {
-        return changes.get(changes.size() - 1);
+        if (changes.isEmpty()) {
+            TemperatureChange midnight = WeekSchedule.midnightTemperatureChange.clone();
+            return midnight;
+        } else {
+            return changes.get(changes.size() - 1);
+        }
     }
 
     public int getNumberOfChanges() {

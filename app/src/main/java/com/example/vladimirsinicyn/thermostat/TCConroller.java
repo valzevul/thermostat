@@ -72,11 +72,10 @@ public class TCConroller {
         state.setDayIndex(realDayOfWeek);
 
         // init last change
-        // TODO: CLONE default changes!
-        // TODO: maybe add method clone to class TemperatureChange
-        TemperatureChange first =  WeekSchedule.firstDefaultTemperatureChange;
-        TemperatureChange last =  WeekSchedule.lastDefaultTemperatureChange;
-        TemperatureChange midnight = WeekSchedule.midnightTemperatureChange;
+        // CLONE default changes!
+        TemperatureChange first =  WeekSchedule.firstDefaultTemperatureChange.clone();
+        TemperatureChange last =  WeekSchedule.lastDefaultTemperatureChange.clone();
+        TemperatureChange midnight = WeekSchedule.midnightTemperatureChange.clone();
         if (time.isGreater(last.getTime())) {
             state.setLastChange(last);
         } else if (time.isGreater(first.getTime())) {
