@@ -35,6 +35,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
     private Handler customCheckboxCheckedHandler;
     private Handler customCheckboxEnabledHandler;
     private Handler lightConditionImageHandler;
+    private Handler currentTimeHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,19 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
             }
         };
         conroller.setLightConditionImageHandler(lightConditionImageHandler);
+
+        // set textview of current time to the right state
+        final TextView mainScreenCurrentTime = (TextView) findViewById(R.id.current_time);
+        mainScreenCurrentTime.setText(conroller.getTime().toString());
+        // save textview of room temperature (current) in contoller
+        // new way!
+        currentTimeHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                String text = (String) msg.obj;
+                mainScreenCurrentTime.setText(text);
+            }
+        };
+        conroller.setCurrentTimeHandler(currentTimeHandler);
     }
 
 

@@ -48,6 +48,7 @@ public class TCConroller {
     private Handler customCheckboxCheckedHandler;
     private Handler customCheckboxEnabledHandler;
     private Handler lightConditionImageHandler;
+    private Handler currentTimeHandler;
 
     public TCConroller() {
         //Log.i("TCController", "TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -130,7 +131,15 @@ public class TCConroller {
     public void setLightConditionImageHandler(Handler lightConditionImageHandler) {
         this.lightConditionImageHandler = lightConditionImageHandler;
     }
+
+    public void setCurrentTimeHandler(Handler currentTimeHandler) {
+        this.currentTimeHandler = currentTimeHandler;
+    }
 // ====== END HANDLERS OF ACTIVITIES SETTERS ======
+
+    public Time getTime() {
+        return new Time(time.toMinutes());
+    }
 
 // ====== WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
     public Temperature getNightTemperature() {
@@ -282,13 +291,33 @@ public class TCConroller {
 
             if (temperatureRoomCustomHandler == null) {
                 Log.i("TIMER", "SKIP temperatureRoomCustomHandler");
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException interex) {
+                    // TODO: handle exception
+                }
+
+
                 return;
             }
 
             if (temperatureRoomVacationHandler == null) {
                 Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException interex) {
+                    // TODO: handle exception
+                }
+
                 return;
             }
+
+            // // show current GAME time on the main screen
+            Message msgCurrentTime = new Message();
+            msgCurrentTime.obj = time.toString();
+            currentTimeHandler.sendMessage(msgCurrentTime);
 
             // initial change (done once)
             if (thermostatWORKS) {
