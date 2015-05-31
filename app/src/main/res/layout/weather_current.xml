@@ -121,13 +121,23 @@
                 android:onClick="changeCustomMod"/>
 
             <TextView
-                android:id="@+id/next_change"
+                android:id="@+id/next_change_label"
                 android:paddingLeft="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tue_day_textView"
                 android:layout_marginTop="60px"
                 android:text="Next change at"
+                android:layout_alignTop="@+id/reverse2_imageView"
+                android:layout_toEndOf="@+id/reverse2_imageView" />
+            <TextView
+                android:id="@+id/current_time_label"
+                android:paddingLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/next_change_label"
+                android:layout_marginTop="60px"
+                android:text="Current time"
                 android:layout_alignTop="@+id/reverse2_imageView"
                 android:layout_toEndOf="@+id/reverse2_imageView" />
             <TextView
@@ -138,6 +148,17 @@
                 android:layout_below="@+id/tue_day_textView"
                 android:layout_marginTop="60px"
                 android:text="8:20 PM"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/reverse2_imageView"
+                android:layout_toEndOf="@+id/reverse2_imageView" />
+            <TextView
+                android:id="@+id/current_time"
+                android:paddingLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/next_change"
+                android:layout_marginTop="60px"
+                android:text="7:20 PM"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/reverse2_imageView"
                 android:layout_toEndOf="@+id/reverse2_imageView" />
