@@ -71,16 +71,15 @@ public class DaySchedule implements Serializable {
 
     public void deleteTimeChange(TemperatureChange change) throws Exception {
 
-        if (change.getTargetCondition() == LightCondition.DAY) {
-            dayChanges--;
-        } else {
-            nightChanges--;
-        }
-
         for (int i = 0; i < changes.size(); i++) {
             if (changes.get(i).equals(change)) {
 
                 changes.remove(changes.get(i));
+                if (change.getType() == ChangeType.DAY) {
+                    dayChanges--;
+                } else {
+                    nightChanges--;
+                }
                 break;
             }
         }
