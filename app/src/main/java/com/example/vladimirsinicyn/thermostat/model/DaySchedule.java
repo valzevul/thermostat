@@ -35,7 +35,7 @@ public class DaySchedule implements Serializable {
         for (int i = 0; i < changes.size(); i++) {
 
             int tempValue = changes.get(i).getTime().toMinutes() - compareTime;
-            if (tempValue >= 0 && tempValue < min) {
+            if (tempValue > 0 && tempValue < min) {
 
                 closest = changes.get(i);
                 min = tempValue;
