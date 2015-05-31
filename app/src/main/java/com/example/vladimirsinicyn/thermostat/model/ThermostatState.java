@@ -151,7 +151,7 @@ public class ThermostatState implements Serializable {
         oos.close();
     }
 
-    public static ThermostatState load(String name) throws Exception {
+    public static ThermostatState load(String name, Time time, int dayIndex) throws Exception {
 
         FileInputStream fis = new FileInputStream(name);
         ObjectInputStream oin = new ObjectInputStream(fis);
