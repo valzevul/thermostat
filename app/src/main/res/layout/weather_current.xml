@@ -10,8 +10,7 @@
 
     <LinearLayout
         android:id="@+id/day_layout"
-        android:layout_width="400px"
-
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
@@ -63,7 +62,7 @@
 
             <TextView
                 android:id="@+id/textViewAction"
-                android:layout_width="100px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textViewProgress"
@@ -73,7 +72,7 @@
 
             <TextView
                 android:id="@+id/textViewAction2"
-                android:layout_width="100px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/textViewProgress"
