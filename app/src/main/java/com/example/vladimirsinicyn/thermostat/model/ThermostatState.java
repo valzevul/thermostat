@@ -7,7 +7,7 @@ public class ThermostatState implements Serializable {
     private Temperature vacationTemperature;
     private Temperature customTemperature;
     private WeekSchedule weekSchedule;
-    private TemperatureChange lastChange; // TODO: init, handle
+    private TemperatureChange lastChange;
 
     private Temperature temperatureRoom; // current temperature (showed on main screen)
     private LightCondition currentLightCondition; // current day/night (showed on main screen)
@@ -159,7 +159,7 @@ public class ThermostatState implements Serializable {
         ThermostatState state = (ThermostatState) oin.readObject();
         TemperatureChange temperatureChange = state.getWeekSchedule().getDaySchedule(dayIndex).findClosestLess(time);
 
-        state.lastChange = temperatureChange;
+        state.setLastChange(temperatureChange);
 
         return state;
     }

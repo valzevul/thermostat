@@ -31,8 +31,6 @@ public class VacationWeatherActivity extends Activity {
         // set checkbox of vacation mod to the right state
         CheckBox vacationCheckBox = (CheckBox) findViewById(R.id.chkVacation);
         vacationCheckBox.setChecked(conroller.getVacation());
-        // save checkbox 'vacation mod' in controller
-        conroller.setVacationCheckBox(vacationCheckBox);
     }
 
 

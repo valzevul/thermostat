@@ -26,7 +26,7 @@ public class TCConroller {
     private boolean thermostatWORKS = false;
     private boolean thermostatTURNED_ON = false;
 
-    private Time time; // the time of all thermostat
+    private Time time; //= new Time(0); // the time of all thermostat
 
     private ThermostatState state; // the state of all thermostat
     private WeekSchedule ws; // current working week schedule
@@ -41,16 +41,11 @@ public class TCConroller {
     private boolean customModTurnedOn = false;
     private boolean vacationModTurnedOn = false;
 
-    // these fields are references to different controls
-    // to change view when it is needed (according to changes of state [model])
-    private CheckBox customCheckBox;
-    private CheckBox vacationCheckBox;
-    private TextView temperatureRoomTextView; // showed on the main screen
-    private ImageView lightConditionImageView; // showed on the main screen
-
     private Drawable sun;
     private Drawable moon;
 
+    // these fields are references to different controls
+    // to change view when it is needed (according to changes of state [model])
     private Handler temperatureRoomHandler;
     private Handler customCheckboxCheckedHandler;
     private Handler customCheckboxEnabledHandler;
@@ -114,9 +109,9 @@ public class TCConroller {
 
         // we have sunday = 0, saturday = 6
         // whereas ANDROID (Calendar class) has sunday = 1, saturday = 7
-        return dow - 1;
+        // TODO: check ANDROID MAGIC - gives three days less
+        return ((dow - 1) + 3) % 7;
     }
-
 
 // ====== HANDLERS OF ACTIVITIES SETTERS ======
     public void setTemperatureRoomHandler(Handler temperatureRoomHandler) {
@@ -134,7 +129,7 @@ public class TCConroller {
     public void setLightConditionImageHandler(Handler lightConditionImageHandler) {
         this.lightConditionImageHandler = lightConditionImageHandler;
     }
-    // ====== END HANDLERS OF ACTIVITIES SETTERS ======
+// ====== END HANDLERS OF ACTIVITIES SETTERS ======
 
 // ====== WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
     public Temperature getNightTemperature() {
@@ -172,13 +167,10 @@ public class TCConroller {
     }
 // ====== END CURRENT ROOM TEMPERATURE AND LIGHT CONDITION GETTERS and INCR/DECREMENTS ======
 
-// ====== CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
-    // TODO: write code here
-// ====== END CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
-
 // ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
     public void loadSchedule(String name) throws Exception {
-        state = ThermostatState.load(name);
+        Time timeStamp = new Time(time.toMinutes());
+        state = ThermostatState.load(name, timeStamp, state.getDayIndex());
     }
 
     public void saveSchedule(String name) throws Exception {
@@ -190,11 +182,14 @@ public class TCConroller {
     }
 // ====== END WEEK SCHEDULE SAVE/LOAD ======
 
-    // TODO: use it and wrap with =====___====== comments
-    TemperatureChange getNextChange() {
-
-        return new TemperatureChange(LightCondition.DAY, time); // TODO: do it right
+// ====== NEXT CHANGE GETTER ======
+    // TODO: use it in week_detailed
+    TemperatureChange getNextChange(int dayIndex) {
+        DaySchedule schedule = ws.getDaySchedule(dayIndex);
+        TemperatureChange nextChange = schedule.findClosest(time);
+        return nextChange;
     }
+// ====== END NEXT CHANGE GETTER ======
 
 // ====== VACATION/CUSTOM MODS GETTERS/SETTERS  ======
     public boolean getVacation() {
@@ -213,42 +208,6 @@ public class TCConroller {
         state.setCustom(on);
     }
 // ====== END VACATION/CUSTOM MODS GETTERS/SETTERS  ======
-
-// ====== VACATION/CUSTOM MODS CHECKBOXES GETTERS/SETTERS  ======
-    public CheckBox getCustomCheckox() {
-        return customCheckBox;
-    }
-
-    public void setCustomCheckBox(CheckBox checkBox) {
-        customCheckBox = checkBox;
-    }
-
-    public CheckBox getVacationCheckox() {
-        return vacationCheckBox;
-    }
-
-    public void setVacationCheckBox(CheckBox checkBox) {
-        vacationCheckBox = checkBox;
-    }
-// ====== END VACATION/CUSTOM MODS CHECKBOXES GETTERS/SETTERS  ======
-
-// ====== ROOM TEMPERATURE TEXTVIEW AND LIGHT CONDITION IMAGEVIEW ON MAIN SCREEN GETTERS/SETTERS  ======
-    public TextView getTemperatureRoomTextView() {
-        return temperatureRoomTextView;
-    }
-
-    public void setTemperatureRoomTextView(TextView temperatureRoomTextView) {
-        this.temperatureRoomTextView = temperatureRoomTextView;
-    }
-
-    public ImageView getLightConditionImageView() {
-        return lightConditionImageView;
-    }
-
-    public void setLightConditionImageView(ImageView lightConditionImageView) {
-        this.lightConditionImageView = lightConditionImageView;
-    }
-    // ====== END ROOM TEMPERATURE TEXTVIEW AND LIGHT CONDITION IMAGEVIEW ON MAIN SCREEN GETTERS/SETTERS  ======
 
     public void setMoonImage(Drawable moon) {
         this.moon = moon;
@@ -518,6 +477,10 @@ public class TCConroller {
 
             if (time.checkMidnight()) {
                 state.incrementDayIndex();
+
+                // TODO: PERFORM A MIDNIGHT CHANGE
+                // note: think of situation when user sets
+                // TemperatureChange on midnight
             }
         }
     }

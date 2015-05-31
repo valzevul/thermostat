@@ -6,18 +6,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
+import com.example.vladimirsinicyn.thermostat.model.Temperature;
+import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
+
+import java.util.ArrayList;
 
 
 public class WeekModeDetailedActivity extends Activity {
 
     private int index;
     private static TCConroller conroller;
+    private DaySchedule schedule;
+    private int numOfChanges = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,126 @@ public class WeekModeDetailedActivity extends Activity {
 
         final TextView weekday = (TextView) findViewById(R.id.weekday);
         weekday.setText(dayOfWeek);
+
+        schedule = conroller.getSchedule(index);
+        ArrayList<TemperatureChange> changes = schedule.getChanges();
+
+//        for (int i = 0; i < DaySchedule.MAX_TODAY + DaySchedule.MAX_TONIGHT; i++) {
+//            if (changes.get(i) == null) {
+//
+//            }
+//        }
+
+        int i = 0;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.first_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_1);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.second_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_2);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.third_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_3);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.fourth_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_4);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.fifth_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_5);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.sixth_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_6);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_7);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.eighth_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_8);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.nineth_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_9);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
+        i++;
+
+        if (changes.size() < i + 1) {
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.tenth_layout);
+            layout.setVisibility(View.GONE);
+        } else {
+            TextView time = (TextView) findViewById(R.id.time_10);
+            TemperatureChange change = changes.get(i);
+            time.setText(change.getTime().toString());
+            numOfChanges++;
+        }
     }
 
 
@@ -110,8 +238,8 @@ public class WeekModeDetailedActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    void addChange(View view) {
-        DaySchedule schedule = conroller.getSchedule(index);
+    public void addChange(View view) {
+
 
 //        LightCondition targetLightCondition = LightCondition.DAY;
 //        Time time = new Time(0);

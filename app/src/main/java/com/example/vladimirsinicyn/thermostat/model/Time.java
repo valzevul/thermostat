@@ -43,7 +43,17 @@ public class Time implements Serializable,  TimeInterface{
     @Override
     public String toString() {
 
-        return hours + ":" + minutes;
+        String h = hours + "";
+        if (hours < 10) {
+            h = "0" + h;
+        }
+
+        String m = minutes + "";
+        if (minutes < 10) {
+            m = "0" + m;
+        }
+
+        return h + ":" + m;
     }
 
     public int getHours() {

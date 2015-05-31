@@ -71,14 +71,15 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/sunday_layout"
+                android:id="@+id/first_layout"
                 android:layout_below="@+id/days"
                 android:layout_marginTop="16dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <ImageView
                     android:layout_width="48dp"
@@ -141,14 +142,14 @@
 
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/second_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:layout_width="48dp"
@@ -208,14 +209,14 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/third_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:layout_width="48dp"
@@ -275,7 +276,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/fourth_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -342,7 +343,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/fifth_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -409,7 +410,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/sixth_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -476,7 +477,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/seventh_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -543,7 +544,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/eighth_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -610,7 +611,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/nineth_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -677,7 +678,7 @@
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/monday_layout"
+                android:id="@+id/tenth_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -758,5 +759,6 @@
         android:fontFamily="sans-serif-light"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="right|bottom" />
+        android:layout_gravity="right|bottom"
+        android:onClick="addChange"/>
 </RelativeLayout>

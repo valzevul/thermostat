@@ -7,11 +7,14 @@ public class DaySchedule implements Serializable {
 
     private ArrayList<TemperatureChange> changes;
 
+    public static int MAX_TODAY = 5;
+    public static int MAX_TONIGHT = 5;
+
     private int dayChanges = 0;
     private int nightChanges = 0;
     public DaySchedule() {
 
-        changes = new ArrayList<TemperatureChange>();
+        changes = new ArrayList<TemperatureChange>(MAX_TODAY + MAX_TONIGHT);
         dayChanges++;
         nightChanges++;
         changes.add(WeekSchedule.firstDefaultTemperatureChange);
@@ -20,7 +23,7 @@ public class DaySchedule implements Serializable {
     
     public void clear() {
 
-        changes = new ArrayList<TemperatureChange>();
+        changes = new ArrayList<TemperatureChange>(MAX_TODAY + MAX_TONIGHT);
     }
     
     public TemperatureChange findClosest(Time time) {
@@ -75,12 +78,12 @@ public class DaySchedule implements Serializable {
             nightChanges++;
         }
 
-        if (dayChanges == 6) {
+        if (dayChanges == MAX_TODAY + 1) {
             dayChanges--;
             throw new Exception("Too many day changes.");
         }
 
-        if (nightChanges == 6) {
+        if (nightChanges == MAX_TONIGHT + 1) {
             nightChanges--;
             throw new Exception("Too many night changes.");
         }
@@ -94,7 +97,7 @@ public class DaySchedule implements Serializable {
             if (changes.get(i).equals(change)) {
 
                 changes.remove(changes.get(i));
-                if (change.getType() == ChangeType.DAY) {
+                if (change.getTargetCondition() == LightCondition.DAY) {
                     dayChanges--;
                 } else {
                     nightChanges--;

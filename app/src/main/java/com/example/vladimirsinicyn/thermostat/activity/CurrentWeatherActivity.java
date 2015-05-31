@@ -133,7 +133,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         if (id == R.id.action_save) {
 
             // save schedule
-            // get name of the file
+            // TODO: get name of the file
 
             return true;
         }
