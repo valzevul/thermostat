@@ -87,14 +87,15 @@
                     android:id="@+id/reverse_imageView" />
 
                 <TextView
-                    android:id="@+id/sunday_day_textView"
+                    android:id="@+id/status_1"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Night → Day"
                     android:layout_alignTop="@+id/reverse_imageView"
-                    android:layout_toEndOf="@+id/reverse_imageView" />
+                    android:layout_toEndOf="@+id/reverse_imageView"
+                    android:layout_toRightOf="@+id/reverse_imageView"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -105,14 +106,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/first_up"
+                        android:layout_alignTop="@+id/first_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10:20"
@@ -121,8 +122,8 @@
                         android:paddingRight="6dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/first_up"
+                        android:layout_toStartOf="@+id/first_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -132,85 +133,15 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/first_down"
+                        android:layout_toLeftOf="@+id/time_1"
+                        android:layout_toStartOf="@+id/time_1"/>
                 </RelativeLayout>
 
 
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
-                android:layout_below="@+id/sunday_layout"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
-
-                <TextView
-                    android:id="@+id/monday_day_textView"
-                    android:paddingLeft="16dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:text="Day → Night"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageButton
-                        android:layout_gravity="right"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:background="@drawable/up"
-                        android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        />
-
-                    <TextView
-                        android:id="@+id/day_degree_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="16:40"
-                        android:paddingLeft="6dp"
-                        android:paddingRight="6dp"
-                        android:textSize="35dp"
-                        android:textColor="@color/black"
-                        android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
-
-                    <ImageButton
-                        android:layout_gravity="right"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:background="@drawable/down"
-                        android:onClick="decDayTemp"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/tuesday_layout"
                 android:layout_below="@+id/sunday_layout"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
@@ -226,15 +157,82 @@
                     android:id="@+id/reverse2_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_2"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:text="Day → Night"
+                    android:layout_alignTop="@+id/reverse2_imageView"
+                    android:layout_toEndOf="@+id/reverse2_imageView"
+                    android:layout_toRightOf="@+id/reverse2_imageView"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:layout_gravity="right"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:background="@drawable/up"
+                        android:onClick="incDayTemp"
+                        android:id="@+id/second_up"
+                        android:layout_alignTop="@+id/second_down"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/time_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16:40"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:textSize="35dp"
+                        android:textColor="@color/black"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/second_up"
+                        android:layout_toStartOf="@+id/second_up" />
+
+                    <ImageButton
+                        android:layout_gravity="right"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:background="@drawable/down"
+                        android:onClick="decDayTemp"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/second_down"
+                        android:layout_toLeftOf="@+id/time_2"
+                        android:layout_toStartOf="@+id/time_2"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/monday_layout"
+                android:layout_below="@+id/sunday_layout"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/reverse"
+                    android:id="@+id/reverse3_imageView" />
+
+                <TextView
+                    android:id="@+id/status_3"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Night → Day"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
+                    android:layout_alignTop="@+id/reverse3_imageView"
+                    android:layout_toEndOf="@+id/reverse3_imageView"
+                    android:layout_toRightOf="@+id/reverse3_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -244,14 +242,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/third_up"
+                        android:layout_alignTop="@+id/third_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -260,8 +258,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/third_up"
+                        android:layout_toStartOf="@+id/third_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -271,12 +269,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/third_down"
+                        android:layout_toLeftOf="@+id/time_3"
+                        android:layout_toStartOf="@+id/time_3"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -291,20 +288,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse4_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_4"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Day → Night"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse4_imageView"
+                    android:layout_toEndOf="@+id/reverse4_imageView"
+                    android:layout_toRightOf="@+id/reverse4_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -314,14 +309,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/forth_up"
+                        android:layout_alignTop="@+id/forth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -330,8 +325,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/forth_up"
+                        android:layout_toStartOf="@+id/forth_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -341,12 +336,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/forth_down"
+                        android:layout_toLeftOf="@+id/time_4"
+                        android:layout_toStartOf="@+id/time_4"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -361,20 +355,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse5_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_5"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Night → Day"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse5_imageView"
+                    android:layout_toEndOf="@+id/reverse5_imageView"
+                    android:layout_toRightOf="@+id/reverse5_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -384,14 +376,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/fifth_up"
+                        android:layout_alignTop="@+id/fifth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -400,8 +392,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/fifth_up"
+                        android:layout_toStartOf="@+id/fifth_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -411,12 +403,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/fifth_down"
+                        android:layout_toLeftOf="@+id/time_5"
+                        android:layout_toStartOf="@+id/time_5"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -431,20 +422,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse6_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_6"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Day → Night"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse6_imageView"
+                    android:layout_toEndOf="@+id/reverse6_imageView"
+                    android:layout_toRightOf="@+id/reverse6_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -454,14 +443,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/sixth_up"
+                        android:layout_alignTop="@+id/sixth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -470,8 +459,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/sixth_up"
+                        android:layout_toStartOf="@+id/sixth_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -481,12 +470,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/sixth_down"
+                        android:layout_toLeftOf="@+id/time_6"
+                        android:layout_toStartOf="@+id/time_6"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -501,20 +489,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse7_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_7"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Night → Day"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse7_imageView"
+                    android:layout_toEndOf="@+id/reverse7_imageView"
+                    android:layout_toRightOf="@+id/reverse7_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -524,14 +510,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/seventh_up"
+                        android:layout_alignTop="@+id/seventh_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -540,8 +526,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/seventh_up"
+                        android:layout_toStartOf="@+id/seventh_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -551,12 +537,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/seventh_down"
+                        android:layout_toLeftOf="@+id/time_7"
+                        android:layout_toStartOf="@+id/time_7"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -571,20 +556,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse8_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_8"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Day → Night"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse8_imageView"
+                    android:layout_toEndOf="@+id/reverse8_imageView"
+                    android:layout_toRightOf="@+id/reverse8_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -594,14 +577,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/eighth_up"
+                        android:layout_alignTop="@+id/eighth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -610,8 +593,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/eighth_up"
+                        android:layout_toStartOf="@+id/eighth_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -621,12 +604,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/eighth_down"
+                        android:layout_toLeftOf="@+id/time_8"
+                        android:layout_toStartOf="@+id/time_8"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -641,20 +623,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse9_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_9"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Night → Day"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse9_imageView"
+                    android:layout_toEndOf="@+id/reverse9_imageView"
+                    android:layout_toRightOf="@+id/reverse9_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -664,14 +644,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/nineth_up"
+                        android:layout_alignTop="@+id/nineth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -680,8 +660,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/nineth_up"
+                        android:layout_toStartOf="@+id/nineth_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -691,12 +671,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/nineth_down"
+                        android:layout_toLeftOf="@+id/time_9"
+                        android:layout_toStartOf="@+id/time_9"/>
                 </RelativeLayout>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/monday_layout"
                 android:layout_below="@+id/sunday_layout"
@@ -711,20 +690,18 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:id="@+id/reverse10_imageView" />
 
                 <TextView
-                    android:id="@+id/monday_day_textView"
+                    android:id="@+id/status_10"
                     android:paddingLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
                     android:text="Day → Night"
-                    android:layout_alignTop="@+id/reverse2_imageView"
-                    android:layout_toEndOf="@+id/reverse2_imageView" />
-
-
-
+                    android:layout_alignTop="@+id/reverse10_imageView"
+                    android:layout_toEndOf="@+id/reverse10_imageView"
+                    android:layout_toRightOf="@+id/reverse10_imageView"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -734,14 +711,14 @@
                         android:layout_height="26dp"
                         android:background="@drawable/up"
                         android:onClick="incDayTemp"
-                        android:id="@+id/imageButton"
-                        android:layout_alignTop="@+id/imageButtonTimeDecr"
+                        android:id="@+id/tenth_up"
+                        android:layout_alignTop="@+id/tenth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         />
 
                     <TextView
-                        android:id="@+id/day_degree_textView"
+                        android:id="@+id/time_10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="16:40"
@@ -750,8 +727,8 @@
                         android:textSize="35dp"
                         android:textColor="@color/black"
                         android:layout_alignParentTop="true"
-                        android:layout_toLeftOf="@+id/imageButton"
-                        android:layout_toStartOf="@+id/imageButton" />
+                        android:layout_toLeftOf="@+id/tenth_up"
+                        android:layout_toStartOf="@+id/tenth_up" />
 
                     <ImageButton
                         android:layout_gravity="right"
@@ -761,12 +738,11 @@
                         android:onClick="decDayTemp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/imageButtonTimeDecr"
-                        android:layout_toLeftOf="@+id/day_degree_textView"
-                        android:layout_toStartOf="@+id/day_degree_textView"/>
+                        android:id="@+id/tenth_down"
+                        android:layout_toLeftOf="@+id/time_10"
+                        android:layout_toStartOf="@+id/time_10"/>
                 </RelativeLayout>
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
     <Button
