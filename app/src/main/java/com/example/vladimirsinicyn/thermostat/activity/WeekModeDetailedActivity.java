@@ -390,12 +390,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -445,12 +445,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -500,12 +500,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -555,12 +555,12 @@ public class WeekModeDetailedActivity extends Activity {
                 upperBound = nextChange.getTime();
             }
 
-            if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
                 // TODO: show some message for user like 'no more can't go lower than previous change'
                 return;
             }
 
-            if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+            if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
                 // TODO: show some message for user like 'no more can't go higher than next change'
                 return;
             }
@@ -610,12 +610,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -665,12 +665,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -720,12 +720,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -775,12 +775,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -830,12 +830,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -885,12 +885,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -942,12 +942,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -997,12 +997,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1052,12 +1052,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1107,12 +1107,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1162,12 +1162,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1217,12 +1217,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1272,12 +1272,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1327,12 +1327,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1382,12 +1382,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1437,12 +1437,12 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
             return;
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
