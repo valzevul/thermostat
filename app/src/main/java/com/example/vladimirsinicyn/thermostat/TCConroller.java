@@ -298,7 +298,7 @@ public class TCConroller {
          */
         @Override
         public void run() {
-            try{
+            try {
 //            int TIMEOUT = 100; // 100 ms
 //            try {
 //                mainLooper.getThread().join(TIMEOUT);
@@ -307,277 +307,276 @@ public class TCConroller {
 //            }
 
 
-            if (temperatureRoomCustomHandler == null) {
-                Log.i("TIMER", "SKIP temperatureRoomCustomHandler");
+                if (temperatureRoomCustomHandler == null) {
+                    Log.i("TIMER", "SKIP temperatureRoomCustomHandler");
 
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException interex) {
-                    // TODO: handle exception
-                }
-
-
-                return;
-            }
-
-            if (temperatureRoomVacationHandler == null) {
-                Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException interex) {
-                    // TODO: handle exception
-                }
-
-                return;
-            }
-
-            // // show current GAME time on the main screen
-            Message msgCurrentTime = new Message();
-            msgCurrentTime.obj = time.toString();
-            currentTimeHandler.sendMessage(msgCurrentTime);
-
-            // initial change (done once)
-            if (thermostatWORKS) {
-                if (!thermostatTURNED_ON) {
-                    // set default settings
-                    // turn on SCHEDULE temperature in state
-                    // set state like
-                    // the neareast previous change (by time) by schedule
-                    // happened
-                    LightCondition nearestPreviousLightConditionBySchedule =
-                            state.getLastChange().getTargetCondition();
-
-                    Temperature nearestPreviousTempBySchedule =
-                            toTemp(nearestPreviousLightConditionBySchedule);
-
-                    state.setTemperatureRoom(nearestPreviousTempBySchedule);
-                    state.setCurrentLightCondition(nearestPreviousLightConditionBySchedule);
-
-                    // show SCHEDULE temperature on the main screen
-                    // old:
-                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
-                    // new way:
-                    Message msgTemperature = new Message();
-                    msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
-                    // show SCHEDULE temperature on the vacation screen
-                    Message msgTemperature2 = new Message();
-                    msgTemperature2.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
-
-                    // show light condition (on the main screen)
-                    // new way:
-                    Message msgLight = new Message();
-                    msgLight.obj = toDrawable(nearestPreviousLightConditionBySchedule);
-                    lightConditionImageHandler.sendMessage(msgLight);
-
-                    // turn on the thermostat
-                    thermostatTURNED_ON = true;
-                }
-            }
-
-            // turn ON vacation mod if state says so (the checkbox was checked by user)
-            if (state.isVacation()) {
-                // check whether we turned it already
-                if (!vacationModTurnedOn) {
-
-                    // turn the mod on
-                    vacationModTurnedOn = true;
-
-                    // turn custom mod off
-                    customModTurnedOn = false;
-
-                    // uncheck(maybe non needed) custom mod checkbox (main screen)
-                    // and disable it
-                    //
-                    // NOTE:
-                    // (custom mod was already turned off in state
-                    // by setter of vacation mod)
-                    // so the checkbox automatically unchecked
-                    // customCheckBox.setChecked(false);
-                    // old: customCheckBox.setEnabled(false);
-                    // new way:
-                    Message msgCustom = new Message();
-                    msgCustom.obj = false;
-                    customCheckboxEnabledHandler.sendMessage(msgCustom);
-
-                    // turn on vacation temperature in state
-                    state.setTemperatureRoom(state.getVacationTemperature());
-
-                    // show vacation temperature on the main screen
-                    // old:
-                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
-                    // new way:
-                    Message msgTemperature = new Message();
-                    msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
-                    // show vacation temperature on the vacation screen
-                    Message msgTemperature2 = new Message();
-                    msgTemperature2.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
-                }
-            } else { // turn OFF vacation mod if state says so (the checkbox was unchecked by user)
-                // check whether we turned it OFF already
-                if (vacationModTurnedOn) {
-
-                    // turn the mod OFF
-                    vacationModTurnedOn = false;
-
-                    // turn on SCHEDULE temperature in state
-                    // set state like
-                    // the neareast previous change (by time) by schedule
-                    // happened
-                    LightCondition nearestPreviousLightConditionBySchedule =
-                            state.getLastChange().getTargetCondition();
-
-                    Temperature nearestPreviousTempBySchedule =
-                            toTemp(nearestPreviousLightConditionBySchedule);
-
-                    state.setTemperatureRoom(nearestPreviousTempBySchedule);
-                    state.setCurrentLightCondition(nearestPreviousLightConditionBySchedule);
-
-                    // enable custom mod checkbox
-                    // old: customCheckBox.setEnabled(true);
-                    // new way:
-                    Message msgCustom = new Message();
-                    msgCustom.obj = true;
-                    customCheckboxEnabledHandler.sendMessage(msgCustom);
-
-                    // show SCHEDULE temperature on the main screen
-                    // old:
-                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
-                    // new way:
-                    Message msgTemperature = new Message();
-                    msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
-                    // show SCHEDULE temperature on the vacation screen
-                    Message msgTemperature2 = new Message();
-                    msgTemperature2.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
-                }
-            }
-
-            // turn ON custom mod if state says so (the checkbox was checked by user)
-            if (state.isCustom()) {
-                // check whether we turned it ON already
-                if (!customModTurnedOn) {
-
-                    // turn the mod on
-                    customModTurnedOn = true;
-
-                    // turn on custom temperature in state
-                    state.setTemperatureRoom(state.getCustomTemperature());
-
-                    // show custom temperature on the main screen
-                    // old:
-                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
-                    // new way:
-                    Message msgTemperature = new Message();
-                    msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
-                    // show custom temperature on the vacation screen
-                    Message msgTemperature2 = new Message();
-                    msgTemperature2.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
-                }
-            } else { // turn OFF custom mod if state says so (the checkbox was unchecked by user)
-                // check whether we turned it OFF already
-                if (customModTurnedOn) {
-
-                    // turn the mod OFF
-                    customModTurnedOn = false;
-
-                    // turn on SCHEDULE temperature in state
-                    // set state like
-                    // the last change before custom mod was turned on
-                    // happened
-                    LightCondition lastConditionBeforeCustomModOn =
-                            state.getLastChange().getTargetCondition();
-                    Temperature lastTempBeforeCustomModOn = toTemp(lastConditionBeforeCustomModOn);
-                    state.setTemperatureRoom(lastTempBeforeCustomModOn);
-                    state.setCurrentLightCondition(lastConditionBeforeCustomModOn);
-
-                    // show SCHEDULE temperature on the main screen
-                    // old:
-                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
-                    // new way:
-                    Message msgTemperature = new Message();
-                    msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
-                    // show SCHEDULE temperature on the vacation screen
-                    Message msgTemperature2 = new Message();
-                    msgTemperature2.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
-                }
-            }
-
-            // get current thermostat time
-            int realMinsTotal = time.toMinutes();
-            Time currentTime = new Time(realMinsTotal); // time as time stamp
-
-            // check whether it is time to change (by schedule)
-            DaySchedule daySchedule = ws.getDaySchedule(state.getDayIndex());
-            TemperatureChange change = daySchedule.find(currentTime);
-
-            if (change != null) {
-
-                state.setLastChange(change);
-
-                if (!state.isVacation()) {
-                    if (state.isCustom()) {
-                        // off custom mode
-                        state.setCustom(false);
-                        customModTurnedOn = false;
-
-                        // uncheck checkbox 'custom' on main screen
-                        // old: customCheckBox.setChecked(false);
-                        // new way:
-                        Message msg = new Message();
-                        msg.obj = false;
-                        customCheckboxCheckedHandler.sendMessage(msg);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException interex) {
+                        // TODO: handle exception
                     }
 
-                    // change temperature in room (in state)
-                    // change light condition (in state)
-                    LightCondition targetLightCondition = change.getTargetCondition();
-                    state.setTemperatureRoom(toTemp(targetLightCondition));
-                    state.changeCurrentLightCondition();
 
-                    // show temperature in room (on the main screen)
-                    // old:
-                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
-                    // new way:
-                    Message msgTemperature = new Message();
-                    msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
-                    // show temperature in room (on the vacation screen)
-                    Message msgTemperature2 = new Message();
-                    msgTemperature2.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
-
-                    // show light condition (on the main screen)
-                    // old: lightConditionImageView.setBackground(toDrawable(targetLightCondition));
-                    // new way:
-                    Message msgLight = new Message();
-                    msgLight.obj = toDrawable(targetLightCondition);
-                    lightConditionImageHandler.sendMessage(msgLight);
+                    return;
                 }
-            }
 
-            time.incrementTime();
+                if (temperatureRoomVacationHandler == null) {
+                    Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
 
-            if (time.checkMidnight()) {
-                state.incrementDayIndex();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException interex) {
+                        // TODO: handle exception
+                    }
 
-                // TODO: PERFORM A MIDNIGHT CHANGE
-                // note: think of situation when user sets
-                // TemperatureChange on midnight
-                // note: think of situations when
-                // it is needed at all
-            }
-            }
-            catch(Exception ex) {
+                    return;
+                }
+
+                // // show current GAME time on the main screen
+                Message msgCurrentTime = new Message();
+                msgCurrentTime.obj = time.toString();
+                currentTimeHandler.sendMessage(msgCurrentTime);
+
+                // initial change (done once)
+                if (thermostatWORKS) {
+                    if (!thermostatTURNED_ON) {
+                        // set default settings
+                        // turn on SCHEDULE temperature in state
+                        // set state like
+                        // the neareast previous change (by time) by schedule
+                        // happened
+                        LightCondition nearestPreviousLightConditionBySchedule =
+                                state.getLastChange().getTargetCondition();
+
+                        Temperature nearestPreviousTempBySchedule =
+                                toTemp(nearestPreviousLightConditionBySchedule);
+
+                        state.setTemperatureRoom(nearestPreviousTempBySchedule);
+                        state.setCurrentLightCondition(nearestPreviousLightConditionBySchedule);
+
+                        // show SCHEDULE temperature on the main screen
+                        // old:
+                        // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                        // new way:
+                        Message msgTemperature = new Message();
+                        msgTemperature.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                        // show SCHEDULE temperature on the vacation screen
+                        Message msgTemperature2 = new Message();
+                        msgTemperature2.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+
+                        // show light condition (on the main screen)
+                        // new way:
+                        Message msgLight = new Message();
+                        msgLight.obj = toDrawable(nearestPreviousLightConditionBySchedule);
+                        lightConditionImageHandler.sendMessage(msgLight);
+
+                        // turn on the thermostat
+                        thermostatTURNED_ON = true;
+                    }
+                }
+
+                // turn ON vacation mod if state says so (the checkbox was checked by user)
+                if (state.isVacation()) {
+                    // check whether we turned it already
+                    if (!vacationModTurnedOn) {
+
+                        // turn the mod on
+                        vacationModTurnedOn = true;
+
+                        // turn custom mod off
+                        customModTurnedOn = false;
+
+                        // uncheck(maybe non needed) custom mod checkbox (main screen)
+                        // and disable it
+                        //
+                        // NOTE:
+                        // (custom mod was already turned off in state
+                        // by setter of vacation mod)
+                        // so the checkbox automatically unchecked
+                        // customCheckBox.setChecked(false);
+                        // old: customCheckBox.setEnabled(false);
+                        // new way:
+                        Message msgCustom = new Message();
+                        msgCustom.obj = false;
+                        customCheckboxEnabledHandler.sendMessage(msgCustom);
+
+                        // turn on vacation temperature in state
+                        state.setTemperatureRoom(state.getVacationTemperature());
+
+                        // show vacation temperature on the main screen
+                        // old:
+                        // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                        // new way:
+                        Message msgTemperature = new Message();
+                        msgTemperature.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                        // show vacation temperature on the vacation screen
+                        Message msgTemperature2 = new Message();
+                        msgTemperature2.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                    }
+                } else { // turn OFF vacation mod if state says so (the checkbox was unchecked by user)
+                    // check whether we turned it OFF already
+                    if (vacationModTurnedOn) {
+
+                        // turn the mod OFF
+                        vacationModTurnedOn = false;
+
+                        // turn on SCHEDULE temperature in state
+                        // set state like
+                        // the neareast previous change (by time) by schedule
+                        // happened
+                        LightCondition nearestPreviousLightConditionBySchedule =
+                                state.getLastChange().getTargetCondition();
+
+                        Temperature nearestPreviousTempBySchedule =
+                                toTemp(nearestPreviousLightConditionBySchedule);
+
+                        state.setTemperatureRoom(nearestPreviousTempBySchedule);
+                        state.setCurrentLightCondition(nearestPreviousLightConditionBySchedule);
+
+                        // enable custom mod checkbox
+                        // old: customCheckBox.setEnabled(true);
+                        // new way:
+                        Message msgCustom = new Message();
+                        msgCustom.obj = true;
+                        customCheckboxEnabledHandler.sendMessage(msgCustom);
+
+                        // show SCHEDULE temperature on the main screen
+                        // old:
+                        // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                        // new way:
+                        Message msgTemperature = new Message();
+                        msgTemperature.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                        // show SCHEDULE temperature on the vacation screen
+                        Message msgTemperature2 = new Message();
+                        msgTemperature2.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                    }
+                }
+
+                // turn ON custom mod if state says so (the checkbox was checked by user)
+                if (state.isCustom()) {
+                    // check whether we turned it ON already
+                    if (!customModTurnedOn) {
+
+                        // turn the mod on
+                        customModTurnedOn = true;
+
+                        // turn on custom temperature in state
+                        state.setTemperatureRoom(state.getCustomTemperature());
+
+                        // show custom temperature on the main screen
+                        // old:
+                        // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                        // new way:
+                        Message msgTemperature = new Message();
+                        msgTemperature.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                        // show custom temperature on the vacation screen
+                        Message msgTemperature2 = new Message();
+                        msgTemperature2.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                    }
+                } else { // turn OFF custom mod if state says so (the checkbox was unchecked by user)
+                    // check whether we turned it OFF already
+                    if (customModTurnedOn) {
+
+                        // turn the mod OFF
+                        customModTurnedOn = false;
+
+                        // turn on SCHEDULE temperature in state
+                        // set state like
+                        // the last change before custom mod was turned on
+                        // happened
+                        LightCondition lastConditionBeforeCustomModOn =
+                                state.getLastChange().getTargetCondition();
+                        Temperature lastTempBeforeCustomModOn = toTemp(lastConditionBeforeCustomModOn);
+                        state.setTemperatureRoom(lastTempBeforeCustomModOn);
+                        state.setCurrentLightCondition(lastConditionBeforeCustomModOn);
+
+                        // show SCHEDULE temperature on the main screen
+                        // old:
+                        // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                        // new way:
+                        Message msgTemperature = new Message();
+                        msgTemperature.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                        // show SCHEDULE temperature on the vacation screen
+                        Message msgTemperature2 = new Message();
+                        msgTemperature2.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                    }
+                }
+
+                // get current thermostat time
+                int realMinsTotal = time.toMinutes();
+                Time currentTime = new Time(realMinsTotal); // time as time stamp
+
+                // check whether it is time to change (by schedule)
+                DaySchedule daySchedule = ws.getDaySchedule(state.getDayIndex());
+                TemperatureChange change = daySchedule.find(currentTime);
+
+                if (change != null) {
+
+                    state.setLastChange(change);
+
+                    if (!state.isVacation()) {
+                        if (state.isCustom()) {
+                            // off custom mode
+                            state.setCustom(false);
+                            customModTurnedOn = false;
+
+                            // uncheck checkbox 'custom' on main screen
+                            // old: customCheckBox.setChecked(false);
+                            // new way:
+                            Message msg = new Message();
+                            msg.obj = false;
+                            customCheckboxCheckedHandler.sendMessage(msg);
+                        }
+
+                        // change temperature in room (in state)
+                        // change light condition (in state)
+                        LightCondition targetLightCondition = change.getTargetCondition();
+                        state.setTemperatureRoom(toTemp(targetLightCondition));
+                        state.changeCurrentLightCondition();
+
+                        // show temperature in room (on the main screen)
+                        // old:
+                        // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                        // new way:
+                        Message msgTemperature = new Message();
+                        msgTemperature.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                        // show temperature in room (on the vacation screen)
+                        Message msgTemperature2 = new Message();
+                        msgTemperature2.obj = state.getTemperatureRoom().toString();
+                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+
+                        // show light condition (on the main screen)
+                        // old: lightConditionImageView.setBackground(toDrawable(targetLightCondition));
+                        // new way:
+                        Message msgLight = new Message();
+                        msgLight.obj = toDrawable(targetLightCondition);
+                        lightConditionImageHandler.sendMessage(msgLight);
+                    }
+                }
+
+                time.incrementTime();
+
+                if (time.checkMidnight()) {
+                    state.incrementDayIndex();
+
+                    // TODO: PERFORM A MIDNIGHT CHANGE
+                    // note: think of situation when user sets
+                    // TemperatureChange on midnight
+                    // note: think of situations when
+                    // it is needed at all
+                }
+            } catch (Exception ex) {
 
             }
         }

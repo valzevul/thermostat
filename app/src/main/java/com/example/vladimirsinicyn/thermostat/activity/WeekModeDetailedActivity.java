@@ -374,7 +374,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-
+        try{
         int changeIndex = 1 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -412,6 +412,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_1);
         time.setText(change.getTime().toString());
+        } catch (Exception ex) {
+
+        }
     }
 
     /**
@@ -426,7 +429,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-
+        try{
         int changeIndex = 2 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -464,6 +467,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_2);
         time.setText(change.getTime().toString());
+        } catch (Exception ex) {
+
+        }
     }
 
     /**
@@ -478,7 +484,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-
+        try{
         int changeIndex = 3 - 1;
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
@@ -516,6 +522,9 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_3);
         time.setText(change.getTime().toString());
+        } catch (Exception ex) {
+
+        }
     }
 
     /**
@@ -530,7 +539,7 @@ public class WeekModeDetailedActivity extends Activity {
         // check the allowed interval of time in which we can change it
         // check lower bound - find previous change
         // check upper bound - find next change
-        try {
+        try{
             int changeIndex = 4 - 1;
             TemperatureChange change = schedule.getChange(changeIndex);
             Time changeTime = change.getTime();
@@ -568,8 +577,7 @@ public class WeekModeDetailedActivity extends Activity {
             // show the new time of the change on the screen
             TextView time = (TextView) findViewById(R.id.time_4);
             time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -624,8 +632,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_5);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -680,8 +687,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_6);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -736,8 +742,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_7);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -792,8 +797,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_8);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -848,8 +852,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_9);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -904,8 +907,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_10);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -962,8 +964,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_1);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1018,8 +1019,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_2);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1074,8 +1074,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_3);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1130,8 +1129,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_4);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1186,8 +1184,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_5);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1242,8 +1239,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_6);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1298,8 +1294,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_7);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1354,8 +1349,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_8);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1410,8 +1404,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_9);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
@@ -1466,8 +1459,7 @@ public class WeekModeDetailedActivity extends Activity {
         // show the new time of the change on the screen
         TextView time = (TextView) findViewById(R.id.time_10);
         time.setText(change.getTime().toString());
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
