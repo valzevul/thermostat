@@ -157,8 +157,9 @@ public class ThermostatState implements Serializable {
         ObjectInputStream oin = new ObjectInputStream(fis);
 
         ThermostatState state = (ThermostatState) oin.readObject();
-        // TODO: INIT LAST CHANGE according to current TIME
-        // that is: find nearest previous TemperatureChange of current day
+        TemperatureChange temperatureChange = state.getWeekSchedule().getDaySchedule(dayIndex).findClosestLess(time);
+
+        state.lastChange = temperatureChange;
 
         return state;
     }
