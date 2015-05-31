@@ -28,7 +28,7 @@ public class Time implements Serializable,  TimeInterface{
         parseTime(temp);
     }
 
-    public void decrement() throws Exception {
+    public void decrementTime() throws Exception {
 
         int temp = toMinutes();
 

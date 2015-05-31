@@ -28,7 +28,6 @@ public class WeekModeDetailedActivity extends Activity {
     private int index;
     private static TCConroller conroller;
     private DaySchedule schedule;
-    private int numOfChanges = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,142 +69,132 @@ public class WeekModeDetailedActivity extends Activity {
         weekday.setText(dayOfWeek);
 
         schedule = conroller.getSchedule(index);
-        ArrayList<TemperatureChange> changes = schedule.getChanges();
 
+//        ArrayList<TemperatureChange> changes = schedule.getChanges();
 //        for (int i = 0; i < DaySchedule.MAX_TODAY + DaySchedule.MAX_TONIGHT; i++) {
-//            if (changes.get(i) == null) {
+//            if (schedule.getChange(i) == null) {
 //
 //            }
 //        }
 
         int i = 0;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.first_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.first_layout);
             TextView time = (TextView) findViewById(R.id.time_1);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.second_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.second_layout);
             TextView time = (TextView) findViewById(R.id.time_2);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.third_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.third_layout);
             TextView time = (TextView) findViewById(R.id.time_3);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fourth_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fourth_layout);
             TextView time = (TextView) findViewById(R.id.time_4);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fifth_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.fifth_layout);
             TextView time = (TextView) findViewById(R.id.time_5);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.sixth_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.sixth_layout);
             TextView time = (TextView) findViewById(R.id.time_6);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
             TextView time = (TextView) findViewById(R.id.time_7);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.eighth_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.eighth_layout);
             TextView time = (TextView) findViewById(R.id.time_8);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.nineth_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.nineth_layout);
             TextView time = (TextView) findViewById(R.id.time_9);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
         i++;
 
-        if (changes.size() < i + 1) {
+        if (schedule.getNumberOfChanges() < i + 1) {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.tenth_layout);
             layout.setVisibility(View.GONE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.tenth_layout);
             TextView time = (TextView) findViewById(R.id.time_10);
-            TemperatureChange change = changes.get(i);
+            TemperatureChange change = schedule.getChange(i);
             time.setText(change.getTime().toString());
-            numOfChanges++;
             layout.setVisibility(View.VISIBLE);
         }
     }
@@ -291,7 +280,7 @@ public class WeekModeDetailedActivity extends Activity {
         RelativeLayout newLayout = getNewLayout(newTime);
         newLayout.setVisibility(View.VISIBLE);
 
-        numOfChanges++;
+
         // old code
 //        LightCondition targetLightCondition = LightCondition.DAY;
 //        Time time = new Time(0);
@@ -314,7 +303,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         RelativeLayout newLayout = null;
         TextView time;
-        switch (numOfChanges) {
+        switch (schedule.getNumberOfChanges()) {
             case 0:
                 newLayout = (RelativeLayout) findViewById(R.id.first_layout);
                 time = (TextView) findViewById(R.id.time_1);
@@ -370,5 +359,28 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         return newLayout;
+    }
+
+    /**
+     * if this method was called it means that
+     * the first change is initialised and is visible
+     *
+     * @param view
+     */
+    public void handleDownArrow1(View view) {
+        TextView time1view = (TextView) findViewById(R.id.time_1);
+        // TODO: check the allowed interval of time in which we can change it
+        // TODO: check lower bound - find previous change
+        // TODO: check higher bound - find next change
+
+        int changeIndex = 1 - 1;
+        TemperatureChange firstChange = schedule.getChange(changeIndex);
+
+
+        // TODO: change state (time) of the chosen TempChange
+
+
+        // TODO: show the new time of the change on the screen
+
     }
 }
