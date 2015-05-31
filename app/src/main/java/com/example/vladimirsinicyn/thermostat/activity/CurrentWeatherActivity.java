@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Handler;
 import android.text.InputType;
@@ -125,6 +126,9 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
             }
         };
         conroller.setCurrentTimeHandler(currentTimeHandler);
+
+        Looper mainLooper = getMainLooper();
+        conroller.setMainLooper(mainLooper);
     }
 
 

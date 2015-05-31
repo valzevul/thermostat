@@ -2,6 +2,7 @@ package com.example.vladimirsinicyn.thermostat;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -19,6 +20,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TCConroller {
+
+
+    private Looper mainLooper;
+
+    public void setMainLooper(Looper looper) {
+        mainLooper = looper;
+    }
 
     private boolean thermostatWORKS = false;
     private boolean thermostatTURNED_ON = false;
@@ -96,6 +104,8 @@ public class TCConroller {
         timer.scheduleAtFixedRate(new TCTimerTask(), 0, msInMin / timeFactor);
 
         thermostatWORKS = true;
+
+
     }
 
     // TODO: fix wrong day of week
@@ -288,12 +298,20 @@ public class TCConroller {
          */
         @Override
         public void run() {
+            try{
+//            int TIMEOUT = 100; // 100 ms
+//            try {
+//                mainLooper.getThread().join(TIMEOUT);
+//            } catch (InterruptedException interex) {
+//                // TODO: handle the exception
+//            }
+
 
             if (temperatureRoomCustomHandler == null) {
                 Log.i("TIMER", "SKIP temperatureRoomCustomHandler");
 
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException interex) {
                     // TODO: handle exception
                 }
@@ -306,7 +324,7 @@ public class TCConroller {
                 Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
 
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException interex) {
                     // TODO: handle exception
                 }
@@ -557,6 +575,10 @@ public class TCConroller {
                 // TemperatureChange on midnight
                 // note: think of situations when
                 // it is needed at all
+            }
+            }
+            catch(Exception ex) {
+
             }
         }
     }

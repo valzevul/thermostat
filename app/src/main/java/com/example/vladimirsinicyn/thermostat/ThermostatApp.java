@@ -15,6 +15,8 @@ public class ThermostatApp extends Application {
             conroller = new TCConroller();
             exists = true;
         }
+
+        //getMainLooper();
     }
 
     public TCConroller getConroller() {
