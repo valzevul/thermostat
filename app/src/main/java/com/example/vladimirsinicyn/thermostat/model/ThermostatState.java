@@ -163,6 +163,4 @@ public class ThermostatState implements Serializable {
 
         return state;
     }
-
-
 }
