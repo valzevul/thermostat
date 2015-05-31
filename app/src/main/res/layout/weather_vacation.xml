@@ -59,7 +59,7 @@
             android:layout_height="fill_parent">
 
             <TextView
-                android:id="@+id/textViewProgress"
+                android:id="@+id/textViewProgressVacation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/textViewProgress"
+                android:layout_below="@+id/textViewProgressVacation"
                 android:text="5°C"
                 android:layout_marginTop="80px"
                 android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/textViewProgress"
+                android:layout_below="@+id/textViewProgressVacation"
                 android:layout_marginTop="80px"
                 android:text="40°C"
                 android:textAppearance="?android:attr/textAppearanceLarge"></TextView>

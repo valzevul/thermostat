@@ -19,6 +19,7 @@ import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 import com.example.vladimirsinicyn.thermostat.model.LightCondition;
+import com.example.vladimirsinicyn.thermostat.model.Temperature;
 
 
 public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
@@ -48,7 +49,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         // seek bar handle
         bar = (SeekBar) findViewById(R.id.seekBar1);
         bar.setOnSeekBarChangeListener(this);
-        bar.setMax(ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP);
+        bar.setMax((ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP) * 10);
 
         // set checkbox of custom mod to the right state (enabled/disabled and checked/unchecked)
         final CheckBox customCheckBox = (CheckBox) findViewById(R.id.chkCustom);
@@ -101,6 +102,10 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
             }
         };
         conroller.setLightConditionImageHandler(lightConditionImageHandler);
+
+        // set textview of custom temperature to the right state
+        final TextView textViewProgressCustom = (TextView) findViewById(R.id.textViewProgressCustom);
+        textViewProgressCustom.setText("↓ " + conroller.getCustomTemperature() + "°C");
     }
 
 
@@ -177,6 +182,17 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+        // count new custom temperature
+        int tempWhole = (progress / 10) + 5;
+        int tempFrac = progress % 10;
+        Temperature newCustomTemp = new Temperature(tempWhole, tempFrac);
+
+        // change custom temperature in state
+        conroller.setCustomTemperature(newCustomTemp);
+
+        // show it on this screen (main screen)
+        TextView textViewProgressCustom = (TextView) findViewById(R.id.textViewProgressCustom);
+        textViewProgressCustom.setText("↓ " + newCustomTemp + "°C");
     }
 
     /**

@@ -209,6 +209,25 @@ public class TCConroller {
     }
 // ====== END VACATION/CUSTOM MODS GETTERS/SETTERS  ======
 
+// ====== VACATION/CUSTOM TEMPERATURE GETTERS/SETTERS  ======
+    public Temperature getCustomTemperature() {
+        return state.getCustomTemperature();
+    }
+
+    public void setCustomTemperature(Temperature newCustomTemperature) {
+        state.setCustomTemperature(newCustomTemperature);
+    }
+
+    public Temperature getVacationTemperature() {
+        return state.getVacationTemperature();
+    }
+
+    public void setVacationTemperature(Temperature newVacationTemperature) {
+        state.setVacationTemperature(newVacationTemperature);
+    }
+
+// ====== END VACATION/CUSTOM TEMPERATURE GETTERS/SETTERS  ======
+
     public void setMoonImage(Drawable moon) {
         this.moon = moon;
     }
