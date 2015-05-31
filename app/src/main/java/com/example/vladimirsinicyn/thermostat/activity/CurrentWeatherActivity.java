@@ -2,11 +2,15 @@ package com.example.vladimirsinicyn.thermostat.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Message;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,12 +18,18 @@ import android.widget.TextView;
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
+import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 
 
 public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
 
     private static TCConroller conroller;
     private SeekBar bar;
+
+    private Handler temperatureRoomHandler;
+    private Handler customCheckboxCheckedHandler;
+    private Handler customCheckboxEnabledHandler;
+    private Handler lightConditionImageHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +42,65 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         app.initContorller();
         conroller = app.getConroller();
 
+        conroller.setSunImage(getResources().getDrawable(R.drawable.sun));
+        conroller.setMoonImage(getResources().getDrawable(R.drawable.moon));
+
         // seek bar handle
         bar = (SeekBar) findViewById(R.id.seekBar1);
         bar.setOnSeekBarChangeListener(this);
         bar.setMax(ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP);
 
         // set checkbox of custom mod to the right state
-        CheckBox customCheckBox = (CheckBox) findViewById(R.id.chkCustom);
+        final CheckBox customCheckBox = (CheckBox) findViewById(R.id.chkCustom);
         customCheckBox.setChecked(conroller.getCustom());
+        customCheckBox.setEnabled(!conroller.getVacation());
         // save checkbox 'custom mod' in controller
-        conroller.setCustomCheckBox(customCheckBox);
+        // old way: conroller.setCustomCheckBox(customCheckBox);
+        //new way!
+        customCheckboxCheckedHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                boolean custom = (boolean) msg.obj;
+                customCheckBox.setChecked(custom);
+            }
+        };
+        conroller.setCustomCheckboxCheckedHandler(customCheckboxCheckedHandler);
+        customCheckboxEnabledHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                boolean enabled = (boolean) msg.obj;
+                customCheckBox.setEnabled(enabled);
+            }
+        };
+        conroller.setCustomCheckboxEnabledHandler(customCheckboxEnabledHandler);
+
+
+        // set textview of room temperature to the right state
+        final TextView mainScreenRoomTemperature = (TextView) findViewById(R.id.day_degree_textView);
+        mainScreenRoomTemperature.setText(conroller.getTemperatureRoom().toString() + "°C");
+        // save textview of room temperature (current) in contoller
+        // old way: conroller.setTemperatureRoomTextView(mainScreenRoomTemperature);
+        //new way!
+        temperatureRoomHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                String text = (String) msg.obj;
+                mainScreenRoomTemperature.setText(text + "°C");
+            }
+        };
+        conroller.setTemperatureRoomHandler(temperatureRoomHandler);
+
+        // set imageview of light condition to the right state
+        final ImageView lightConditionImageView = (ImageView) findViewById(R.id.light_condition_image);
+        LightCondition lightCondition = conroller.getLightCondition();
+        lightConditionImageView.setBackground(toDrawable(lightCondition));
+        // save imageview of light condition (current) in contoller
+        // old way: conroller.setLightConditionImageView(lightConditionImageView);
+        //new way!
+        lightConditionImageHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                Drawable d = (Drawable) msg.obj;
+                lightConditionImageView.setBackground(d);
+            }
+        };
+        conroller.setLightConditionImageHandler(lightConditionImageHandler);
     }
 
 
@@ -66,7 +125,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         if (id == R.id.action_load) {
 
             // load schedule
-            // get name of the file
+            // TODO: get name of the file
 
             return true;
         }
@@ -151,7 +210,12 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         }
     }
 
-//    public static void uncheckCustomMod() {
-//        CheckBox checkVacationBox = (CheckBox) findViewById(R.id.night_degree_textView);
-//    }
+    // auxiliary method LIGHTCONDITION --> DRAWABLE (PICTURE OF CONDITION)
+    public Drawable toDrawable(LightCondition lightCondition) {
+        if (lightCondition == LightCondition.DAY) {
+            return getResources().getDrawable(R.drawable.sun);
+        } else {
+            return getResources().getDrawable(R.drawable.moon);
+        }
+    }
 }

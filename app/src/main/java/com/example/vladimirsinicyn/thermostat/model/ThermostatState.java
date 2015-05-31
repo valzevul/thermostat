@@ -24,7 +24,7 @@ public class ThermostatState implements Serializable {
     public ThermostatState() {
         weekSchedule = new WeekSchedule();
 
-        temperatureRoom = new Temperature(22, 8);
+        temperatureRoom = weekSchedule.getDayTemperature();
 
         customTemperature = new Temperature(20, 5);
         vacationTemperature = new Temperature(15, 5);
@@ -88,9 +88,9 @@ public class ThermostatState implements Serializable {
     }
 
     public void setCustom(boolean customModOn) {
-        if (vacationModOn) {
-            return;
-        }
+//        if (vacationModOn) {
+//            return;
+//        }
         this.customModOn = customModOn;
     }
 
@@ -114,8 +114,13 @@ public class ThermostatState implements Serializable {
         this.changed = changed;
     }
 
-    public LightCondition getCurrentLightCondition() {
-        return currentLightCondition;
+
+    public TemperatureChange getLastChange() {
+        return lastChange;
+    }
+
+    public void setLastChange(TemperatureChange lastChange) {
+        this.lastChange = lastChange;
     }
 
     public void changeCurrentLightCondition() {
@@ -126,12 +131,12 @@ public class ThermostatState implements Serializable {
         }
     }
 
-    public TemperatureChange getLastChange() {
-        return lastChange;
+    public LightCondition getCurrentLightCondition() {
+        return currentLightCondition;
     }
 
-    public void setLastChange(TemperatureChange lastChange) {
-        this.lastChange = lastChange;
+    public void setCurrentLightCondition(LightCondition currentLightCondition) {
+        this.currentLightCondition = currentLightCondition;
     }
 
     // ============ END GETTERS/SETTERS ============

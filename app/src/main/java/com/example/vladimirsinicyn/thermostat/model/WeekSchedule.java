@@ -16,7 +16,7 @@ public class WeekSchedule implements Serializable {
 
     // midnight change
     public static final TemperatureChange midnightTemperatureChange =
-            new TemperatureChange(LightCondition.DAY, new Time(0));       // 00:00
+            new TemperatureChange(LightCondition.NIGHT, new Time(0));       // 00:00
 
     private ArrayList<DaySchedule> schedule;
 

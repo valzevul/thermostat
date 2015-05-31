@@ -1,7 +1,12 @@
 package com.example.vladimirsinicyn.thermostat;
 
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
@@ -18,17 +23,15 @@ import java.util.TimerTask;
 
 public class TCConroller {
 
+    private boolean thermostatWORKS = false;
+    private boolean thermostatTURNED_ON = false;
+
     private Time time; // the time of all thermostat
 
-    private ThermostatState state;
+    private ThermostatState state; // the state of all thermostat
     private WeekSchedule ws; // current working week schedule
 
-    private final int timeFactor = 300; // times faster than real time
-
-//    private CurrentWeatherActivity currentWeatherActivity;
-//    private VacationWeatherActivity vacationWeatherActivity;
-//    private WeekModeDetailedActivity weekModeDetailedActivity;
-//    private WeekModeFullActivity weekModeFullActivity;
+    private final int timeFactor = 600;//300; // times faster than real time
 
     // *.ModTurnedOn variables needed to indicate whether
     // room temperature is changed to the mod temperature
@@ -38,8 +41,20 @@ public class TCConroller {
     private boolean customModTurnedOn = false;
     private boolean vacationModTurnedOn = false;
 
+    // these fields are references to different controls
+    // to change view when it is needed (according to changes of state [model])
     private CheckBox customCheckBox;
     private CheckBox vacationCheckBox;
+    private TextView temperatureRoomTextView; // showed on the main screen
+    private ImageView lightConditionImageView; // showed on the main screen
+
+    private Drawable sun;
+    private Drawable moon;
+
+    private Handler temperatureRoomHandler;
+    private Handler customCheckboxCheckedHandler;
+    private Handler customCheckboxEnabledHandler;
+    private Handler lightConditionImageHandler;
 
     public TCConroller() {
         //Log.i("TCController", "TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -86,6 +101,8 @@ public class TCConroller {
         // 200 ms of real time
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TCTimerTask(), 0, msInMin / timeFactor);
+
+        thermostatWORKS = true;
     }
 
     // TODO: fix wrong day of week
@@ -99,6 +116,25 @@ public class TCConroller {
         // whereas ANDROID (Calendar class) has sunday = 1, saturday = 7
         return dow - 1;
     }
+
+
+// ====== HANDLERS OF ACTIVITIES SETTERS ======
+    public void setTemperatureRoomHandler(Handler temperatureRoomHandler) {
+        this.temperatureRoomHandler = temperatureRoomHandler;
+    }
+
+    public void setCustomCheckboxCheckedHandler(Handler customCheckboxCheckedHandler) {
+        this.customCheckboxCheckedHandler = customCheckboxCheckedHandler;
+    }
+
+    public void setCustomCheckboxEnabledHandler(Handler customCheckboxEnabledHandler) {
+        this.customCheckboxEnabledHandler = customCheckboxEnabledHandler;
+    }
+
+    public void setLightConditionImageHandler(Handler lightConditionImageHandler) {
+        this.lightConditionImageHandler = lightConditionImageHandler;
+    }
+    // ====== END HANDLERS OF ACTIVITIES SETTERS ======
 
 // ====== WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
     public Temperature getNightTemperature() {
@@ -126,10 +162,18 @@ public class TCConroller {
     }
 // ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
+// ====== CURRENT ROOM TEMPERATURE AND LIGHT CONDITION GETTERS and INCR/DECREMENTS ======
+    public Temperature getTemperatureRoom() {
+        return state.getTemperatureRoom();
+    }
+
+    public LightCondition getLightCondition() {
+        return state.getCurrentLightCondition();
+    }
+// ====== END CURRENT ROOM TEMPERATURE AND LIGHT CONDITION GETTERS and INCR/DECREMENTS ======
+
 // ====== CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
-
     // TODO: write code here
-
 // ====== END CUSTOM TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
 // ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
@@ -146,6 +190,7 @@ public class TCConroller {
     }
 // ====== END WEEK SCHEDULE SAVE/LOAD ======
 
+    // TODO: use it and wrap with =====___====== comments
     TemperatureChange getNextChange() {
 
         return new TemperatureChange(LightCondition.DAY, time); // TODO: do it right
@@ -170,7 +215,6 @@ public class TCConroller {
 // ====== END VACATION/CUSTOM MODS GETTERS/SETTERS  ======
 
 // ====== VACATION/CUSTOM MODS CHECKBOXES GETTERS/SETTERS  ======
-
     public CheckBox getCustomCheckox() {
         return customCheckBox;
     }
@@ -186,9 +230,35 @@ public class TCConroller {
     public void setVacationCheckBox(CheckBox checkBox) {
         vacationCheckBox = checkBox;
     }
-
 // ====== END VACATION/CUSTOM MODS CHECKBOXES GETTERS/SETTERS  ======
 
+// ====== ROOM TEMPERATURE TEXTVIEW AND LIGHT CONDITION IMAGEVIEW ON MAIN SCREEN GETTERS/SETTERS  ======
+    public TextView getTemperatureRoomTextView() {
+        return temperatureRoomTextView;
+    }
+
+    public void setTemperatureRoomTextView(TextView temperatureRoomTextView) {
+        this.temperatureRoomTextView = temperatureRoomTextView;
+    }
+
+    public ImageView getLightConditionImageView() {
+        return lightConditionImageView;
+    }
+
+    public void setLightConditionImageView(ImageView lightConditionImageView) {
+        this.lightConditionImageView = lightConditionImageView;
+    }
+    // ====== END ROOM TEMPERATURE TEXTVIEW AND LIGHT CONDITION IMAGEVIEW ON MAIN SCREEN GETTERS/SETTERS  ======
+
+    public void setMoonImage(Drawable moon) {
+        this.moon = moon;
+    }
+
+    public void setSunImage(Drawable sun) {
+        this.sun = sun;
+    }
+
+    // auxiliary method LIGHTCONDITION --> TEMPERATURE
     private Temperature toTemp(LightCondition lightCondition) {
         if (lightCondition == LightCondition.DAY) {
             return ws.getDayTemperature();
@@ -197,6 +267,23 @@ public class TCConroller {
         }
     }
 
+    // auxiliary method LIGHTCONDITION --> DRAWABLE (PICTURE OF CONDITION)
+    public Drawable toDrawable(LightCondition lightCondition) {
+        if (lightCondition == LightCondition.DAY) {
+            return sun;
+        } else {
+            return moon;
+        }
+    }
+
+// ====== The TimerTack class  ======
+
+    /**
+     * specifies what should happen every minute of
+     * out (not real) time
+     *
+     * and changes state [model] and view [screens/activities]
+     */
     private class TCTimerTask extends TimerTask {
 
         /** happens every minute
@@ -214,6 +301,51 @@ public class TCConroller {
         @Override
         public void run() {
 
+            if (temperatureRoomHandler == null) {
+                Log.i("TIMER", "SKIP temperatureRoomHandler");
+                return;
+            }
+
+            // initial change (done once)
+            if (thermostatWORKS) {
+                if (!thermostatTURNED_ON) {
+                    // set default settings
+                    // turn on SCHEDULE temperature in state
+                    // set state like
+                    // the neareast previous change (by time) by schedule
+                    // happened
+                    LightCondition nearestPreviousLightConditionBySchedule =
+                            state.getLastChange().getTargetCondition();
+
+                    Temperature nearestPreviousTempBySchedule =
+                            toTemp(nearestPreviousLightConditionBySchedule);
+
+                    state.setTemperatureRoom(nearestPreviousTempBySchedule);
+                    state.setCurrentLightCondition(nearestPreviousLightConditionBySchedule);
+
+                    // show SCHEDULE temperature on the main screen
+                    // old:
+                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                    // new way:
+                    Message msgTemperature = new Message();
+                    msgTemperature.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomHandler.sendMessage(msgTemperature);
+
+                    // show light condition (on the main screen)
+                    // new way:
+                    Message msgLight = new Message();
+                    msgLight.obj = toDrawable(nearestPreviousLightConditionBySchedule);
+                    lightConditionImageHandler.sendMessage(msgLight);
+
+                    // turn on the thermostat
+                    thermostatTURNED_ON = true;
+                }
+            }
+
+//            Message msg = new Message();
+//            msg.obj = "57.0";
+//            temperatureRoomHandler.sendMessage(msg);
+
             // turn ON vacation mod if state says so (the checkbox was checked by user)
             if (state.isVacation()) {
                 // check whether we turned it already
@@ -222,17 +354,33 @@ public class TCConroller {
                     // turn the mod on
                     vacationModTurnedOn = true;
 
-                    // uncheck custom mod and disable the custom checkbox
+                    // turn custom mod off
+                    customModTurnedOn = false;
+
+                    // uncheck(maybe non needed) custom mod checkbox (main screen)
+                    // and disable it
+                    //
                     // NOTE:
                     // (custom mod was already turned off in state
                     // by setter of vacation mod)
-                    customCheckBox.setChecked(false);
-                    customCheckBox.setEnabled(false);
+                    // so the checkbox automatically unchecked
+                    // customCheckBox.setChecked(false);
+                    // old: customCheckBox.setEnabled(false);
+                    // new way:
+                    Message msgCustom = new Message();
+                    msgCustom.obj = false;
+                    customCheckboxEnabledHandler.sendMessage(msgCustom);
 
                     // turn on vacation temperature in state
                     state.setTemperatureRoom(state.getVacationTemperature());
 
-                    // TODO: show vacation temperature on the main screen
+                    // show vacation temperature on the main screen
+                    // old:
+                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                    // new way:
+                    Message msgTemperature = new Message();
+                    msgTemperature.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomHandler.sendMessage(msgTemperature);
                 }
             } else { // turn OFF vacation mod if state says so (the checkbox was unchecked by user)
                 // check whether we turned it OFF already
@@ -252,12 +400,22 @@ public class TCConroller {
                             toTemp(nearestPreviousLightConditionBySchedule);
 
                     state.setTemperatureRoom(nearestPreviousTempBySchedule);
+                    state.setCurrentLightCondition(nearestPreviousLightConditionBySchedule);
 
                     // enable custom mod checkbox
-                    customCheckBox.setEnabled(true);
+                    // old: customCheckBox.setEnabled(true);
+                    // new way:
+                    Message msgCustom = new Message();
+                    msgCustom.obj = true;
+                    customCheckboxEnabledHandler.sendMessage(msgCustom);
 
-                    // TODO: show SCHEDULE temperature on the main screen
-                    // show state.getTemperatureRoom
+                    // show SCHEDULE temperature on the main screen
+                    // old:
+                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                    // new way:
+                    Message msgTemperature = new Message();
+                    msgTemperature.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomHandler.sendMessage(msgTemperature);
                 }
             }
 
@@ -272,7 +430,13 @@ public class TCConroller {
                     // turn on custom temperature in state
                     state.setTemperatureRoom(state.getCustomTemperature());
 
-                    // TODO: show custom temperature on the main screen
+                    // show custom temperature on the main screen
+                    // old:
+                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                    // new way:
+                    Message msg = new Message();
+                    msg.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomHandler.sendMessage(msg);
                 }
             } else { // turn OFF custom mod if state says so (the checkbox was unchecked by user)
                 // check whether we turned it OFF already
@@ -289,9 +453,15 @@ public class TCConroller {
                             state.getLastChange().getTargetCondition();
                     Temperature lastTempBeforeCustomModOn = toTemp(lastConditionBeforeCustomModOn);
                     state.setTemperatureRoom(lastTempBeforeCustomModOn);
+                    state.setCurrentLightCondition(lastConditionBeforeCustomModOn);
 
-                    // TODO: show SCHEDULE temperature on the main screen
-                    // show state.getTemperatureRoom
+                    // show SCHEDULE temperature on the main screen
+                    // old:
+                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                    // new way:
+                    Message msg = new Message();
+                    msg.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomHandler.sendMessage(msg);
                 }
             }
 
@@ -314,7 +484,11 @@ public class TCConroller {
                         customModTurnedOn = false;
 
                         // uncheck checkbox 'custom' on main screen
-                        customCheckBox.setChecked(false);
+                        // old: customCheckBox.setChecked(false);
+                        // new way:
+                        Message msg = new Message();
+                        msg.obj = false;
+                        customCheckboxCheckedHandler.sendMessage(msg);
                     }
 
                     // change temperature in room (in state)
@@ -323,8 +497,20 @@ public class TCConroller {
                     state.setTemperatureRoom(toTemp(targetLightCondition));
                     state.changeCurrentLightCondition();
 
-                    // TODO: change temperature in room (on the main screen)
-                    // TODO: change light condition (on the main screen)
+                    // show temperature in room (on the main screen)
+                    // old:
+                    // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
+                    // new way:
+                    Message msgTemperature = new Message();
+                    msgTemperature.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomHandler.sendMessage(msgTemperature);
+
+                    // show light condition (on the main screen)
+                    // old: lightConditionImageView.setBackground(toDrawable(targetLightCondition));
+                    // new way:
+                    Message msgLight = new Message();
+                    msgLight.obj = toDrawable(targetLightCondition);
+                    lightConditionImageHandler.sendMessage(msgLight);
                 }
             }
 
@@ -335,4 +521,5 @@ public class TCConroller {
             }
         }
     }
+// ====== END The TimerTack class  ======
 }

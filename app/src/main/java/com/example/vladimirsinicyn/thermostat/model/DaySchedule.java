@@ -12,8 +12,8 @@ public class DaySchedule implements Serializable {
     public DaySchedule() {
 
         changes = new ArrayList<TemperatureChange>();
-        changes.add(WeekSchedule.firstDefaultTemperatureChange); // 08:00
-        changes.add(WeekSchedule.lastDefaultTemperatureChange);  // 23:00
+        changes.add(WeekSchedule.firstDefaultTemperatureChange);
+        changes.add(WeekSchedule.lastDefaultTemperatureChange);
     }
 
     public void addChange(TemperatureChange change) throws Exception {
