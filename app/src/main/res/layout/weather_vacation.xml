@@ -84,7 +84,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/textViewProgressVacation"
                 android:layout_marginTop="80px"
-                android:text="40°C"
+                android:text="30°C"
                 android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
 
 
