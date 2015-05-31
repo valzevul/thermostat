@@ -25,7 +25,7 @@
             android:background="@drawable/sun" />
 
         <TextView
-            android:id="@+id/day_degree_textView"
+            android:id="@+id/day_degree_textView_Custom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -82,7 +82,7 @@
 
 
             <SeekBar
-                android:id="@+id/seekBar1"
+                android:id="@+id/seekBarCustom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"

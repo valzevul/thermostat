@@ -31,7 +31,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
     private static TCConroller conroller;
     private SeekBar bar;
 
-    private Handler temperatureRoomHandler;
+    private Handler temperatureRoomCustomHandler;
     private Handler customCheckboxCheckedHandler;
     private Handler customCheckboxEnabledHandler;
     private Handler lightConditionImageHandler;
@@ -51,9 +51,15 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         conroller.setMoonImage(getResources().getDrawable(R.drawable.moon));
 
         // seek bar handle
-        bar = (SeekBar) findViewById(R.id.seekBar1);
+        bar = (SeekBar) findViewById(R.id.seekBarCustom);
         bar.setOnSeekBarChangeListener(this);
         bar.setMax((ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP) * 10);
+
+        // set textview of custom temperature to the right state
+        final TextView textViewProgressCustom = (TextView) findViewById(R.id.textViewProgressCustom);
+        textViewProgressCustom.setText("↓ " + conroller.getCustomTemperature() + "°C");
+
+        // TODO: set slider of custom temperature to the right state
 
         // set checkbox of custom mod to the right state (enabled/disabled and checked/unchecked)
         final CheckBox customCheckBox = (CheckBox) findViewById(R.id.chkCustom);
@@ -77,20 +83,19 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         };
         conroller.setCustomCheckboxEnabledHandler(customCheckboxEnabledHandler);
 
-
         // set textview of room temperature to the right state
-        final TextView mainScreenRoomTemperature = (TextView) findViewById(R.id.day_degree_textView);
+        final TextView mainScreenRoomTemperature = (TextView) findViewById(R.id.day_degree_textView_Custom);
         mainScreenRoomTemperature.setText(conroller.getTemperatureRoom().toString() + "°C");
         // save textview of room temperature (current) in contoller
         // old way: conroller.setTemperatureRoomTextView(mainScreenRoomTemperature);
         // new way!
-        temperatureRoomHandler = new Handler() {
+        temperatureRoomCustomHandler = new Handler() {
             public void handleMessage(Message msg) {
                 String text = (String) msg.obj;
                 mainScreenRoomTemperature.setText(text + "°C");
             }
         };
-        conroller.setTemperatureRoomHandler(temperatureRoomHandler);
+        conroller.setTemperatureRoomCustomHandler(temperatureRoomCustomHandler);
 
         // set imageview of light condition to the right state
         final ImageView lightConditionImageView = (ImageView) findViewById(R.id.light_condition_image);
@@ -106,10 +111,6 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
             }
         };
         conroller.setLightConditionImageHandler(lightConditionImageHandler);
-
-        // set textview of custom temperature to the right state
-        final TextView textViewProgressCustom = (TextView) findViewById(R.id.textViewProgressCustom);
-        textViewProgressCustom.setText("↓ " + conroller.getCustomTemperature() + "°C");
     }
 
 
@@ -218,6 +219,10 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
      */
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+        if (!fromUser) {
+            return;
+        }
 
         // count new custom temperature
         int tempWhole = (progress / 10) + 5;

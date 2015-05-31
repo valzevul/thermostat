@@ -4,9 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 import com.example.vladimirsinicyn.thermostat.model.DaySchedule;
@@ -46,7 +43,8 @@ public class TCConroller {
 
     // these fields are references to different controls
     // to change view when it is needed (according to changes of state [model])
-    private Handler temperatureRoomHandler;
+    private Handler temperatureRoomCustomHandler;
+    private Handler temperatureRoomVacationHandler;
     private Handler customCheckboxCheckedHandler;
     private Handler customCheckboxEnabledHandler;
     private Handler lightConditionImageHandler;
@@ -114,8 +112,12 @@ public class TCConroller {
     }
 
 // ====== HANDLERS OF ACTIVITIES SETTERS ======
-    public void setTemperatureRoomHandler(Handler temperatureRoomHandler) {
-        this.temperatureRoomHandler = temperatureRoomHandler;
+    public void setTemperatureRoomCustomHandler(Handler temperatureRoomCustomHandler) {
+        this.temperatureRoomCustomHandler = temperatureRoomCustomHandler;
+    }
+
+    public void setTemperatureRoomVacationHandler(Handler temperatureRoomVacationHandler) {
+        this.temperatureRoomVacationHandler = temperatureRoomVacationHandler;
     }
 
     public void setCustomCheckboxCheckedHandler(Handler customCheckboxCheckedHandler) {
@@ -279,8 +281,13 @@ public class TCConroller {
         @Override
         public void run() {
 
-            if (temperatureRoomHandler == null) {
-                Log.i("TIMER", "SKIP temperatureRoomHandler");
+            if (temperatureRoomCustomHandler == null) {
+                Log.i("TIMER", "SKIP temperatureRoomCustomHandler");
+                return;
+            }
+
+            if (temperatureRoomVacationHandler == null) {
+                Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
                 return;
             }
 
@@ -307,7 +314,11 @@ public class TCConroller {
                     // new way:
                     Message msgTemperature = new Message();
                     msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomHandler.sendMessage(msgTemperature);
+                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                    // show SCHEDULE temperature on the vacation screen
+                    Message msgTemperature2 = new Message();
+                    msgTemperature2.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
 
                     // show light condition (on the main screen)
                     // new way:
@@ -319,10 +330,6 @@ public class TCConroller {
                     thermostatTURNED_ON = true;
                 }
             }
-
-//            Message msg = new Message();
-//            msg.obj = "57.0";
-//            temperatureRoomHandler.sendMessage(msg);
 
             // turn ON vacation mod if state says so (the checkbox was checked by user)
             if (state.isVacation()) {
@@ -358,7 +365,11 @@ public class TCConroller {
                     // new way:
                     Message msgTemperature = new Message();
                     msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomHandler.sendMessage(msgTemperature);
+                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                    // show vacation temperature on the vacation screen
+                    Message msgTemperature2 = new Message();
+                    msgTemperature2.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
                 }
             } else { // turn OFF vacation mod if state says so (the checkbox was unchecked by user)
                 // check whether we turned it OFF already
@@ -393,7 +404,11 @@ public class TCConroller {
                     // new way:
                     Message msgTemperature = new Message();
                     msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomHandler.sendMessage(msgTemperature);
+                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                    // show SCHEDULE temperature on the vacation screen
+                    Message msgTemperature2 = new Message();
+                    msgTemperature2.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
                 }
             }
 
@@ -412,9 +427,13 @@ public class TCConroller {
                     // old:
                     // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
                     // new way:
-                    Message msg = new Message();
-                    msg.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomHandler.sendMessage(msg);
+                    Message msgTemperature = new Message();
+                    msgTemperature.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                    // show custom temperature on the vacation screen
+                    Message msgTemperature2 = new Message();
+                    msgTemperature2.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
                 }
             } else { // turn OFF custom mod if state says so (the checkbox was unchecked by user)
                 // check whether we turned it OFF already
@@ -437,9 +456,13 @@ public class TCConroller {
                     // old:
                     // temperatureRoomTextView.setText(state.getTemperatureRoom().toString() + "°C");
                     // new way:
-                    Message msg = new Message();
-                    msg.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomHandler.sendMessage(msg);
+                    Message msgTemperature = new Message();
+                    msgTemperature.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                    // show SCHEDULE temperature on the vacation screen
+                    Message msgTemperature2 = new Message();
+                    msgTemperature2.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
                 }
             }
 
@@ -481,7 +504,11 @@ public class TCConroller {
                     // new way:
                     Message msgTemperature = new Message();
                     msgTemperature.obj = state.getTemperatureRoom().toString();
-                    temperatureRoomHandler.sendMessage(msgTemperature);
+                    temperatureRoomCustomHandler.sendMessage(msgTemperature);
+                    // show temperature in room (on the vacation screen)
+                    Message msgTemperature2 = new Message();
+                    msgTemperature2.obj = state.getTemperatureRoom().toString();
+                    temperatureRoomVacationHandler.sendMessage(msgTemperature2);
 
                     // show light condition (on the main screen)
                     // old: lightConditionImageView.setBackground(toDrawable(targetLightCondition));
@@ -500,6 +527,8 @@ public class TCConroller {
                 // TODO: PERFORM A MIDNIGHT CHANGE
                 // note: think of situation when user sets
                 // TemperatureChange on midnight
+                // note: think of situations when
+                // it is needed at all
             }
         }
     }

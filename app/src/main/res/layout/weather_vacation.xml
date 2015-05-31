@@ -31,7 +31,7 @@
         android:paddingTop="8dp">
 
         <TextView
-            android:id="@+id/day_degree_textView"
+            android:id="@+id/day_degree_textView_Vacation"
             android:layout_width="wrap_content"
             android:textAlignment="center"
             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
 
 
             <SeekBar
-                android:id="@+id/seekBar1"
+                android:id="@+id/seekBarVacation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
