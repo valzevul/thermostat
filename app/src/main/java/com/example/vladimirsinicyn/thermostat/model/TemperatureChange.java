@@ -27,4 +27,11 @@ public class TemperatureChange implements Serializable {
 
         return time.equals(change.getTime()) && targetCondition == change.getTargetCondition();
     }
+    
+    public TemperatureChange clone() {
+
+        TemperatureChange temperatureChange = new TemperatureChange(this.getTargetCondition(), this.getTime());
+
+        return temperatureChange;
+    }
 }
