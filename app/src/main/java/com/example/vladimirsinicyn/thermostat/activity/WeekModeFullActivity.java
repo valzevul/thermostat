@@ -110,7 +110,7 @@ public class WeekModeFullActivity extends Activity {
     }
     // ================ END inc/decrement of day/night temp of WEEK SCHEDULE ================
 
-    // ================ go to day schedules ================
+    // ================ go to each day schedules ================
 
     public void setSundaySchedule(View view) {
         Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);

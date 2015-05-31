@@ -3,6 +3,7 @@ package com.example.vladimirsinicyn.thermostat.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -265,6 +266,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange latestChange = schedule.getLatestChange();
 
         Time newTime = new Time(latestChange.getTime().toMinutes());
+        Log.i("addition of temp change", newTime.toString()); // TODO: delete this debug output string
         newTime.incrementTime();
 
         LightCondition newLightCondition;
@@ -286,9 +288,10 @@ public class WeekModeDetailedActivity extends Activity {
 
 
         // TODO: show new change on screen
-        RelativeLayout newLayout = getNewLayout();
+        RelativeLayout newLayout = getNewLayout(newTime);
         newLayout.setVisibility(View.VISIBLE);
 
+        numOfChanges++;
         // old code
 //        LightCondition targetLightCondition = LightCondition.DAY;
 //        Time time = new Time(0);
@@ -307,40 +310,60 @@ public class WeekModeDetailedActivity extends Activity {
      *
      * @return
      */
-    private RelativeLayout getNewLayout() {
+    private RelativeLayout getNewLayout(Time newTime) {
 
         RelativeLayout newLayout = null;
-
+        TextView time;
         switch (numOfChanges) {
             case 0:
                 newLayout = (RelativeLayout) findViewById(R.id.first_layout);
+                time = (TextView) findViewById(R.id.time_1);
+                time.setText(newTime.toString());
                 break;
             case 1:
                 newLayout = (RelativeLayout) findViewById(R.id.second_layout);
+                time = (TextView) findViewById(R.id.time_2);
+                time.setText(newTime.toString());
                 break;
             case 2:
                 newLayout = (RelativeLayout) findViewById(R.id.third_layout);
+                time = (TextView) findViewById(R.id.time_3);
+                time.setText(newTime.toString());
                 break;
             case 3:
                 newLayout = (RelativeLayout) findViewById(R.id.fourth_layout);
+                time = (TextView) findViewById(R.id.time_4);
+                time.setText(newTime.toString());
                 break;
             case 4:
                 newLayout = (RelativeLayout) findViewById(R.id.fifth_layout);
+                time = (TextView) findViewById(R.id.time_5);
+                time.setText(newTime.toString());
                 break;
             case 5:
                 newLayout = (RelativeLayout) findViewById(R.id.sixth_layout);
+                time = (TextView) findViewById(R.id.time_6);
+                time.setText(newTime.toString());
                 break;
             case 6:
                 newLayout = (RelativeLayout) findViewById(R.id.seventh_layout);
+                time = (TextView) findViewById(R.id.time_7);
+                time.setText(newTime.toString());
                 break;
             case 7:
                 newLayout = (RelativeLayout) findViewById(R.id.eighth_layout);
+                time = (TextView) findViewById(R.id.time_8);
+                time.setText(newTime.toString());
                 break;
             case 8:
                 newLayout = (RelativeLayout) findViewById(R.id.nineth_layout);
+                time = (TextView) findViewById(R.id.time_9);
+                time.setText(newTime.toString());
                 break;
             case 9:
                 newLayout = (RelativeLayout) findViewById(R.id.tenth_layout);
+                time = (TextView) findViewById(R.id.time_10);
+                time.setText(newTime.toString());
                 break;
             default:
                 return null;
