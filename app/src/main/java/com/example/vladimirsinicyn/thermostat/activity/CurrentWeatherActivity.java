@@ -50,13 +50,13 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         bar.setOnSeekBarChangeListener(this);
         bar.setMax(ThermostatApp.MAX_TEMP - ThermostatApp.MIN_TEMP);
 
-        // set checkbox of custom mod to the right state
+        // set checkbox of custom mod to the right state (enabled/disabled and checked/unchecked)
         final CheckBox customCheckBox = (CheckBox) findViewById(R.id.chkCustom);
         customCheckBox.setChecked(conroller.getCustom());
         customCheckBox.setEnabled(!conroller.getVacation());
         // save checkbox 'custom mod' in controller
         // old way: conroller.setCustomCheckBox(customCheckBox);
-        //new way!
+        // new way!
         customCheckboxCheckedHandler = new Handler() {
             public void handleMessage(Message msg) {
                 boolean custom = (boolean) msg.obj;
@@ -78,7 +78,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         mainScreenRoomTemperature.setText(conroller.getTemperatureRoom().toString() + "°C");
         // save textview of room temperature (current) in contoller
         // old way: conroller.setTemperatureRoomTextView(mainScreenRoomTemperature);
-        //new way!
+        // new way!
         temperatureRoomHandler = new Handler() {
             public void handleMessage(Message msg) {
                 String text = (String) msg.obj;
@@ -93,7 +93,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         lightConditionImageView.setBackground(toDrawable(lightCondition));
         // save imageview of light condition (current) in contoller
         // old way: conroller.setLightConditionImageView(lightConditionImageView);
-        //new way!
+        // new way!
         lightConditionImageHandler = new Handler() {
             public void handleMessage(Message msg) {
                 Drawable d = (Drawable) msg.obj;
