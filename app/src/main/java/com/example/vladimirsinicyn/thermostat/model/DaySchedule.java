@@ -41,6 +41,25 @@ public class DaySchedule implements Serializable {
 
         return closest;
     }
+    
+    public TemperatureChange findClosestLess(Time time) {
+
+        int min = Integer.MAX_VALUE;
+        int compareTime = time.toMinutes();
+        TemperatureChange closest = null;
+
+        for (int i = 0; i < changes.size(); i++) {
+
+            int tempValue = changes.get(i).getTime().toMinutes() - compareTime;
+            if (tempValue < 0 && -tempValue < min) {
+
+                closest = changes.get(i);
+                min = -tempValue;
+            }
+        }
+
+        return closest;
+    }
 
     public void addChange(TemperatureChange change) throws Exception {
 
