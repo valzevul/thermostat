@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -201,6 +202,51 @@ public class WeekModeDetailedActivity extends Activity {
             time.setText(change.getTime().toString());
             layout.setVisibility(View.VISIBLE);
         }
+
+        int numOfChanges = schedule.getNumberOfChanges();
+        ImageView view;
+        switch (numOfChanges) {
+            case 1:
+                view = (ImageView) findViewById(R.id.reverse_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                view = (ImageView) findViewById(R.id.reverse2_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                view = (ImageView) findViewById(R.id.reverse3_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                view = (ImageView) findViewById(R.id.reverse4_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 5:
+                view = (ImageView) findViewById(R.id.reverse5_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 6:
+                view = (ImageView) findViewById(R.id.reverse6_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 7:
+                view = (ImageView) findViewById(R.id.reverse7_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 8:
+                view = (ImageView) findViewById(R.id.reverse8_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 9:
+                view = (ImageView) findViewById(R.id.reverse9_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 10:
+                view = (ImageView) findViewById(R.id.reverse10_imageView);
+                view.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
 
@@ -337,7 +383,69 @@ public class WeekModeDetailedActivity extends Activity {
         RelativeLayout newLayout = getNewLayout(newTime);
         newLayout.setVisibility(View.VISIBLE);
 
-
+        int numOfChanges = schedule.getNumberOfChanges(); // after adding
+        ImageView deleteView;
+        ImageView prevDeleteView;
+        switch (numOfChanges) {
+            case 1:
+                deleteView = (ImageView) findViewById(R.id.reverse_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse2_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse2_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse3_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse3_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse4_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 5:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse4_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse5_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 6:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse5_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse6_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 7:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse6_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse7_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 8:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse7_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse8_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 9:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse8_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse9_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+            case 10:
+                prevDeleteView = (ImageView) findViewById(R.id.reverse9_imageView);
+                prevDeleteView.setVisibility(View.INVISIBLE);
+                deleteView = (ImageView) findViewById(R.id.reverse10_imageView);
+                deleteView.setVisibility(View.VISIBLE);
+                break;
+        }
         // old code
 //        LightCondition targetLightCondition = LightCondition.DAY;
 //        Time time = new Time(0);
@@ -558,30 +666,30 @@ public class WeekModeDetailedActivity extends Activity {
         // check lower bound - find previous change
         // check upper bound - find next change
 //        try{
-            int changeIndex = 4 - 1;
-            TemperatureChange change = schedule.getChange(changeIndex);
-            Time changeTime = change.getTime();
+        int changeIndex = 4 - 1;
+        TemperatureChange change = schedule.getChange(changeIndex);
+        Time changeTime = change.getTime();
 
-            TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-            Time lowerBound = prevChange.getTime();
+        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
+        Time lowerBound = prevChange.getTime();
 
-            if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-                // TODO: show some message for user like 'no more can't go lower than previous change'
-                return;
-            }
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+            // TODO: show some message for user like 'no more can't go lower than previous change'
+            return;
+        }
 
-            // change state (time) of the chosen TempChange
-            try {
-                change.getTime().decrementTime();
-            } catch (Exception ex) {
-                // TODO: handle exception (some message for user like ' can't go lower than 00:00')
-                // actually we can not ever go here
-                return;
-            }
+        // change state (time) of the chosen TempChange
+        try {
+            change.getTime().decrementTime();
+        } catch (Exception ex) {
+            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
+            // actually we can not ever go here
+            return;
+        }
 
-            // show the new time of the change on the screen
-            TextView time = (TextView) findViewById(R.id.time_4);
-            time.setText(change.getTime().toString());
+        // show the new time of the change on the screen
+        TextView time = (TextView) findViewById(R.id.time_4);
+        time.setText(change.getTime().toString());
 //        } catch (Exception ex) {
 //
 //        }
@@ -1309,6 +1417,29 @@ public class WeekModeDetailedActivity extends Activity {
 //        } catch (Exception ex) {
 //
 //        }
+    }
+
+    public void deleteTime(View view) {
+
+        ArrayList<Integer> idS = new ArrayList<>();
+        idS.add(R.id.first_layout);
+        idS.add(R.id.second_layout);
+        idS.add(R.id.third_layout);
+        idS.add(R.id.fourth_layout);
+        idS.add(R.id.fifth_layout);
+        idS.add(R.id.sixth_layout);
+        idS.add(R.id.seventh_layout);
+        idS.add(R.id.eighth_layout);
+        idS.add(R.id.nineth_layout);
+        idS.add(R.id.tenth_layout);
+
+        for (int i = 0; i < idS.size(); i++) {
+            (findViewById(idS.get(i))).setVisibility(View.INVISIBLE);
+        }
+        schedule = conroller.getSchedule(index);
+        schedule.delete();
+        //findViewById(idS.get(0)).setVisibility(View.INVISIBLE);
+
     }
 // ========= END Handlers of UP ARROWS =========
 }

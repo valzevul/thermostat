@@ -36,7 +36,8 @@ public class TCConroller {
     private ThermostatState state; // the state of all thermostat
     private WeekSchedule ws; // current working week schedule
 
-    private final int timeFactor = 600;//300; // times faster than real time
+    // TODO: 300;
+    private final int timeFactor = 1200; // times faster than real time
 
     // *.ModTurnedOn variables needed to indicate whether
     // room temperature is changed to the mod temperature
@@ -57,6 +58,7 @@ public class TCConroller {
     private Handler customCheckboxEnabledHandler;
     private Handler lightConditionImageHandler;
     private Handler currentTimeHandler;
+    private Handler nextChangeHandler;
 
     public TCConroller() {
         //Log.i("TCController", "TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -145,7 +147,11 @@ public class TCConroller {
     public void setCurrentTimeHandler(Handler currentTimeHandler) {
         this.currentTimeHandler = currentTimeHandler;
     }
-// ====== END HANDLERS OF ACTIVITIES SETTERS ======
+
+    public void setNextChangeHandler(Handler nextChangeHandler) {
+        this.nextChangeHandler = nextChangeHandler;
+    }
+    // ====== END HANDLERS OF ACTIVITIES SETTERS ======
 
     public Time getTime() {
         return new Time(time.toMinutes());
@@ -203,10 +209,23 @@ public class TCConroller {
 // ====== END WEEK SCHEDULE SAVE/LOAD ======
 
 // ====== NEXT CHANGE GETTER ======
-    // TODO: use it in week_detailed
-    TemperatureChange getNextChange(int dayIndex) {
+
+    /**
+     * This method finds next change within current and next day.
+     * but not in day after next day
+     *
+     * @return
+     */
+    public TemperatureChange getNextChange() {
+        int dayIndex = state.getDayIndex();
         DaySchedule schedule = ws.getDaySchedule(dayIndex);
         TemperatureChange nextChange = schedule.findClosest(time);
+
+        if (nextChange == null) {
+            int i = (state.getDayIndex() + 1) % 7;
+            nextChange = ws.getDaySchedule(i).findClosest(new Time(0));
+        }
+        // TODO: use it in week_detailed
         return nextChange;
     }
 // ====== END NEXT CHANGE GETTER ======
@@ -546,6 +565,16 @@ public class TCConroller {
 
                     state.setLastChange(change);
 
+                    // show next change on main screen
+                    Message msgNextChange = new Message();
+                    TemperatureChange nextChange = getNextChange();
+                    if (nextChange == null) {
+                        msgNextChange.obj = new String("No next.");
+                    } else {
+                        msgNextChange.obj = getNextChange().getTime().toString();
+                    }
+                    customCheckboxCheckedHandler.sendMessage(msgNextChange);
+
                     if (!state.isVacation()) {
                         if (state.isCustom()) {
                             // off custom mode
@@ -555,9 +584,9 @@ public class TCConroller {
                             // uncheck checkbox 'custom' on main screen
                             // old: customCheckBox.setChecked(false);
                             // new way:
-                            Message msg = new Message();
-                            msg.obj = false;
-                            customCheckboxCheckedHandler.sendMessage(msg);
+                            Message msgCustomCheckbox = new Message();
+                            msgCustomCheckbox.obj = false;
+                            customCheckboxCheckedHandler.sendMessage(msgCustomCheckbox);
                         }
 
                         // change temperature in room (in state)

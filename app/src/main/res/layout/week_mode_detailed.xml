@@ -37,7 +37,8 @@
                 android:paddingTop="20px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clear all"/>
+                android:text="Clear all"
+                android:onClick="deleteTime"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -84,8 +85,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_1"
@@ -102,6 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageButton
+                        android:longClickable="true"
                         android:layout_gravity="right"
                         android:layout_width="26dp"
                         android:layout_height="26dp"
@@ -154,8 +157,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse2_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse2_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_2"
@@ -221,8 +225,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse3_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse3_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_3"
@@ -288,8 +293,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse4_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse4_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_4"
@@ -355,8 +361,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse5_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse5_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_5"
@@ -422,8 +429,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse6_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse6_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_6"
@@ -489,8 +497,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse7_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse7_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_7"
@@ -556,8 +565,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse8_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse8_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_8"
@@ -623,8 +633,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse9_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse9_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_9"
@@ -690,8 +701,9 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/reverse"
-                    android:id="@+id/reverse10_imageView" />
+                    android:background="@drawable/delete"
+                    android:id="@+id/reverse10_imageView"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:id="@+id/status_10"

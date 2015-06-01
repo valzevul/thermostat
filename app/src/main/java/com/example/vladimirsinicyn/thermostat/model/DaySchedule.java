@@ -20,12 +20,12 @@ public class DaySchedule implements Serializable {
         changes.add(WeekSchedule.firstDefaultTemperatureChange);
         changes.add(WeekSchedule.lastDefaultTemperatureChange);
     }
-    
+
     public void clear() {
 
         changes = new ArrayList<TemperatureChange>(MAX_TODAY + MAX_TONIGHT);
     }
-    
+
     public TemperatureChange findClosest(Time time) {
 
         int min = Integer.MAX_VALUE;
@@ -44,7 +44,7 @@ public class DaySchedule implements Serializable {
 
         return closest;
     }
-    
+
     public TemperatureChange findClosestLess(Time time) {
 
         int min = Integer.MAX_VALUE;
@@ -148,5 +148,12 @@ public class DaySchedule implements Serializable {
 
     public TemperatureChange getChange(int index) {
         return changes.get(index);
+    }
+
+    public void delete() {
+
+        changes = new ArrayList<TemperatureChange>();
+        dayChanges = 0;
+        nightChanges = 0;
     }
 }

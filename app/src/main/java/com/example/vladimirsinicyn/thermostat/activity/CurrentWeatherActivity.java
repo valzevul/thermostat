@@ -25,6 +25,8 @@ import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
+import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
+import com.example.vladimirsinicyn.thermostat.model.Time;
 
 
 public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
@@ -37,6 +39,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
     private Handler customCheckboxEnabledHandler;
     private Handler lightConditionImageHandler;
     private Handler currentTimeHandler;
+    private Handler nextChangeHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +132,24 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
 
         Looper mainLooper = getMainLooper();
         conroller.setMainLooper(mainLooper);
+
+        // set textview of current time to the right state
+        final TextView mainNextChange = (TextView) findViewById(R.id.next_change);
+        TemperatureChange nextChange = conroller.getNextChange();
+        if (nextChange == null) {
+            mainNextChange.setText("No next.");
+        } else {
+            mainNextChange.setText(nextChange.getTime().toString());
+        }
+        // save textview of room temperature (current) in contoller
+        // new way!
+        nextChangeHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                String text = (String) msg.obj;
+                mainNextChange.setText(text);
+            }
+        };
+        conroller.setNextChangeHandler(nextChangeHandler);
     }
 
 
