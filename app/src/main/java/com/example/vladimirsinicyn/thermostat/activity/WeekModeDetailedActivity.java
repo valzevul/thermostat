@@ -250,32 +250,32 @@ public class WeekModeDetailedActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_load) {
 
-            // load schedule
-            // TODO: get name of the file
-            getName();
-            //System.out.println(m_Text);
-
-            try {
-                conroller.loadSchedule(m_Text);
-            } catch (Exception ex) {
-                // TODO: handle
-            }
+//            // load schedule
+//            // TODO: get name of the file
+//            getName();
+//            //System.out.println(m_Text);
+//
+//            try {
+//                conroller.loadSchedule(m_Text);
+//            } catch (Exception ex) {
+//                // TODO: handle
+//            }
 
             return true;
         }
 
         if (id == R.id.action_save) {
 
-            // save schedule
-            // TODO: get name of the file
-            getName();
-            //System.out.println(m_Text);
-
-            try {
-                conroller.saveSchedule(m_Text);
-            } catch (Exception ex) {
-                // TODO: handle
-            }
+//            // save schedule
+//            // TODO: get name of the file
+//            getName();
+//            //System.out.println(m_Text);
+//
+//            try {
+//                conroller.saveSchedule(m_Text);
+//            } catch (Exception ex) {
+//                // TODO: handle
+//            }
 
             return true;
         }
