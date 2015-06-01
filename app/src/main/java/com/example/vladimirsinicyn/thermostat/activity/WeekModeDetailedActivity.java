@@ -382,21 +382,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -437,21 +424,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -492,21 +466,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -547,21 +508,8 @@ public class WeekModeDetailedActivity extends Activity {
             TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
             Time lowerBound = prevChange.getTime();
 
-            TemperatureChange nextChange = schedule.findClosest(change.getTime());
-            Time upperBound;
-            if (nextChange == null) {
-                upperBound = new Time(1439); // 23:59
-            } else {
-                upperBound = nextChange.getTime();
-            }
-
-            if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+            if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
                 // TODO: show some message for user like 'no more can't go lower than previous change'
-                return;
-            }
-
-            if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-                // TODO: show some message for user like 'no more can't go higher than next change'
                 return;
             }
 
@@ -602,21 +550,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -657,21 +592,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -712,21 +634,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -767,21 +676,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -822,21 +718,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -877,21 +760,8 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        TemperatureChange nextChange = schedule.findClosest(change.getTime());
-        Time upperBound;
-        if (nextChange == null) {
-            upperBound = new Time(1439); // 23:59
-        } else {
-            upperBound = nextChange.getTime();
-        }
-
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
             // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
 
@@ -931,9 +801,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -942,12 +809,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -986,9 +848,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -997,12 +856,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1041,9 +895,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1052,12 +903,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1096,9 +942,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1107,12 +950,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1151,9 +989,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1162,12 +997,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1206,9 +1036,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1217,12 +1044,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1261,9 +1083,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1272,12 +1091,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1316,9 +1130,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1327,12 +1138,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1371,9 +1177,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1382,12 +1185,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
@@ -1426,9 +1224,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange change = schedule.getChange(changeIndex);
         Time changeTime = change.getTime();
 
-        TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
-        Time lowerBound = prevChange.getTime();
-
         TemperatureChange nextChange = schedule.findClosest(change.getTime());
         Time upperBound;
         if (nextChange == null) {
@@ -1437,12 +1232,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() < lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
-            return;
-        }
-
-        if (changeTime.toMinutes() > upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
             // TODO: show some message for user like 'no more can't go higher than next change'
             return;
         }
