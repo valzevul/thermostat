@@ -573,7 +573,7 @@ public class TCConroller {
                     } else {
                         msgNextChange.obj = getNextChange().getTime().toString();
                     }
-                    customCheckboxCheckedHandler.sendMessage(msgNextChange);
+                    nextChangeHandler.sendMessage(msgNextChange);
 
                     if (!state.isVacation()) {
                         if (state.isCustom()) {
