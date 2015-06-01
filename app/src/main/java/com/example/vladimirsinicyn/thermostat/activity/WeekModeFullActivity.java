@@ -1,11 +1,15 @@
 package com.example.vladimirsinicyn.thermostat.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.vladimirsinicyn.thermostat.R;
@@ -46,6 +50,35 @@ public class WeekModeFullActivity extends Activity {
         return true;
     }
 
+    private String m_Text = "";
+
+    public void getName() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Title");
+
+// Set up the input
+        final EditText input = new EditText(this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                m_Text = input.getText().toString();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -55,10 +88,34 @@ public class WeekModeFullActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_load) {
+
+            // load schedule
+            // TODO: get name of the file
+            getName();
+            //System.out.println(m_Text);
+
+            try {
+                conroller.loadSchedule(m_Text);
+            } catch (Exception ex) {
+                // TODO: handle
+            }
+
             return true;
         }
 
         if (id == R.id.action_save) {
+
+            // save schedule
+            // TODO: get name of the file
+            getName();
+            //System.out.println(m_Text);
+
+            try {
+                conroller.saveSchedule(m_Text);
+            } catch (Exception ex) {
+                // TODO: handle
+            }
+
             return true;
         }
 

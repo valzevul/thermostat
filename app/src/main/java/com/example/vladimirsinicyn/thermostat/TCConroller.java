@@ -320,17 +320,17 @@ public class TCConroller {
                     return;
                 }
 
-                if (temperatureRoomVacationHandler == null) {
-                    Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
-
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException interex) {
-                        // TODO: handle exception
-                    }
-
-                    return;
-                }
+//                if (temperatureRoomVacationHandler == null) {
+//                    Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+//
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException interex) {
+//                        // TODO: handle exception
+//                    }
+//
+//                    return;
+//                }
 
                 // // show current GAME time on the main screen
                 Message msgCurrentTime = new Message();
@@ -362,9 +362,15 @@ public class TCConroller {
                         msgTemperature.obj = state.getTemperatureRoom().toString();
                         temperatureRoomCustomHandler.sendMessage(msgTemperature);
                         // show SCHEDULE temperature on the vacation screen
-                        Message msgTemperature2 = new Message();
-                        msgTemperature2.obj = state.getTemperatureRoom().toString();
-                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+
+                        if (temperatureRoomVacationHandler != null) {
+                             Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                            Message msgTemperature2 = new Message();
+                            msgTemperature2.obj = state.getTemperatureRoom().toString();
+                            temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        }
+
 
                         // show light condition (on the main screen)
                         // new way:
@@ -413,9 +419,13 @@ public class TCConroller {
                         msgTemperature.obj = state.getTemperatureRoom().toString();
                         temperatureRoomCustomHandler.sendMessage(msgTemperature);
                         // show vacation temperature on the vacation screen
-                        Message msgTemperature2 = new Message();
-                        msgTemperature2.obj = state.getTemperatureRoom().toString();
-                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        if (temperatureRoomVacationHandler != null) {
+                            Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                            Message msgTemperature2 = new Message();
+                            msgTemperature2.obj = state.getTemperatureRoom().toString();
+                            temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        }
                     }
                 } else { // turn OFF vacation mod if state says so (the checkbox was unchecked by user)
                     // check whether we turned it OFF already
@@ -452,9 +462,13 @@ public class TCConroller {
                         msgTemperature.obj = state.getTemperatureRoom().toString();
                         temperatureRoomCustomHandler.sendMessage(msgTemperature);
                         // show SCHEDULE temperature on the vacation screen
-                        Message msgTemperature2 = new Message();
-                        msgTemperature2.obj = state.getTemperatureRoom().toString();
-                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        if (temperatureRoomVacationHandler != null) {
+                            Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                            Message msgTemperature2 = new Message();
+                            msgTemperature2.obj = state.getTemperatureRoom().toString();
+                            temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        }
                     }
                 }
 
@@ -477,9 +491,13 @@ public class TCConroller {
                         msgTemperature.obj = state.getTemperatureRoom().toString();
                         temperatureRoomCustomHandler.sendMessage(msgTemperature);
                         // show custom temperature on the vacation screen
-                        Message msgTemperature2 = new Message();
-                        msgTemperature2.obj = state.getTemperatureRoom().toString();
-                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        if (temperatureRoomVacationHandler != null) {
+                            Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                            Message msgTemperature2 = new Message();
+                            msgTemperature2.obj = state.getTemperatureRoom().toString();
+                            temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        }
                     }
                 } else { // turn OFF custom mod if state says so (the checkbox was unchecked by user)
                     // check whether we turned it OFF already
@@ -506,9 +524,13 @@ public class TCConroller {
                         msgTemperature.obj = state.getTemperatureRoom().toString();
                         temperatureRoomCustomHandler.sendMessage(msgTemperature);
                         // show SCHEDULE temperature on the vacation screen
-                        Message msgTemperature2 = new Message();
-                        msgTemperature2.obj = state.getTemperatureRoom().toString();
-                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        if (temperatureRoomVacationHandler != null) {
+                            Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                            Message msgTemperature2 = new Message();
+                            msgTemperature2.obj = state.getTemperatureRoom().toString();
+                            temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        }
                     }
                 }
 
@@ -552,9 +574,13 @@ public class TCConroller {
                         msgTemperature.obj = state.getTemperatureRoom().toString();
                         temperatureRoomCustomHandler.sendMessage(msgTemperature);
                         // show temperature in room (on the vacation screen)
-                        Message msgTemperature2 = new Message();
-                        msgTemperature2.obj = state.getTemperatureRoom().toString();
-                        temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        if (temperatureRoomVacationHandler != null) {
+                            Log.i("TIMER", "SKIP temperatureRoomVacationHandler");
+
+                            Message msgTemperature2 = new Message();
+                            msgTemperature2.obj = state.getTemperatureRoom().toString();
+                            temperatureRoomVacationHandler.sendMessage(msgTemperature2);
+                        }
 
                         // show light condition (on the main screen)
                         // old: lightConditionImageView.setBackground(toDrawable(targetLightCondition));

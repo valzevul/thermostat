@@ -184,7 +184,13 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
             // load schedule
             // TODO: get name of the file
             getName();
-            System.out.println(m_Text);
+            //System.out.println(m_Text);
+
+            try {
+                conroller.loadSchedule(m_Text);
+            } catch (Exception ex) {
+                // TODO: handle
+            }
 
             return true;
         }
@@ -194,7 +200,13 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
             // save schedule
             // TODO: get name of the file
             getName();
-            System.out.println(m_Text);
+            //System.out.println(m_Text);
+
+            try {
+                conroller.saveSchedule(m_Text);
+            } catch (Exception ex) {
+                // TODO: handle
+            }
 
             return true;
         }
