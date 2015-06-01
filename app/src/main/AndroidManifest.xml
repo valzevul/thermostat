@@ -25,6 +25,7 @@
         <activity
             android:name=".activity.WeekModeFullActivity"
             android:label="thermostat" ></activity>
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     </application>
 
 </manifest>
