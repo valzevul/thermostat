@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
@@ -121,7 +122,7 @@ public class VacationWeatherActivity extends Activity implements SeekBar.OnSeekB
         if (id == R.id.action_load) {
 
 //            // load schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 //
@@ -139,7 +140,9 @@ public class VacationWeatherActivity extends Activity implements SeekBar.OnSeekB
                 if (file.exists()) {
                     conroller.loadSchedule(filename);
                 } else {
-                    // TODO: show message for user (nothing to load)
+                    // show message for user (nothing to load)
+                    String msg = "nothing to load";
+                    Toast.makeText(VacationWeatherActivity.this, msg, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             } catch (Exception ex) {
@@ -153,7 +156,7 @@ public class VacationWeatherActivity extends Activity implements SeekBar.OnSeekB
         if (id == R.id.action_save) {
 
 //            // save schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 //

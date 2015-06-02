@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
@@ -301,7 +302,7 @@ public class WeekModeDetailedActivity extends Activity {
         if (id == R.id.action_load) {
 
 //            // load schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 //
@@ -319,7 +320,9 @@ public class WeekModeDetailedActivity extends Activity {
                 if (file.exists()) {
                     conroller.loadSchedule(filename);
                 } else {
-                    // TODO: show message for user (nothing to load)
+                    // show message for user (nothing to load)
+                    String msg = "nothing to load";
+                    Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             } catch (Exception ex) {
@@ -335,7 +338,7 @@ public class WeekModeDetailedActivity extends Activity {
         if (id == R.id.action_save) {
 
 //            // save schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 //
@@ -405,12 +408,14 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             schedule.addChange(newChange);
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like 'no more changes allowed')
+            // handle exception (some message for user like 'no more changes allowed')
+            String msg = "Limit of 10 temperature changes reached";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-        // TODO: show new change on screen
+        // show new change on screen
         RelativeLayout newLayout = getNewLayout(newTime);
         newLayout.setVisibility(View.VISIBLE);
 
@@ -579,7 +584,9 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            // show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -587,7 +594,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -621,7 +627,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -629,7 +636,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -663,7 +669,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -671,7 +678,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -705,7 +711,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -713,7 +720,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -747,7 +753,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -755,7 +762,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -789,7 +795,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -797,7 +804,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -831,7 +837,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -839,7 +846,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -873,7 +879,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -881,7 +888,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -915,7 +921,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -923,7 +930,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -957,7 +963,8 @@ public class WeekModeDetailedActivity extends Activity {
         Time lowerBound = prevChange.getTime();
 
         if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
-            // TODO: show some message for user like 'no more can't go lower than previous change'
+            String msg = "can't go lower than previous temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -965,7 +972,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().decrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1006,7 +1012,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1014,7 +1021,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1053,7 +1059,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1061,7 +1068,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1100,7 +1106,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1108,7 +1115,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1147,7 +1153,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1155,7 +1162,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1194,7 +1200,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1202,7 +1209,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1241,7 +1247,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1249,7 +1256,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1288,7 +1294,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1296,7 +1303,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1335,7 +1341,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1343,7 +1350,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1382,7 +1388,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1390,7 +1397,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }
@@ -1429,7 +1435,8 @@ public class WeekModeDetailedActivity extends Activity {
         }
 
         if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
-            // TODO: show some message for user like 'no more can't go higher than next change'
+            String msg = "can't go higher than next temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1437,7 +1444,6 @@ public class WeekModeDetailedActivity extends Activity {
         try {
             change.getTime().incrementTime();
         } catch (Exception ex) {
-            // TODO: handle exception (some message for user like ' can't go lower than 00:00')
             // actually we can not ever go here
             return;
         }

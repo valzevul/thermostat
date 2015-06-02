@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
@@ -209,7 +210,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         if (id == R.id.action_load) {
 
 //            // load schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 
@@ -221,7 +222,9 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
                 if (file.exists()) {
                     conroller.loadSchedule(filename);
                 } else {
-                    // TODO: show message for user (nothing to load)
+                    // show message for user (nothing to load)
+                    String msg = "nothing to load";
+                    Toast.makeText(CurrentWeatherActivity.this, msg, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             } catch (Exception ex) {
@@ -235,7 +238,7 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
         if (id == R.id.action_save) {
 
 //            // save schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 

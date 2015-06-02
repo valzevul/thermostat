@@ -10,13 +10,13 @@ public class WeekSchedule implements Serializable {
 
     // default morning and evening changes!
     public static final TemperatureChange firstDefaultTemperatureChange =
-            new TemperatureChange(LightCondition.DAY, new Time(480));       // 8:00
+            new TemperatureChange(LightCondition.DAY, new Time(480));       // 8:00 = 480
     public static final TemperatureChange lastDefaultTemperatureChange =
-            new TemperatureChange(LightCondition.NIGHT, new Time(540));    // 9:00
+            new TemperatureChange(LightCondition.NIGHT, new Time(1439));    // 9:00 = 540
 
     // midnight change (at the most beginning of all days)
     public static final TemperatureChange midnightTemperatureChange =
-            new TemperatureChange(LightCondition.NIGHT, new Time(0));       // 00:00
+            new TemperatureChange(LightCondition.NIGHT, new Time(0));       // 00:00 = 0
 
 
     private ArrayList<DaySchedule> schedule;

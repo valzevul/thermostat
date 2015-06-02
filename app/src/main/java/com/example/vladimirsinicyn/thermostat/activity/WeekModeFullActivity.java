@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
@@ -94,7 +95,7 @@ public class WeekModeFullActivity extends Activity {
         if (id == R.id.action_load) {
 
 //            // load schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 //
@@ -112,7 +113,9 @@ public class WeekModeFullActivity extends Activity {
                 if (file.exists()) {
                     conroller.loadSchedule(filename);
                 } else {
-                    // TODO: show message for user (nothing to load)
+                    // show message for user (nothing to load)
+                    String msg = "nothing to load";
+                    Toast.makeText(WeekModeFullActivity.this, msg, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             } catch (Exception ex) {
@@ -126,7 +129,7 @@ public class WeekModeFullActivity extends Activity {
         if (id == R.id.action_save) {
 
 //            // save schedule
-//            // TODO: get name of the file
+//            // get name of the file
 //            getName();
 //            //System.out.println(m_Text);
 //
