@@ -87,7 +87,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange1" />
 
                 <TextView
                     android:id="@+id/status_1"
@@ -159,7 +161,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse2_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange2" />
 
                 <TextView
                     android:id="@+id/status_2"
@@ -227,7 +231,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse3_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:onClick="deleteChange3"
+                    android:clickable="true" />
 
                 <TextView
                     android:id="@+id/status_3"
@@ -295,7 +301,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse4_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange4" />
 
                 <TextView
                     android:id="@+id/status_4"
@@ -363,7 +371,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse5_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange5"/>
 
                 <TextView
                     android:id="@+id/status_5"
@@ -431,7 +441,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse6_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange6"/>
 
                 <TextView
                     android:id="@+id/status_6"
@@ -499,7 +511,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse7_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange7"/>
 
                 <TextView
                     android:id="@+id/status_7"
@@ -567,7 +581,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse8_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange8"/>
 
                 <TextView
                     android:id="@+id/status_8"
@@ -635,7 +651,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse9_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange9"/>
 
                 <TextView
                     android:id="@+id/status_9"
@@ -703,7 +721,9 @@
                     android:layout_height="48dp"
                     android:background="@drawable/delete"
                     android:id="@+id/reverse10_imageView"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:onClick="deleteChange10"/>
 
                 <TextView
                     android:id="@+id/status_10"

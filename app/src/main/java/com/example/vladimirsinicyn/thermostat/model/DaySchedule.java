@@ -95,7 +95,7 @@ public class DaySchedule implements Serializable {
         changes.add(change);
     }
 
-    public void deleteTimeChange(TemperatureChange change) throws Exception {
+    public void delete(TemperatureChange change) /*throws Exception*/ {
 
         for (int i = 0; i < changes.size(); i++) {
             if (changes.get(i).equals(change)) {

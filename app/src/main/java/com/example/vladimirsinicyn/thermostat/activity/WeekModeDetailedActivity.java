@@ -390,7 +390,6 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange latestChange = schedule.getLatestChange();
 
         Time newTime = new Time(latestChange.getTime().toMinutes());
-        Log.i("addition of temp change", newTime.toString()); // TODO: delete this debug output string
         newTime.incrementTime();
 
         LightCondition newLightCondition;
@@ -1474,4 +1473,185 @@ public class WeekModeDetailedActivity extends Activity {
 
     }
 // ========= END Handlers of UP ARROWS =========
+
+// ========= Handlers of CROSSES =========
+    public void deleteChange1(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.first_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // no previous change
+    }
+
+    public void deleteChange2(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse2_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.second_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange3(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse3_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.third_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse2_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange4(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse4_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.fourth_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse3_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange5(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse5_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.fifth_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse4_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange6(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse6_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.sixth_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse5_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange7(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse7_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse6_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange8(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse8_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.eighth_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse7_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange9(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse9_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.nineth_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse8_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+
+    public void deleteChange10(View view) {
+        // delete last change from state
+        TemperatureChange change = schedule.getLatestChange();
+        schedule.delete(change);
+
+        // make the layout's cross invisible
+        ImageView cross = (ImageView) findViewById(R.id.reverse10_imageView);
+        cross.setVisibility(View.INVISIBLE);
+
+        // make the layout invisible
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.tenth_layout);
+        layout.setVisibility(View.INVISIBLE);
+
+        // make previous layout's cross visible
+        ImageView prevCross = (ImageView) findViewById(R.id.reverse9_imageView);
+        prevCross.setVisibility(View.VISIBLE);
+    }
+// ========= END Handlers of CROSSES =========
+
 }
