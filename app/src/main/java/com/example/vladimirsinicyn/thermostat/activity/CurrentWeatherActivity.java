@@ -2,14 +2,18 @@ package com.example.vladimirsinicyn.thermostat.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +31,8 @@ import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
 import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
 import com.example.vladimirsinicyn.thermostat.model.Time;
+
+import java.io.File;
 
 
 public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
@@ -206,12 +212,17 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
 //            // TODO: get name of the file
 //            getName();
 //            //System.out.println(m_Text);
-//
-//            try {
-//                conroller.loadSchedule(m_Text);
-//            } catch (Exception ex) {
-//                // TODO: handle
-//            }
+
+
+            String name = "save.out";
+            File directory = Environment.getExternalStorageDirectory();
+            try {
+                conroller.loadSchedule(directory + File.separator + name);
+            } catch (Exception ex) {
+                // TODO: handle
+                Log.i("CurrentWeatherActivity - load", ex.getMessage());
+            }
+
 
             return true;
         }
@@ -222,12 +233,16 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
 //            // TODO: get name of the file
 //            getName();
 //            //System.out.println(m_Text);
-//
-//            try {
-//                conroller.saveSchedule(m_Text);
-//            } catch (Exception ex) {
-//                // TODO: handle
-//            }
+
+            String name = "save";
+            File directory = Environment.getExternalStorageDirectory();
+
+            try {
+                conroller.saveSchedule(directory + File.separator + name);
+            } catch (Exception ex) {
+                // TODO: handle
+                Log.i("CurrentWeatherActivity - save", ex.getMessage());
+            }
 
             return true;
         }

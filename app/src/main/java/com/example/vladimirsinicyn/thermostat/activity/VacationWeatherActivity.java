@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,8 @@ import com.example.vladimirsinicyn.thermostat.R;
 import com.example.vladimirsinicyn.thermostat.TCConroller;
 import com.example.vladimirsinicyn.thermostat.ThermostatApp;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
+
+import java.io.File;
 
 
 public class VacationWeatherActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
@@ -127,6 +131,16 @@ public class VacationWeatherActivity extends Activity implements SeekBar.OnSeekB
 //                // TODO: handle
 //            }
 
+            String name = "save.out";
+            File directory = Environment.getExternalStorageDirectory();
+            try {
+                conroller.loadSchedule(directory + File.separator + name);
+            } catch (Exception ex) {
+                // TODO: handle
+                Log.i("CurrentWeatherActivity - load", ex.getMessage());
+            }
+
+
             return true;
         }
 
@@ -142,6 +156,16 @@ public class VacationWeatherActivity extends Activity implements SeekBar.OnSeekB
 //            } catch (Exception ex) {
 //                // TODO: handle
 //            }
+
+            String name = "save";
+            File directory = Environment.getExternalStorageDirectory();
+
+            try {
+                conroller.saveSchedule(directory + File.separator + name);
+            } catch (Exception ex) {
+                // TODO: handle
+                Log.i("CurrentWeatherActivity - save", ex.getMessage());
+            }
 
             return true;
         }

@@ -196,7 +196,8 @@ public class TCConroller {
 // ====== WEEK SCHEDULE SAVE/LOAD + getter of day schedule ======
     public void loadSchedule(String name) throws Exception {
         Time timeStamp = new Time(time.toMinutes());
-        state = ThermostatState.load(name, timeStamp, state.getDayIndex());
+        int dayIndex = state.getDayIndex();
+        state = ThermostatState.load(name, timeStamp, dayIndex);
     }
 
     public void saveSchedule(String name) throws Exception {
@@ -567,13 +568,13 @@ public class TCConroller {
 
                     // show next change on main screen
                     Message msgNextChange = new Message();
-                    TemperatureChange nextChange = getNextChange();
+                    TemperatureChange nextChange = TCConroller.this.getNextChange();
                     if (nextChange == null) {
                         msgNextChange.obj = new String("No next.");
                     } else {
-                        msgNextChange.obj = getNextChange().getTime().toString();
+                        msgNextChange.obj = nextChange.getTime().toString();
                     }
-                    customCheckboxCheckedHandler.sendMessage(msgNextChange);
+                    nextChangeHandler.sendMessage(msgNextChange);
 
                     if (!state.isVacation()) {
                         if (state.isCustom()) {

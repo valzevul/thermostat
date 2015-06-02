@@ -157,9 +157,16 @@ public class ThermostatState implements Serializable {
         ObjectInputStream oin = new ObjectInputStream(fis);
 
         ThermostatState state = (ThermostatState) oin.readObject();
-        TemperatureChange temperatureChange = state.getWeekSchedule().getDaySchedule(dayIndex).findClosestLess(time);
+        DaySchedule schedule = state.getWeekSchedule().getDaySchedule(dayIndex);
 
-        state.setLastChange(temperatureChange);
+        TemperatureChange last = schedule.findClosestLess(time);
+        state.setLastChange(last);
+
+//        TemperatureChange next = schedule.findClosest(time);
+//        if (next == null) {
+//            int i = (state.getDayIndex() + 1) % 7;
+//            next = state.getWeekSchedule().getDaySchedule(i).findClosest(new Time(0));
+//        }
 
         return state;
     }

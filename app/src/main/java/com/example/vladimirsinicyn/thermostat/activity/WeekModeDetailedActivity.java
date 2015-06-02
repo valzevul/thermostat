@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import com.example.vladimirsinicyn.thermostat.model.Temperature;
 import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
 import com.example.vladimirsinicyn.thermostat.model.Time;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -307,6 +309,16 @@ public class WeekModeDetailedActivity extends Activity {
 //                // TODO: handle
 //            }
 
+            String name = "save.out";
+            File directory = Environment.getExternalStorageDirectory();
+            try {
+                conroller.loadSchedule(directory + File.separator + name);
+            } catch (Exception ex) {
+                // TODO: handle
+                Log.i("CurrentWeatherActivity - load", ex.getMessage());
+            }
+
+
             return true;
         }
 
@@ -322,6 +334,16 @@ public class WeekModeDetailedActivity extends Activity {
 //            } catch (Exception ex) {
 //                // TODO: handle
 //            }
+
+            String name = "save";
+            File directory = Environment.getExternalStorageDirectory();
+
+            try {
+                conroller.saveSchedule(directory + File.separator + name);
+            } catch (Exception ex) {
+                // TODO: handle
+                Log.i("CurrentWeatherActivity - save", ex.getMessage());
+            }
 
             return true;
         }
