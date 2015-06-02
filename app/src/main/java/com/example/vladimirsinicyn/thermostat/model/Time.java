@@ -27,6 +27,13 @@ public class Time implements Serializable,  TimeInterface{
 
         parseTime(temp);
     }
+    
+    public void incrementTime(int increment) {
+        
+        increment += toMinutes();
+        
+        parseTime(increment);
+    }
 
     public void decrementTime() throws Exception {
 
@@ -37,6 +44,16 @@ public class Time implements Serializable,  TimeInterface{
             throw new Exception("Time must be positive value.");
         }
         parseTime(temp);
+    }
+    
+    public void decrementTime(int decrement) throws Exception {
+
+        int time = toMinutes() - decrement;
+
+        if (time < 0) {
+            throw new Exception("Time must be positive value.");
+        }
+        parseTime(time);
     }
 
     public int toMinutes() {
