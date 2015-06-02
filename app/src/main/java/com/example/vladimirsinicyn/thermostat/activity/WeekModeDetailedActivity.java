@@ -560,7 +560,8 @@ public class WeekModeDetailedActivity extends Activity {
 
         return newLayout;
     }
-
+    
+    private final int shift  = 15;
 // ========= Handlers of DOWN ARROWS =========
     /**
      * Handle decrease of time of the first change
@@ -582,7 +583,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             // show some message for user like 'no more can't go lower than previous change'
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -591,7 +592,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -625,7 +626,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -633,7 +634,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -667,7 +668,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -675,7 +676,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -709,7 +710,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -717,7 +718,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -751,7 +752,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -759,7 +760,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -793,7 +794,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -801,7 +802,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -835,7 +836,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -843,7 +844,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -877,7 +878,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -885,7 +886,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -919,7 +920,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -927,7 +928,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -961,7 +962,7 @@ public class WeekModeDetailedActivity extends Activity {
         TemperatureChange prevChange = schedule.findClosestLess(change.getTime());
         Time lowerBound = prevChange.getTime();
 
-        if (changeTime.toMinutes() <= lowerBound.toMinutes() + 1) {
+        if (changeTime.toMinutes() <= lowerBound.toMinutes() + shift) {
             String msg = "can't go lower than previous temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -969,7 +970,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().decrementTime();
+            change.getTime().decrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1010,7 +1011,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1018,7 +1019,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1057,7 +1058,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1065,7 +1066,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1104,7 +1105,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1112,7 +1113,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1151,7 +1152,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1159,7 +1160,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1198,7 +1199,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1206,7 +1207,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1245,7 +1246,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1253,7 +1254,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1292,7 +1293,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1300,7 +1301,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1339,7 +1340,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1347,7 +1348,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1386,7 +1387,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1394,7 +1395,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
@@ -1433,7 +1434,7 @@ public class WeekModeDetailedActivity extends Activity {
             upperBound = nextChange.getTime();
         }
 
-        if (changeTime.toMinutes() >= upperBound.toMinutes() - 1) {
+        if (changeTime.toMinutes() >= upperBound.toMinutes() - shift) {
             String msg = "can't go higher than next temperature change";
             Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
             return;
@@ -1441,7 +1442,7 @@ public class WeekModeDetailedActivity extends Activity {
 
         // change state (time) of the chosen TempChange
         try {
-            change.getTime().incrementTime();
+            change.getTime().incrementTime(shift);
         } catch (Exception ex) {
             // actually we can not ever go here
             return;
