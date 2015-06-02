@@ -166,19 +166,19 @@ public class TCConroller {
         return getWs().getDayTemperature();
     }
 
-    public void incrementNightTemperature() {
+    public void incrementNightTemperature() throws Exception {
         getWs().getNightTemperature().incrementTemperature();
     }
 
-    public void incrementDayTemperature() {
+    public void incrementDayTemperature() throws Exception {
         getWs().getDayTemperature().incrementTemperature();
     }
 
-    public void decrementNightTemperature() {
+    public void decrementNightTemperature() throws Exception {
         getWs().getNightTemperature().decrementTemperature();
     }
 
-    public void decrementDayTemperature() {
+    public void decrementDayTemperature()throws Exception {
         getWs().getDayTemperature().decrementTemperature();
     }
 // ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======

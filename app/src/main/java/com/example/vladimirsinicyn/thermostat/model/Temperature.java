@@ -1,6 +1,8 @@
 package com.example.vladimirsinicyn.thermostat.model;
 
 
+import com.example.vladimirsinicyn.thermostat.ThermostatApp;
+
 import java.io.Serializable;
 
 public class Temperature implements Serializable {
@@ -29,7 +31,11 @@ public class Temperature implements Serializable {
         this.fractionalPart = fractional;
     }
 
-    public void incrementTemperature() {
+    public void incrementTemperature() throws Exception {
+
+        if ((integerPart == ThermostatApp.MAX_TEMP) && fractionalPart == 0) {
+            throw new Exception();
+        }
 
         fractionalPart++;
         if (fractionalPart == 10) {
@@ -39,7 +45,11 @@ public class Temperature implements Serializable {
         }
     }
 
-    public void decrementTemperature() {
+    public void decrementTemperature() throws Exception {
+
+        if ((integerPart == ThermostatApp.MIN_TEMP) && fractionalPart == 0) {
+            throw new Exception();
+        }
 
         fractionalPart--;
         if (fractionalPart == -1) {

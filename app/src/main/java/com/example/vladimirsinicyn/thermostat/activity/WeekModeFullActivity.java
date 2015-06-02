@@ -180,23 +180,47 @@ public class WeekModeFullActivity extends Activity {
 
     // ================ inc/decrement of day/night temp of WEEK SCHEDULE ================
     public void incNightTemp(View view) {
-        conroller.incrementNightTemperature();
-        nightTemp.setText(conroller.getNightTemperature().toString() + "°C");
+        try {
+            conroller.incrementNightTemperature();
+            nightTemp.setText(conroller.getNightTemperature().toString() + "°C");
+        } catch (Exception ex) {
+            // show message for user
+            String msg = "maximum temperature reached";
+            Toast.makeText(WeekModeFullActivity.this, msg, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void decNightTemp(View view) {
+        try {
         conroller.decrementNightTemperature();
         nightTemp.setText(conroller.getNightTemperature().toString() + "°C");
+        } catch (Exception ex) {
+            // show message for user
+            String msg = "minimum temperature reached";
+            Toast.makeText(WeekModeFullActivity.this, msg, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void incDayTemp(View view) {
+        try {
         conroller.incrementDayTemperature();
         dayTemp.setText(conroller.getDayTemperature().toString() + "°C");
+        } catch (Exception ex) {
+            // show message for user
+            String msg = "maximum temperature reached";
+            Toast.makeText(WeekModeFullActivity.this, msg, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void decDayTemp(View view) {
+        try {
         conroller.decrementDayTemperature();
         dayTemp.setText(conroller.getDayTemperature().toString() + "°C");
+        } catch (Exception ex) {
+            // show message for user
+            String msg = "minimum temperature reached";
+            Toast.makeText(WeekModeFullActivity.this, msg, Toast.LENGTH_SHORT).show();
+        }
     }
     // ================ END inc/decrement of day/night temp of WEEK SCHEDULE ================
 

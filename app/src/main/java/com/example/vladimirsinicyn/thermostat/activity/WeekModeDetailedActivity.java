@@ -391,7 +391,6 @@ public class WeekModeDetailedActivity extends Activity {
     public void addChange(View view) {
 
         TemperatureChange latestChange = schedule.getLatestChange();
-
         Time newTime = new Time(latestChange.getTime().toMinutes());
         newTime.incrementTime();
 

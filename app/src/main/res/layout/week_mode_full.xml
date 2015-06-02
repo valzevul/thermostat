@@ -27,7 +27,8 @@ tools:context=".WeekModeFullActivity">
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/up"
-        android:onClick="incDayTemp"/>
+        android:onClick="incDayTemp"
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/day_degree_textView"
@@ -45,7 +46,8 @@ tools:context=".WeekModeFullActivity">
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/down"
-        android:onClick="decDayTemp"/>
+        android:onClick="decDayTemp"
+        android:clickable="true" />
 
 
 </LinearLayout>
@@ -71,7 +73,8 @@ tools:context=".WeekModeFullActivity">
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/up"
-        android:onClick="incNightTemp"/>
+        android:onClick="incNightTemp"
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/night_degree_textView"
@@ -90,7 +93,8 @@ tools:context=".WeekModeFullActivity">
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/down"
-        android:onClick="decNightTemp"/>
+        android:onClick="decNightTemp"
+        android:clickable="true" />
 
 
 

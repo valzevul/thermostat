@@ -114,9 +114,9 @@
                         android:onClick="handleUpArrow1"
                         android:id="@+id/first_up"
                         android:layout_alignTop="@+id/first_down"
+                        android:clickable="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        />
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:id="@+id/time_1"
@@ -141,7 +141,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/first_down"
                         android:layout_toLeftOf="@+id/time_1"
-                        android:layout_toStartOf="@+id/time_1"/>
+                        android:layout_toStartOf="@+id/time_1"
+                        android:clickable="true" />
                 </RelativeLayout>
 
 
@@ -188,7 +189,7 @@
                         android:layout_alignTop="@+id/second_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_2"
@@ -213,7 +214,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/second_down"
                         android:layout_toLeftOf="@+id/time_2"
-                        android:layout_toStartOf="@+id/time_2"/>
+                        android:layout_toStartOf="@+id/time_2"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -258,7 +260,7 @@
                         android:layout_alignTop="@+id/third_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_3"
@@ -283,7 +285,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/third_down"
                         android:layout_toLeftOf="@+id/time_3"
-                        android:layout_toStartOf="@+id/time_3"/>
+                        android:layout_toStartOf="@+id/time_3"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -328,7 +331,7 @@
                         android:layout_alignTop="@+id/forth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_4"
@@ -353,7 +356,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/forth_down"
                         android:layout_toLeftOf="@+id/time_4"
-                        android:layout_toStartOf="@+id/time_4"/>
+                        android:layout_toStartOf="@+id/time_4"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -398,7 +402,7 @@
                         android:layout_alignTop="@+id/fifth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_5"
@@ -423,7 +427,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/fifth_down"
                         android:layout_toLeftOf="@+id/time_5"
-                        android:layout_toStartOf="@+id/time_5"/>
+                        android:layout_toStartOf="@+id/time_5"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -468,7 +473,7 @@
                         android:layout_alignTop="@+id/sixth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_6"
@@ -493,7 +498,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/sixth_down"
                         android:layout_toLeftOf="@+id/time_6"
-                        android:layout_toStartOf="@+id/time_6"/>
+                        android:layout_toStartOf="@+id/time_6"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -538,7 +544,7 @@
                         android:layout_alignTop="@+id/seventh_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_7"
@@ -563,7 +569,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/seventh_down"
                         android:layout_toLeftOf="@+id/time_7"
-                        android:layout_toStartOf="@+id/time_7"/>
+                        android:layout_toStartOf="@+id/time_7"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -608,7 +615,7 @@
                         android:layout_alignTop="@+id/eighth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_8"
@@ -633,7 +640,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/eighth_down"
                         android:layout_toLeftOf="@+id/time_8"
-                        android:layout_toStartOf="@+id/time_8"/>
+                        android:layout_toStartOf="@+id/time_8"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -678,7 +686,7 @@
                         android:layout_alignTop="@+id/nineth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_9"
@@ -703,7 +711,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/nineth_down"
                         android:layout_toLeftOf="@+id/time_9"
-                        android:layout_toStartOf="@+id/time_9"/>
+                        android:layout_toStartOf="@+id/time_9"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -748,7 +757,7 @@
                         android:layout_alignTop="@+id/tenth_down"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:clickable="true" />
 
                     <TextView
                         android:id="@+id/time_10"
@@ -773,7 +782,8 @@
                         android:layout_centerHorizontal="true"
                         android:id="@+id/tenth_down"
                         android:layout_toLeftOf="@+id/time_10"
-                        android:layout_toStartOf="@+id/time_10"/>
+                        android:layout_toStartOf="@+id/time_10"
+                        android:clickable="true" />
                 </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
