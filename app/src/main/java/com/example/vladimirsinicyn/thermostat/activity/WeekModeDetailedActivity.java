@@ -76,6 +76,7 @@ public class WeekModeDetailedActivity extends Activity {
         weekday.setText(dayOfWeek);
 
         schedule = conroller.getSchedule(index);
+        initView();
 
 //        ArrayList<TemperatureChange> changes = schedule.getChanges();
 //        for (int i = 0; i < DaySchedule.MAX_TODAY + DaySchedule.MAX_TONIGHT; i++) {
@@ -83,7 +84,9 @@ public class WeekModeDetailedActivity extends Activity {
 //
 //            }
 //        }
+    }
 
+    private void initView() {
         int i = 0;
 
         if (schedule.getNumberOfChanges() < i + 1) {
@@ -159,7 +162,7 @@ public class WeekModeDetailedActivity extends Activity {
         i++;
 
         if (schedule.getNumberOfChanges() < i + 1) {
-            RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);  // seventh son of a seventh son
             layout.setVisibility(View.INVISIBLE);
         } else {
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.seventh_layout);
@@ -251,7 +254,6 @@ public class WeekModeDetailedActivity extends Activity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -311,13 +313,21 @@ public class WeekModeDetailedActivity extends Activity {
 
             String name = "save.out";
             File directory = Environment.getExternalStorageDirectory();
+            String filename = directory + File.separator + name;
+            File file = new File(filename);
             try {
-                conroller.loadSchedule(directory + File.separator + name);
+                if (file.exists()) {
+                    conroller.loadSchedule(filename);
+                } else {
+                    // TODO: show message for user (nothing to load)
+                    return true;
+                }
             } catch (Exception ex) {
                 // TODO: handle
-                Log.i("CurrentWeatherActivity - load", ex.getMessage());
+                Log.i("load", ex.getMessage());
             }
-
+            schedule = conroller.getSchedule(index);
+            initView();
 
             return true;
         }

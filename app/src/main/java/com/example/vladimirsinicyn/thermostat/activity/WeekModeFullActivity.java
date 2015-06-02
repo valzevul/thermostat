@@ -106,13 +106,19 @@ public class WeekModeFullActivity extends Activity {
 
             String name = "save.out";
             File directory = Environment.getExternalStorageDirectory();
+            String filename = directory + File.separator + name;
+            File file = new File(filename);
             try {
-                conroller.loadSchedule(directory + File.separator + name);
+                if (file.exists()) {
+                    conroller.loadSchedule(filename);
+                } else {
+                    // TODO: show message for user (nothing to load)
+                    return true;
+                }
             } catch (Exception ex) {
                 // TODO: handle
-                Log.i("CurrentWeatherActivity - load", ex.getMessage());
+                Log.i("load", ex.getMessage());
             }
-
 
             return true;
         }
@@ -193,47 +199,12 @@ public class WeekModeFullActivity extends Activity {
 
     // ================ go to each day schedules ================
 
-    public void setSundaySchedule(View view) {
+    public void setDaySchedule(View view) {
         Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Sunday");
+        intent.putExtra("dayOfweek", view.getTag().toString());
         startActivity(intent);
     }
 
-    public void setMondaySchedule(View view) {
-        Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Monday");
-        startActivity(intent);
-    }
-
-    public void setTuesdaySchedule(View view) {
-        Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Tuesday");
-        startActivity(intent);
-    }
-
-    public void setWednesdaySchedule(View view) {
-        Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Wednesday");
-        startActivity(intent);
-    }
-
-    public void setThursdaySchedule(View view) {
-        Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Thursday");
-        startActivity(intent);
-    }
-
-    public void setFridaySchedule(View view) {
-        Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Friday");
-        startActivity(intent);
-    }
-
-    public void setSaturdaySchedule(View view) {
-        Intent intent = new Intent(WeekModeFullActivity.this, WeekModeDetailedActivity.class);
-        intent.putExtra("dayOfweek", "Saturday");
-        startActivity(intent);
-    }
 
     // ================ END go to day schedules ================
 }

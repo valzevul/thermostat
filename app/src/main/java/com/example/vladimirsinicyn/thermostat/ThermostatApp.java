@@ -7,12 +7,12 @@ public class ThermostatApp extends Application {
     public final static int MIN_TEMP = 5;
     public final static int MAX_TEMP = 30;
 
-    private static TCConroller conroller;
+    private static TCConroller troller;
     private boolean exists = false;
 
     public void initContorller() {
         if (!exists) {
-            conroller = new TCConroller();
+            troller = new TCConroller();
             exists = true;
         }
 
@@ -20,7 +20,7 @@ public class ThermostatApp extends Application {
     }
 
     public TCConroller getConroller() {
-        return conroller;
+        return troller;
     }
 
 //    @Override

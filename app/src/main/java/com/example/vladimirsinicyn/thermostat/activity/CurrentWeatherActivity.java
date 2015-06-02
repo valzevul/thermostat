@@ -213,16 +213,21 @@ public class CurrentWeatherActivity extends Activity implements SeekBar.OnSeekBa
 //            getName();
 //            //System.out.println(m_Text);
 
-
             String name = "save.out";
             File directory = Environment.getExternalStorageDirectory();
+            String filename = directory + File.separator + name;
+            File file = new File(filename);
             try {
-                conroller.loadSchedule(directory + File.separator + name);
+                if (file.exists()) {
+                    conroller.loadSchedule(filename);
+                } else {
+                    // TODO: show message for user (nothing to load)
+                    return true;
+                }
             } catch (Exception ex) {
                 // TODO: handle
-                Log.i("CurrentWeatherActivity - load", ex.getMessage());
+                Log.i("load", ex.getMessage());
             }
-
 
             return true;
         }

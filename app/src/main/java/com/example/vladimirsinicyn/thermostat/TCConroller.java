@@ -34,7 +34,7 @@ public class TCConroller {
     private Time time; //= new Time(0); // the time of all thermostat
 
     private ThermostatState state; // the state of all thermostat
-    private WeekSchedule ws; // current working week schedule
+    //private WeekSchedule ws; // current working week schedule
 
     // TODO: 300;
     private final int timeFactor = 1200; // times faster than real time
@@ -64,7 +64,7 @@ public class TCConroller {
         //Log.i("TCController", "TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         state = new ThermostatState();
-        ws = state.getWeekSchedule();
+        setWs(state.getWeekSchedule());
 
         // init time from system time
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
@@ -159,27 +159,27 @@ public class TCConroller {
 
 // ====== WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
     public Temperature getNightTemperature() {
-        return ws.getNightTemperature();
+        return getWs().getNightTemperature();
     }
 
     public Temperature getDayTemperature() {
-        return ws.getDayTemperature();
+        return getWs().getDayTemperature();
     }
 
     public void incrementNightTemperature() {
-        ws.getNightTemperature().incrementTemperature();
+        getWs().getNightTemperature().incrementTemperature();
     }
 
     public void incrementDayTemperature() {
-        ws.getDayTemperature().incrementTemperature();
+        getWs().getDayTemperature().incrementTemperature();
     }
 
     public void decrementNightTemperature() {
-        ws.getNightTemperature().decrementTemperature();
+        getWs().getNightTemperature().decrementTemperature();
     }
 
     public void decrementDayTemperature() {
-        ws.getDayTemperature().decrementTemperature();
+        getWs().getDayTemperature().decrementTemperature();
     }
 // ====== END WEEK TEMPERATURE GETTERS and INCR/DECREMENTS ======
 
@@ -205,7 +205,7 @@ public class TCConroller {
     }
 
     public DaySchedule getSchedule(int index) {
-        return ws.getDaySchedule(index);
+        return getWs().getDaySchedule(index);
     }
 // ====== END WEEK SCHEDULE SAVE/LOAD ======
 
@@ -219,12 +219,12 @@ public class TCConroller {
      */
     public TemperatureChange getNextChange() {
         int dayIndex = state.getDayIndex();
-        DaySchedule schedule = ws.getDaySchedule(dayIndex);
+        DaySchedule schedule = getWs().getDaySchedule(dayIndex);
         TemperatureChange nextChange = schedule.findClosest(time);
 
         if (nextChange == null) {
             int i = (state.getDayIndex() + 1) % 7;
-            nextChange = ws.getDaySchedule(i).findClosest(new Time(0));
+            nextChange = getWs().getDaySchedule(i).findClosest(new Time(0));
         }
         // TODO: use it in week_detailed
         return nextChange;
@@ -279,9 +279,9 @@ public class TCConroller {
     // auxiliary method LIGHTCONDITION --> TEMPERATURE
     private Temperature toTemp(LightCondition lightCondition) {
         if (lightCondition == LightCondition.DAY) {
-            return ws.getDayTemperature();
+            return getWs().getDayTemperature();
         } else {
-            return ws.getNightTemperature();
+            return getWs().getNightTemperature();
         }
     }
 
@@ -292,6 +292,14 @@ public class TCConroller {
         } else {
             return moon;
         }
+    }
+
+    public WeekSchedule getWs() {
+        return state.getWeekSchedule();
+    }
+
+    public void setWs(WeekSchedule ws) {
+        this.state.setWeekSchedule(ws);
     }
 
 // ====== The TimerTack class  ======
@@ -559,7 +567,7 @@ public class TCConroller {
                 Time currentTime = new Time(realMinsTotal); // time as time stamp
 
                 // check whether it is time to change (by schedule)
-                DaySchedule daySchedule = ws.getDaySchedule(state.getDayIndex());
+                DaySchedule daySchedule = getWs().getDaySchedule(state.getDayIndex());
                 TemperatureChange change = daySchedule.find(currentTime);
 
                 if (change != null) {
