@@ -26,6 +26,7 @@ import com.example.vladimirsinicyn.thermostat.model.LightCondition;
 import com.example.vladimirsinicyn.thermostat.model.Temperature;
 import com.example.vladimirsinicyn.thermostat.model.TemperatureChange;
 import com.example.vladimirsinicyn.thermostat.model.Time;
+import com.example.vladimirsinicyn.thermostat.model.WeekSchedule;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -1465,29 +1466,6 @@ public class WeekModeDetailedActivity extends Activity {
 //
 //        }
     }
-
-    public void deleteTime(View view) {
-
-        ArrayList<Integer> idS = new ArrayList<>();
-        idS.add(R.id.first_layout);
-        idS.add(R.id.second_layout);
-        idS.add(R.id.third_layout);
-        idS.add(R.id.fourth_layout);
-        idS.add(R.id.fifth_layout);
-        idS.add(R.id.sixth_layout);
-        idS.add(R.id.seventh_layout);
-        idS.add(R.id.eighth_layout);
-        idS.add(R.id.nineth_layout);
-        idS.add(R.id.tenth_layout);
-
-        for (int i = 0; i < idS.size(); i++) {
-            (findViewById(idS.get(i))).setVisibility(View.INVISIBLE);
-        }
-        schedule = conroller.getSchedule(index);
-        schedule.delete();
-        //findViewById(idS.get(0)).setVisibility(View.INVISIBLE);
-
-    }
 // ========= END Handlers of UP ARROWS =========
 
 // ========= Handlers of CROSSES =========
@@ -1670,4 +1648,39 @@ public class WeekModeDetailedActivity extends Activity {
     }
 // ========= END Handlers of CROSSES =========
 
+
+    public void deleteTime(View view) {
+
+        ArrayList<Integer> idS = new ArrayList<>();
+        idS.add(R.id.first_layout);
+        idS.add(R.id.second_layout);
+        idS.add(R.id.third_layout);
+        idS.add(R.id.fourth_layout);
+        idS.add(R.id.fifth_layout);
+        idS.add(R.id.sixth_layout);
+        idS.add(R.id.seventh_layout);
+        idS.add(R.id.eighth_layout);
+        idS.add(R.id.nineth_layout);
+        idS.add(R.id.tenth_layout);
+
+        for (int i = 0; i < idS.size(); i++) {
+            (findViewById(idS.get(i))).setVisibility(View.INVISIBLE);
+        }
+        schedule = conroller.getSchedule(index);
+        schedule.delete();
+        //findViewById(idS.get(0)).setVisibility(View.INVISIBLE);
+
+    }
+
+    public void applyToAll(View view) {
+        WeekSchedule ws = conroller.getWs();
+
+        for (int i = 0; i < 7; i++) {
+            if (i == index) {
+                continue;
+            }
+
+            ws.setDaySchedule(i, schedule.clone());
+        }
+    }
 }

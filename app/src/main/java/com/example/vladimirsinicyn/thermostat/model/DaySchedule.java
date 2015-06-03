@@ -21,8 +21,19 @@ public class DaySchedule implements Serializable {
         changes.add(WeekSchedule.lastDefaultTemperatureChange);
     }
 
-    public void clear() {
+    private DaySchedule(int dayChanges, int nightChanges, ArrayList<TemperatureChange> changes) {
+        this.dayChanges = dayChanges;
+        this.nightChanges = nightChanges;
 
+        this.changes = new ArrayList<TemperatureChange>(MAX_TODAY + MAX_TONIGHT);
+
+        for (int i = 0; i < changes.size(); i++) {
+            TemperatureChange change = changes.get(i).clone();
+            this.changes.add(i, change);
+        }
+    }
+
+    public void clear() {
         changes = new ArrayList<TemperatureChange>(MAX_TODAY + MAX_TONIGHT);
     }
 
@@ -155,5 +166,10 @@ public class DaySchedule implements Serializable {
         changes = new ArrayList<TemperatureChange>();
         dayChanges = 0;
         nightChanges = 0;
+    }
+
+    public DaySchedule clone() {
+        DaySchedule daySchedule = new DaySchedule(dayChanges, nightChanges, changes);
+        return daySchedule;
     }
 }
