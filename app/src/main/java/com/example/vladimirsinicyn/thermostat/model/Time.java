@@ -28,9 +28,13 @@ public class Time implements Serializable,  TimeInterface{
         parseTime(temp);
     }
     
-    public void incrementTime(int increment) {
+    public void incrementTime(int increment) throws Exception {
         
         increment += toMinutes();
+
+        if (increment >= (24 * 60)) {
+            throw new Exception();
+        }
         
         parseTime(increment);
     }

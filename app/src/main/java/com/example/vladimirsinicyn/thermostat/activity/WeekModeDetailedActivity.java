@@ -36,6 +36,7 @@ public class WeekModeDetailedActivity extends Activity {
     private int index;
     private static TCConroller conroller;
     private DaySchedule schedule;
+    private int addOffset = 60; // 1 hour
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -392,7 +393,16 @@ public class WeekModeDetailedActivity extends Activity {
 
         TemperatureChange latestChange = schedule.getLatestChange();
         Time newTime = new Time(latestChange.getTime().toMinutes());
-        newTime.incrementTime();
+
+        try {
+            newTime.incrementTime(addOffset);
+        } catch (Exception ex) {
+            // handle exception (some message for user)
+            String msg = "can't add new temperature change";
+            Toast.makeText(WeekModeDetailedActivity.this, msg, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         LightCondition newLightCondition;
 
